@@ -7,10 +7,6 @@ public class Monster extends Character {
         super(currentRow, currentColumn);
     }
 
-    @Override
-    public void draw() {
-
-    }
 
     @Override
     public void action() {
