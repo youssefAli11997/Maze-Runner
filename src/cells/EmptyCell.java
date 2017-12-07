@@ -9,9 +9,9 @@ public class EmptyCell extends Cell {
     public void draw() {
 
     }
-
-    @Override
-    public void action() {
-
-    }
+	@Override
+	public void action(Character character) {
+		// TODO Auto-generated method stub
+		
+	}
 }

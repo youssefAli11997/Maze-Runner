@@ -8,8 +8,7 @@ public class BigBomb extends Bomb {
     }
 
 	@Override
-	public void action() {
-		// TODO Auto-generated method stub
+	public void action(Character character) {
 		
 	}
 }

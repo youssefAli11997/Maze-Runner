@@ -22,6 +22,6 @@ public abstract class Cell {
 
     public void draw() {}
 
-    public abstract void action();
+    public abstract void action(Character character);
 
 }

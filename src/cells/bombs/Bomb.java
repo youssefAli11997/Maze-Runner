@@ -8,6 +8,6 @@ public abstract class Bomb extends Cell {
     }
 
     @Override
-    public abstract void action();
+    public abstract void action(Character character);
 
 }
