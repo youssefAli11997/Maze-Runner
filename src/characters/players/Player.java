@@ -1,8 +1,8 @@
 package characters.players;
 
-import characters.Character;
+import characters.GameCharacter;
 
-public class Player extends Character {
+public class Player extends GameCharacter {
 
     public Player(int currentRow, int currentColumn) {
         super(currentRow, currentColumn);

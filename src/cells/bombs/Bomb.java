@@ -1,13 +1,13 @@
 package cells.bombs;
 
 import cells.Cell;
+import characters.GameCharacter;
 
 public abstract class Bomb extends Cell {
     public Bomb(int row, int column) {
         super(row, column);
     }
 
-    @Override
-    public abstract void action(Character character);
+    public abstract void action(GameCharacter character);
 
 }

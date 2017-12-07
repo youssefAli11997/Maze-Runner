@@ -1,6 +1,7 @@
 package cells.bombs.types;
 
 import cells.bombs.Bomb;
+import characters.GameCharacter;
 
 public class SmallBomb extends Bomb {
     public SmallBomb(int row, int column) {
@@ -8,7 +9,7 @@ public class SmallBomb extends Bomb {
     }
 
 	@Override
-	public void action(Character character) {
+	public void action(GameCharacter character) {
 		
 	}
 }

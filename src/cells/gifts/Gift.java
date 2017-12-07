@@ -1,6 +1,7 @@
 package cells.gifts;
 
 import cells.Cell;
+import characters.GameCharacter;
 
 public  abstract class Gift extends Cell {
     public Gift(int row, int column) {
@@ -13,5 +14,5 @@ public  abstract class Gift extends Cell {
     }
 
     @Override
-    public abstract void action(Character character);
+    public abstract void action(GameCharacter character);
 }

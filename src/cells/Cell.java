@@ -1,5 +1,7 @@
 package cells;
 
+import characters.GameCharacter;
+
 import java.awt.*;
 
 public abstract class Cell {
@@ -22,6 +24,6 @@ public abstract class Cell {
 
     public void draw() {}
 
-    public abstract void action(Character character);
+    public abstract void action(GameCharacter character);
 
 }
