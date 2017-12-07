@@ -3,6 +3,7 @@ package characters;
 public abstract class Character {
     private int currentRow;
     private int currentColumn;
+    private int health ; 
 
     public Character(int currentRow, int currentColumn){
         this.currentRow = currentRow;
@@ -43,5 +44,19 @@ public abstract class Character {
     public abstract void draw();
 
     public abstract void action();
+
+	/**
+	 * @return the health
+	 */
+	public int getHealth() {
+		return health;
+	}
+
+	/**
+	 * @param health the health to set
+	 */
+	public void setHealth(int health) {
+		this.health = health;
+	}
 
 }
