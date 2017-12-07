@@ -2,18 +2,14 @@ package characters.monsters;
 
 import characters.Character;
 
-public class Monster extends Character {
+public abstract class Monster extends Character {
     public Monster(int currentRow, int currentColumn) {
         super(currentRow, currentColumn);
     }
 
     @Override
-    public void draw() {
-
-    }
+    public abstract void draw();
 
     @Override
-    public void action() {
-
-    }
+    public abstract void action();
 }
