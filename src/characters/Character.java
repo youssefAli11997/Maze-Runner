@@ -64,6 +64,6 @@ public abstract class Character {
 	}
 
 	public void SetWeapon (Weapon weapon){
-		
+        this.weapon = weapon;
 	}
 }
