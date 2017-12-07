@@ -6,4 +6,9 @@ public class SmallBomb extends Bomb {
     public SmallBomb(int row, int column) {
         super(row, column);
     }
+
+	@Override
+	public void action(Character character) {
+		
+	}
 }

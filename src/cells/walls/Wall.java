@@ -44,8 +44,9 @@ public class Wall extends Cell {
 
     }
 
-    @Override
-    public void action() {
-
-    }
+	@Override
+	public void action(Character character) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -2,7 +2,7 @@ package cells.gifts;
 
 import cells.Cell;
 
-public  class Gift extends Cell {
+public  abstract class Gift extends Cell {
     public Gift(int row, int column) {
         super(row, column);
     }
@@ -13,7 +13,5 @@ public  class Gift extends Cell {
     }
 
     @Override
-    public void action() {
-
-    }
+    public abstract void action(Character character);
 }

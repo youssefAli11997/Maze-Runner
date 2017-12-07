@@ -7,6 +7,7 @@ public abstract class Character {
     private int currentRow;
     private int currentColumn;
     private int health ;
+    private Weapon weapon; 
 
     public Character(int currentRow, int currentColumn){
         this.currentRow = currentRow;
@@ -44,7 +45,7 @@ public abstract class Character {
         }
     }
 
-    public abstract void draw();
+    public void draw() {}
 
     public abstract void action();
 
@@ -63,6 +64,6 @@ public abstract class Character {
 	}
 
 	public void SetWeapon (Weapon weapon){
-		
+        this.weapon = weapon;
 	}
 }
