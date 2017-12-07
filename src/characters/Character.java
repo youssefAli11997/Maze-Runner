@@ -7,6 +7,7 @@ public abstract class Character {
     private int currentRow;
     private int currentColumn;
     private int health ;
+    private Weapon weapon; 
 
     public Character(int currentRow, int currentColumn){
         this.currentRow = currentRow;
