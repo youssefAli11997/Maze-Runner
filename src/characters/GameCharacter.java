@@ -63,7 +63,17 @@ public abstract class GameCharacter {
 		this.health = health;
 	}
 
-	public void SetWeapon (Weapon weapon){
-        this.weapon = weapon;
+	/**
+	 * @return the weapon
+	 */
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	/**
+	 * @param weapon the weapon to set
+	 */
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
 	}
 }

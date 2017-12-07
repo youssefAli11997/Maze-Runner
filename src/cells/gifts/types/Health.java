@@ -10,7 +10,6 @@ public class Health extends Gift {
 
 	@Override
 	public void action(GameCharacter character) {
-		// TODO Auto-generated method stub
-		
+		character.setCurrentColumn(character.getHealth() + 10);		
 	}
 }

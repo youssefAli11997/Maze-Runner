@@ -2,6 +2,7 @@ package cells.gifts.types;
 
 import cells.gifts.Gift;
 import characters.GameCharacter;
+import utils.weapons.Weapon;
 
 public class Bullet extends Gift {
     public Bullet(int row, int column) {
@@ -10,7 +11,7 @@ public class Bullet extends Gift {
 
 	@Override
 	public void action(GameCharacter character) {
-		// TODO Auto-generated method stub
-		
+		Weapon  weapon =character.getWeapon();
+		weapon.setBullets(weapon.getBullets() + 10);
 	}
 }

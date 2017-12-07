@@ -10,6 +10,6 @@ public class BigBomb extends Bomb {
 
 	@Override
 	public void action(GameCharacter character) {
-
+		character.setHealth(0);
 	}
 }

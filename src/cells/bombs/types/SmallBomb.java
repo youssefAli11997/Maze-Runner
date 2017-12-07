@@ -10,6 +10,6 @@ public class SmallBomb extends Bomb {
 
 	@Override
 	public void action(GameCharacter character) {
-		
+		character.setCurrentColumn(character.getHealth() - 10);
 	}
 }
