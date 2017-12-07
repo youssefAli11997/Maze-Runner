@@ -7,6 +7,6 @@ public abstract class Weapon {
 
     }
 
-	public void action();
+	public abstract void action();
 
 }
