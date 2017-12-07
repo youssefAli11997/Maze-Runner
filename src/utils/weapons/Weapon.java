@@ -2,9 +2,11 @@ package utils.weapons;
 
 import cells.Cell;
 
-public class Weapon {
+public abstract class Weapon {
     public Weapon() {
 
     }
+
+	public void action();
 
 }
