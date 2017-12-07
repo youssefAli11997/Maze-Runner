@@ -2,7 +2,7 @@ package cells;
 
 import java.awt.*;
 
-public class Cell {
+public abstract class Cell {
     private int row;
     private int column;
 
@@ -19,4 +19,9 @@ public class Cell {
         row = ((int) index.getX());
         column = ((int) index.getY());
     }
+
+    public abstract void draw();
+
+    public abstract void action();
+
 }

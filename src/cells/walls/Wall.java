@@ -38,4 +38,14 @@ public class Wall extends Cell {
     public void setHealthDecrease(int healthDecrease) {
         this.healthDecrease = healthDecrease;
     }
+
+    @Override
+    public void draw() {
+
+    }
+
+    @Override
+    public void action() {
+
+    }
 }

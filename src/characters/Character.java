@@ -1,6 +1,6 @@
 package characters;
 
-public class Character {
+public abstract class Character {
     private int currentRow;
     private int currentColumn;
 
@@ -39,4 +39,9 @@ public class Character {
             currentColumn ++;
         }
     }
+
+    public abstract void draw();
+
+    public abstract void action();
+
 }

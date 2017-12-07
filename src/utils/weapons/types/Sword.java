@@ -1,6 +1,6 @@
-package cells.weapons.types;
+package utils.weapons.types;
 
-import cells.weapons.Weapon;
+import utils.weapons.Weapon;
 
 public class Sword extends Weapon {
     public Sword(int row, int column) {

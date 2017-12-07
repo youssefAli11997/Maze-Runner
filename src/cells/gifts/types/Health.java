@@ -6,9 +6,4 @@ public class Health extends Gift {
     public Health(int row, int column) {
         super(row, column);
     }
-
-    @Override
-    public void action() {
-
-    }
 }

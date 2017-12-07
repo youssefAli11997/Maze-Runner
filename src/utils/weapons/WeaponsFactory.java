@@ -1,4 +1,4 @@
-package cells.weapons;
+package utils.weapons;
 
 public class WeaponsFactory {
 }
