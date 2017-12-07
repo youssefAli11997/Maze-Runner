@@ -1,6 +1,7 @@
 package cells.walls;
 
 import cells.Cell;
+import characters.GameCharacter;
 
 public class Wall extends Cell {
     private boolean breakable;
@@ -44,8 +45,9 @@ public class Wall extends Cell {
 
     }
 
-    @Override
-    public void action() {
-
-    }
+	@Override
+	public void action(GameCharacter character) {
+		// TODO Auto-generated method stub
+		
+	}
 }

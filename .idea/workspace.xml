@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2295281d-3903-43ff-b01f-10beabb3a57f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/characters/Character.java" afterPath="$PROJECT_DIR$/src/characters/GameCharacter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/Cell.java" afterPath="$PROJECT_DIR$/src/cells/Cell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/EmptyCell.java" afterPath="$PROJECT_DIR$/src/cells/EmptyCell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/bombs/Bomb.java" afterPath="$PROJECT_DIR$/src/cells/bombs/Bomb.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/bombs/types/BigBomb.java" afterPath="$PROJECT_DIR$/src/cells/bombs/types/BigBomb.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/bombs/types/SmallBomb.java" afterPath="$PROJECT_DIR$/src/cells/bombs/types/SmallBomb.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/gifts/Gift.java" afterPath="$PROJECT_DIR$/src/cells/gifts/Gift.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/weapons/Weapon.java" afterPath="$PROJECT_DIR$/src/utils/weapons/Weapon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/gifts/types/Bullet.java" afterPath="$PROJECT_DIR$/src/cells/gifts/types/Bullet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/gifts/types/Health.java" afterPath="$PROJECT_DIR$/src/cells/gifts/types/Health.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cells/walls/Wall.java" afterPath="$PROJECT_DIR$/src/cells/walls/Wall.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/characters/monsters/Monster.java" afterPath="$PROJECT_DIR$/src/characters/monsters/Monster.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/characters/monsters/types/DynamicMonster.java" afterPath="$PROJECT_DIR$/src/characters/monsters/types/DynamicMonster.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/characters/monsters/types/StaticMonster.java" afterPath="$PROJECT_DIR$/src/characters/monsters/types/StaticMonster.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/characters/players/Player.java" afterPath="$PROJECT_DIR$/src/characters/players/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/weapons/types/Gun.java" afterPath="$PROJECT_DIR$/src/utils/weapons/types/Gun.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/weapons/types/Sword.java" afterPath="$PROJECT_DIR$/src/utils/weapons/types/Sword.java" />
     </list>
@@ -22,8 +33,13 @@
         <entry file="file://$PROJECT_DIR$/src/characters/players/Player.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="414">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <marker date="1512670222373" expanded="false" signature="160:171" ph=" { " />
+                <marker date="1512670222373" expanded="false" signature="204:210" ph=" }" />
+                <marker date="1512670222373" expanded="true" signature="249:257" ph="{}" />
+                <marker date="1512670222373" expanded="true" signature="298:306" ph="{}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -31,11 +47,10 @@
       <file leaf-file-name="EmptyCell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cells/EmptyCell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="253">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
-                <element signature="e#96#97#0" expanded="true" />
-                <element signature="e#130#131#0" expanded="true" />
+                <marker date="1512670222365" expanded="true" signature="312:313" ph="{}" />
               </folding>
             </state>
           </provider>
@@ -44,21 +59,21 @@
       <file leaf-file-name="Cell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cells/Cell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+            <state relative-caret-position="506">
+              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gun.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gun.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/utils/weapons/types/Gun.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="92">
-              <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+              <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
               <folding>
-                <element signature="e#97#98#0" expanded="true" />
-                <element signature="e#120#121#0" expanded="true" />
+                <element signature="e#111#112#0" expanded="true" />
+                <element signature="e#134#135#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,36 +82,9 @@
       <file leaf-file-name="Sword.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/weapons/types/Sword.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+            <state relative-caret-position="115">
+              <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/characters/Character.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="e#380#381#0" expanded="true" />
-                <element signature="e#416#417#0" expanded="true" />
-                <element signature="e#450#451#0" expanded="true" />
-                <element signature="e#483#484#0" expanded="true" />
-                <element signature="e#538#539#0" expanded="true" />
-                <element signature="e#588#589#0" expanded="true" />
-                <element signature="e#637#638#0" expanded="true" />
-                <element signature="e#681#682#0" expanded="true" />
-                <marker date="1512668891120" expanded="true" signature="1140:1171" ph="/**...*/" />
-                <marker date="1512668891120" expanded="true" signature="1195:1200" ph=" { " />
-                <marker date="1512668891120" expanded="true" signature="1214:1217" ph=" }" />
-                <marker date="1512668891120" expanded="true" signature="1220:1264" ph="/**...*/" />
-                <marker date="1512668891120" expanded="true" signature="1299:1304" ph=" { " />
-                <marker date="1512668891120" expanded="true" signature="1325:1328" ph=" }" />
-                <marker date="1512668891120" expanded="true" signature="1368:1378" ph=" { " />
-                <marker date="1512668891120" expanded="true" signature="1399:1402" ph=" }" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -114,21 +102,26 @@
       <file leaf-file-name="Gift.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cells/gifts/Gift.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="161">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#156#157#0" expanded="true" />
+                <element signature="e#190#191#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bullet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Bullet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cells/gifts/types/Bullet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="5" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="7" selection-end-column="5" />
+            <state relative-caret-position="322">
+              <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
               <folding>
-                <element signature="e#128#129#0" expanded="true" />
-                <element signature="e#162#163#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#161#162#0" expanded="true" />
+                <element signature="e#195#196#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -184,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/cells/Cell.java" />
         <option value="$PROJECT_DIR$/src/cells/walls/Wall.java" />
         <option value="$PROJECT_DIR$/src/cells/gifts/types/Health.java" />
-        <option value="$PROJECT_DIR$/src/cells/gifts/types/Bullet.java" />
         <option value="$PROJECT_DIR$/src/cells/bombs/types/SmallBomb.java" />
         <option value="$PROJECT_DIR$/src/cells/bombs/types/BigBomb.java" />
         <option value="$PROJECT_DIR$/src/cells/bombs/Bomb.java" />
@@ -194,6 +186,7 @@
         <option value="$PROJECT_DIR$/src/utils/weapons/types/Weapon.java" />
         <option value="$PROJECT_DIR$/src/characters/Character.java" />
         <option value="$PROJECT_DIR$/src/utils/weapons/Weapon.java" />
+        <option value="$PROJECT_DIR$/src/cells/gifts/types/Bullet.java" />
         <option value="$PROJECT_DIR$/src/cells/gifts/Gift.java" />
         <option value="$PROJECT_DIR$/src/utils/weapons/types/Sword.java" />
         <option value="$PROJECT_DIR$/src/utils/weapons/types/Gun.java" />
@@ -413,6 +406,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="0" width="1857" height="1081" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -426,7 +420,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959569" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959569" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -503,8 +497,8 @@
         <state relative-caret-position="69">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <element signature="e#178#179#0" expanded="true" />
-            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#178#179#0" expanded="false" />
+            <element signature="e#226#227#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -647,26 +641,30 @@
     <entry file="file://$PROJECT_DIR$/src/characters/players/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1512670222373" expanded="false" signature="160:171" ph=" { " />
+            <marker date="1512670222373" expanded="false" signature="204:210" ph=" }" />
+            <marker date="1512670222373" expanded="true" signature="249:257" ph="{}" />
+            <marker date="1512670222373" expanded="true" signature="298:306" ph="{}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cells/EmptyCell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="253">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#96#97#0" expanded="true" />
-            <element signature="e#130#131#0" expanded="true" />
+            <marker date="1512670222365" expanded="true" signature="312:313" ph="{}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cells/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        <state relative-caret-position="506">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -683,24 +681,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="e#380#381#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#450#451#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-            <element signature="e#637#638#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-            <marker date="1512668891120" expanded="true" signature="1140:1171" ph="/**...*/" />
-            <marker date="1512668891120" expanded="true" signature="1195:1200" ph=" { " />
-            <marker date="1512668891120" expanded="true" signature="1214:1217" ph=" }" />
-            <marker date="1512668891120" expanded="true" signature="1220:1264" ph="/**...*/" />
-            <marker date="1512668891120" expanded="true" signature="1299:1304" ph=" { " />
-            <marker date="1512668891120" expanded="true" signature="1325:1328" ph=" }" />
-            <marker date="1512668891120" expanded="true" signature="1368:1378" ph=" { " />
-            <marker date="1512668891120" expanded="true" signature="1399:1402" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -712,11 +693,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/weapons/types/Sword.java">
+    <entry file="file://$PROJECT_DIR$/src/cells/gifts/types/Bullet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="322">
+          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#161#162#0" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cells/gifts/Gift.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -728,32 +725,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/weapons/types/Gun.java">
+    <entry file="file://$PROJECT_DIR$/src/utils/weapons/types/Sword.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding>
-            <element signature="e#97#98#0" expanded="true" />
-            <element signature="e#120#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cells/gifts/Gift.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+        <state relative-caret-position="115">
+          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cells/gifts/types/Bullet.java">
+    <entry file="file://$PROJECT_DIR$/src/utils/weapons/types/Gun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="7" selection-end-column="5" />
+        <state relative-caret-position="92">
+          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
           <folding>
-            <element signature="e#128#129#0" expanded="true" />
-            <element signature="e#162#163#0" expanded="true" />
+            <element signature="e#111#112#0" expanded="true" />
+            <element signature="e#134#135#0" expanded="true" />
           </folding>
         </state>
       </provider>

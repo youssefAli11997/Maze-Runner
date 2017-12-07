@@ -1,8 +1,8 @@
 package characters.monsters;
 
-import characters.Character;
+import characters.GameCharacter;
 
-public class Monster extends Character {
+public class Monster extends GameCharacter {
     public Monster(int currentRow, int currentColumn) {
         super(currentRow, currentColumn);
     }

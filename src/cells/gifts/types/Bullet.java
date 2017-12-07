@@ -1,9 +1,16 @@
 package cells.gifts.types;
 
 import cells.gifts.Gift;
+import characters.GameCharacter;
 
 public class Bullet extends Gift {
     public Bullet(int row, int column) {
         super(row, column);
     }
+
+	@Override
+	public void action(GameCharacter character) {
+		// TODO Auto-generated method stub
+		
+	}
 }

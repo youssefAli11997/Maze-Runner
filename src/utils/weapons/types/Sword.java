@@ -7,9 +7,8 @@ public class Sword extends Weapon {
 
     }
 
-
+    @Override
     public void action() {
-        
-    }
 
+    }
 }
