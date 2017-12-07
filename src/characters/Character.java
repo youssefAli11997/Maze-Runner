@@ -1,5 +1,7 @@
 package characters;
 
+import utils.weapons.Weapon;
+
 public abstract class Character {
 	
     private int currentRow;
