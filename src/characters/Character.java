@@ -1,9 +1,12 @@
 package characters;
 
+import utils.weapons.Weapon;
+
 public abstract class Character {
+	
     private int currentRow;
     private int currentColumn;
-    private int health ; 
+    private int health ;
 
     public Character(int currentRow, int currentColumn){
         this.currentRow = currentRow;
@@ -59,4 +62,7 @@ public abstract class Character {
 		this.health = health;
 	}
 
+	public void SetWeapon (Weapon weapon){
+		
+	}
 }
