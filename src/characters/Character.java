@@ -45,7 +45,7 @@ public abstract class Character {
         }
     }
 
-    public abstract void draw();
+    public void draw() {}
 
     public abstract void action();
 
