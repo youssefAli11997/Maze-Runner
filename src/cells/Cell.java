@@ -20,7 +20,7 @@ public abstract class Cell {
         column = ((int) index.getY());
     }
 
-    public abstract void draw();
+    public void draw() {}
 
     public abstract void action();
 
