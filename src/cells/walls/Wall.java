@@ -8,8 +8,7 @@ public class Wall extends Cell {
     private int bulletsToBreak;
     private int healthDecrease;
 
-    public Wall(int row, int column, boolean breakable, int bulletsToBreak, int healthDecrease){
-        super(row, column);
+    public Wall( boolean breakable, int bulletsToBreak, int healthDecrease){
         this.breakable = breakable;
         this.bulletsToBreak = bulletsToBreak;
         this.healthDecrease = healthDecrease;
@@ -38,11 +37,6 @@ public class Wall extends Cell {
 
     public void setHealthDecrease(int healthDecrease) {
         this.healthDecrease = healthDecrease;
-    }
-
-    @Override
-    public void draw() {
-
     }
 
 	@Override
