@@ -7,9 +7,4 @@ public class Monster extends GameCharacter {
         super(currentRow, currentColumn);
     }
 
-
-    @Override
-    public void action() {
-
-    }
 }

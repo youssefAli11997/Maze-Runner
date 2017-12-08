@@ -3,13 +3,14 @@ package characters;
 import utils.weapons.Weapon;
 
 public abstract class GameCharacter {
-	
+
     private int currentRow;
     private int currentColumn;
-    private int health ;
-    private Weapon weapon; 
+    private int health;
+    private Weapon weapon;
+    private CharacterState currentState;
 
-    public GameCharacter(int currentRow, int currentColumn){
+    public GameCharacter(int currentRow, int currentColumn) {
         this.currentRow = currentRow;
         this.currentColumn = currentColumn;
     }
@@ -26,54 +27,72 @@ public abstract class GameCharacter {
         this.currentColumn = currentColumn;
     }
 
+    //why to set ! move method does the job
     public void setCurrentRow(int currentRow) {
         this.currentRow = currentRow;
     }
 
-    public void move(String direction){
-        if(direction.equalsIgnoreCase("up")){
-            currentRow --;
+    public void move(String direction) {
+        if (direction.equalsIgnoreCase("up")) {
+            currentRow--;
         }
-        if(direction.equalsIgnoreCase("down")){
-            currentRow ++;
+        if (direction.equalsIgnoreCase("down")) {
+            currentRow++;
         }
-        if(direction.equalsIgnoreCase("left")){
-            currentColumn --;
+        if (direction.equalsIgnoreCase("left")) {
+            currentColumn--;
         }
-        if(direction.equalsIgnoreCase("right")){
-            currentColumn ++;
+        if (direction.equalsIgnoreCase("right")) {
+            currentColumn++;
         }
     }
 
-    public void draw() {}
+    public void draw() {
+    }
 
-    public abstract void action();
+    public void setCurrentState(CharacterState newState) {
+        currentState = newState;
+    }
 
-	/**
-	 * @return the health
-	 */
-	public int getHealth() {
-		return health;
-	}
+    public CharacterState getCurrentState() {
+        return currentState;
+    }
 
-	/**
-	 * @param health the health to set
-	 */
-	public void setHealth(int health) {
-		this.health = health;
-	}
+    /**
+     * @return the health
+     */
+    public int getHealth() {
+        return health;
+    }
 
-	/**
-	 * @return the weapon
-	 */
-	public Weapon getWeapon() {
-		return weapon;
-	}
+    /**
+     * @param health the health to set
+     */
+    public void setHealth(int health) {
+        currentState.setHealth(health);
+    }
 
-	/**
-	 * @param weapon the weapon to set
-	 */
-	public void setWeapon(Weapon weapon) {
-		this.weapon = weapon;
-	}
+    /**
+     * @return the weapon
+     */
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    /**
+     * @param weapon the weapon to set
+     */
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public void fire() {
+        currentState.fire();
+    }
+
+    public void die() {
+        //TODO implement death better to call die than setting health to 0
+        currentState.die();
+    }
+
 }
