@@ -8,20 +8,9 @@ import characters.GameCharacter;
  * can pass throw only one wall or bomb without breaking it then goes to Normal state
  */
 public class PassThrough extends CharacterState {
-    GameCharacter character;
 
     public PassThrough(GameCharacter character){
-        this.character = character;
-    }
-
-    @Override
-    public void setHealthChange(int health) {
-
-    }
-
-    @Override
-    public void fire() {
-
+        super(character);
     }
 
     @Override

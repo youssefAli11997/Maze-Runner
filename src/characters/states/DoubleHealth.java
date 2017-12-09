@@ -14,21 +14,23 @@ public class DoubleHealth extends CharacterState {
     GameCharacter character;
 
     public DoubleHealth(GameCharacter character){
-        this.character = character;
+        super(character);
     }
 
     @Override
     public void setHealthChange(int health) {
+        if (health < 0){
+            health /= 2;
+        } else {
+            health *= 2;
+        }
+
+        if (health + character.getHealth() <= 0) {
+            this.die();
+        } else {
+            character.setHealth(health + character.getHealth());
+        }
 
     }
 
-    @Override
-    public void fire() {
-
-    }
-
-    @Override
-    public void die() {
-
-    }
 }

@@ -8,24 +8,13 @@ import characters.GameCharacter;
  * kill enemy if you touch it
  */
 public class EatEnemy extends CharacterState{
-    GameCharacter character;
 
     public EatEnemy(GameCharacter character){
-        this.character = character;
-    }
-
-    @Override
-    public void setHealthChange(int health) {
-
-    }
-
-    @Override
-    public void fire() {
-
+       super(character);
     }
 
     @Override
     public void die() {
-
+        //Enemy Die Player lives
     }
 }
