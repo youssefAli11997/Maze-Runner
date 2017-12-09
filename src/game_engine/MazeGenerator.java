@@ -1,3 +1,4 @@
+package game_engine;
 import cells.Cell;
 import cells.EmptyCell;
 
