@@ -94,5 +94,4 @@ public abstract class GameCharacter {
         //TODO implement death better to call die than setting health to 0
         currentState.die();
     }
-
 }
