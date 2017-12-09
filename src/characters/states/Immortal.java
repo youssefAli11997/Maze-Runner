@@ -8,7 +8,7 @@ import characters.GameCharacter;
  * any death isn't counted
  * go to normal state after some time (10s)
  */
-public class Immortal implements CharacterState {
+public class Immortal extends CharacterState {
     GameCharacter character;
 
     public Immortal(GameCharacter character){

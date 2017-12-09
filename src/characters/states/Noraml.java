@@ -6,7 +6,7 @@ import characters.GameCharacter;
 /**
  * Created by M.Sharaf on 08/12/2017.
  */
-public class Noraml implements CharacterState {
+public class Noraml extends CharacterState {
     GameCharacter character;
 
     public Noraml(GameCharacter character){

@@ -14,6 +14,6 @@ public abstract class CharacterState {
 
     }
     public void die(){
-        
+
     }
 }

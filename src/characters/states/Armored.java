@@ -8,7 +8,7 @@ import characters.GameCharacter;
  * first death isn't counted, enemy or bomb vanish, go to Normal state
  * go to normal state after some time (10s)
  */
-public class Armored implements CharacterState {
+public class Armored extends CharacterState {
     GameCharacter character;
 
     public Armored(GameCharacter character){

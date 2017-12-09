@@ -7,7 +7,7 @@ import characters.GameCharacter;
  * Created by M.Sharaf on 08/12/2017.
  * can pass throw only one wall or bomb without breaking it then goes to Normal state
  */
-public class PassThrough implements CharacterState {
+public class PassThrough extends CharacterState {
     GameCharacter character;
 
     public PassThrough(GameCharacter character){
