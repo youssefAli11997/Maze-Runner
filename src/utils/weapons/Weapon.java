@@ -2,13 +2,6 @@ package utils.weapons;
 
 public abstract class Weapon {
 	private int bullets;
-<<<<<<< HEAD
-
-	public Weapon() {
-||||||| merged common ancestors
-    public Weapon() {
-=======
->>>>>>> 9f386c58322f1b8e59f285fd86bd558376260513
 
 	public Weapon() {
 
