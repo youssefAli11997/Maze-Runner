@@ -8,8 +8,8 @@ import characters.GameCharacter;
  */
 public class Normal extends CharacterState {
 
-    public Normal(GameCharacter character) {
-        super(character);
-    }
+	public Normal(GameCharacter character) {
+		super(character);
+	}
 
 }

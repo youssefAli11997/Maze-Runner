@@ -2,7 +2,8 @@ package utils.weapons;
 
 public abstract class Weapon {
 	private int bullets;
-    public Weapon() {
+
+	public Weapon() {
 
     }
 
