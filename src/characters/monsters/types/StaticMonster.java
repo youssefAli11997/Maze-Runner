@@ -7,9 +7,4 @@ public class StaticMonster extends Monster {
         super(currentRow, currentColumn);
     }
 
-    @Override
-    public void draw() {
-        // TODO Auto-generated method stub
-
-    }
 }

@@ -4,7 +4,7 @@ import cells.gifts.Gift;
 import characters.GameCharacter;
 import utils.weapons.Weapon;
 
-public class Bullet extends Gift {
+public class BulletGift extends Gift {
 
 
 	@Override

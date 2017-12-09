@@ -9,20 +9,9 @@ import characters.GameCharacter;
  * go to normal state after some time (10s)
  */
 public class Immortal extends CharacterState {
-    GameCharacter character;
 
-    public Immortal(GameCharacter character){
-        this.character = character;
-    }
-
-    @Override
-    public void setHealthChange(int health) {
-
-    }
-
-    @Override
-    public void fire() {
-
+    public Immortal(GameCharacter character) {
+        super(character);
     }
 
     @Override

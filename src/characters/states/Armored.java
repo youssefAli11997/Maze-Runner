@@ -9,24 +9,14 @@ import characters.GameCharacter;
  * go to normal state after some time (10s)
  */
 public class Armored extends CharacterState {
-    GameCharacter character;
 
-    public Armored(GameCharacter character){
-        this.character = character;
-    }
-
-    @Override
-    public void setHealthChange(int health) {
-
-    }
-
-    @Override
-    public void fire() {
-
+    public Armored(GameCharacter character) {
+        super(character);
     }
 
     @Override
     public void die() {
-
+        GameCharacter character = super.getCharacter();
+        character.setCurrentState(new Normal(character));
     }
 }
