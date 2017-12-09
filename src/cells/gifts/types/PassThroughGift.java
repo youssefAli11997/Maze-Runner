@@ -8,9 +8,9 @@ public class PassThroughGift extends Gift {
 
 	@Override
 	public void action(GameCharacter character) {
-		
+
 		PassThrough newState = new PassThrough(character);
-		character.setCurrentState(newState);		
+		character.setCurrentState(newState);
 	}
 
 }

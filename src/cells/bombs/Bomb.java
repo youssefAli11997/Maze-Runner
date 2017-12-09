@@ -5,5 +5,5 @@ import characters.GameCharacter;
 
 public abstract class Bomb extends Cell {
 
-    public abstract void action(GameCharacter character);
+	public abstract void action(GameCharacter character);
 }

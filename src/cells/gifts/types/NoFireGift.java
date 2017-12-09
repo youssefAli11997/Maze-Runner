@@ -9,7 +9,7 @@ public class NoFireGift extends Gift {
 	@Override
 	public void action(GameCharacter character) {
 		NoFire newState = new NoFire(character);
-		character.setCurrentState(newState);		
+		character.setCurrentState(newState);
 	}
 
 }
