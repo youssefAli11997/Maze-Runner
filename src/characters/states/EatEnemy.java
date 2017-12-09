@@ -15,7 +15,7 @@ public class EatEnemy implements CharacterState{
     }
 
     @Override
-    public void setHealth(int health) {
+    public void setHealthChange(int health) {
 
     }
 

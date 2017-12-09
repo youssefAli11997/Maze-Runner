@@ -7,15 +7,9 @@ public class StaticMonster extends Monster {
         super(currentRow, currentColumn);
     }
 
-	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void draw() {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void action() {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 }

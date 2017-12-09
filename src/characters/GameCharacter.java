@@ -7,6 +7,7 @@ public abstract class GameCharacter {
     private int currentRow;
     private int currentColumn;
     private int health;
+    private int healthChange;
     private Weapon weapon;
     private CharacterState currentState;
 
@@ -69,7 +70,18 @@ public abstract class GameCharacter {
      * @param health the health to set
      */
     public void setHealth(int health) {
-        currentState.setHealth(health);
+        this.health = health;
+    }
+
+    /**
+     * @param health the health change to set
+     */
+    public void setHealthChange(int health) {
+        currentState.setHealthChange(health);
+    }
+
+    public int getHealthChange(){
+        return healthChange;
     }
 
     /**

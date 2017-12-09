@@ -14,7 +14,7 @@ public class Noraml implements CharacterState {
     }
 
     @Override
-    public void setHealth(int health) {
+    public void setHealthChange(int health) {
         if (health <= 0){
             this.die();
         }

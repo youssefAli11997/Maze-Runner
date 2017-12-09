@@ -18,7 +18,7 @@ public class DoubleHealth implements CharacterState {
     }
 
     @Override
-    public void setHealth(int health) {
+    public void setHealthChange(int health) {
 
     }
 
