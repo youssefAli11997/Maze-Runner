@@ -6,7 +6,7 @@ import characters.GameCharacter;
 /**
  * Created by M.Sharaf on 08/12/2017.
  */
-public class Noraml implements CharacterState {
+public class Noraml extends CharacterState {
     GameCharacter character;
 
     public Noraml(GameCharacter character){
@@ -14,7 +14,7 @@ public class Noraml implements CharacterState {
     }
 
     @Override
-    public void setHealth(int health) {
+    public void setHealthChange(int health) {
         if (health <= 0){
             this.die();
         }
@@ -29,6 +29,6 @@ public class Noraml implements CharacterState {
 
     @Override
     public void die() {
-
+    	character.setHealth(0);
     }
 }

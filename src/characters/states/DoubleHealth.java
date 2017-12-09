@@ -10,7 +10,7 @@ import characters.GameCharacter;
  * or we can set value an do some math here -> if new is greater double the difference and so on
  * go to normal state after some time (10s)
  */
-public class DoubleHealth implements CharacterState {
+public class DoubleHealth extends CharacterState {
     GameCharacter character;
 
     public DoubleHealth(GameCharacter character){
@@ -18,7 +18,7 @@ public class DoubleHealth implements CharacterState {
     }
 
     @Override
-    public void setHealth(int health) {
+    public void setHealthChange(int health) {
 
     }
 

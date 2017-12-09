@@ -8,7 +8,7 @@ import characters.GameCharacter;
  * any death isn't counted
  * go to normal state after some time (10s)
  */
-public class Immortal implements CharacterState {
+public class Immortal extends CharacterState {
     GameCharacter character;
 
     public Immortal(GameCharacter character){
@@ -16,7 +16,7 @@ public class Immortal implements CharacterState {
     }
 
     @Override
-    public void setHealth(int health) {
+    public void setHealthChange(int health) {
 
     }
 

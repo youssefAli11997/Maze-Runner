@@ -1,8 +1,6 @@
+package cells;
 import java.util.HashMap;
 import java.util.Map;
-
-import cells.Cell;
-import cells.CellsFactory;
 
 public class FlyweightFactory {
 	private static Map<String, Cell> pool;

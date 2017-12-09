@@ -6,8 +6,14 @@ package characters;
  * all states should be obtained from gifts
  * some states have same default implementation !!
  */
-public interface CharacterState {
-    public void setHealth(int health);
-    public void fire();
-    public void die();
+public abstract class CharacterState {
+    public void setHealthChange(int health){
+
+    }
+    public void fire(){
+
+    }
+    public void die(){
+
+    }
 }

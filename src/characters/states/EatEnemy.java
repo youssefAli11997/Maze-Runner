@@ -7,7 +7,7 @@ import characters.GameCharacter;
  * Created by M.Sharaf on 08/12/2017.
  * kill enemy if you touch it
  */
-public class EatEnemy implements CharacterState{
+public class EatEnemy extends CharacterState{
     GameCharacter character;
 
     public EatEnemy(GameCharacter character){
@@ -15,7 +15,7 @@ public class EatEnemy implements CharacterState{
     }
 
     @Override
-    public void setHealth(int health) {
+    public void setHealthChange(int health) {
 
     }
 

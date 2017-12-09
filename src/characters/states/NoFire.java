@@ -8,7 +8,7 @@ import characters.GameCharacter;
  * can't fire
  * go to normal state after some time (10s)
  */
-public class NoFire implements CharacterState {
+public class NoFire extends CharacterState {
     GameCharacter character;
 
     public NoFire(GameCharacter character){
@@ -16,7 +16,7 @@ public class NoFire implements CharacterState {
     }
 
     @Override
-    public void setHealth(int health) {
+    public void setHealthChange(int health) {
 
     }
 
