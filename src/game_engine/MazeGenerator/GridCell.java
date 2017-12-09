@@ -29,4 +29,10 @@ public class GridCell {
 			break;
 		}
 	}
+	public int getI() {
+		return i;
+	}
+	public int getJ() {
+		return j;
+	}
 }
