@@ -9,7 +9,7 @@ import cells.walls.types.Tree;
 import cells.walls.types.Wooden;
 
 public class WallsFactory {
-	private static ArrayList<String> walls ;
+	private static ArrayList<String> walls;
 	static {
 		walls = new ArrayList<>();
 		walls.add("fire");
@@ -17,13 +17,13 @@ public class WallsFactory {
 		walls.add("tree");
 		walls.add("wooden");
 	}
-	
+
 	public static boolean canCreate(String cell) {
 		return walls.contains(cell);
 	}
-	
+
 	public static Cell create(String wall) {
-		if(wall.equalsIgnoreCase("fire"))
+		if (wall.equalsIgnoreCase("fire"))
 			return new Fire();
 		else if (wall.equalsIgnoreCase("rock"))
 			return new Rock();

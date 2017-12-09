@@ -3,12 +3,12 @@ package utils.weapons.types;
 import utils.weapons.Weapon;
 
 public class Sword extends Weapon {
-    public Sword() {
+	public Sword() {
 
-    }
+	}
 
-    @Override
-    public void action() {
+	@Override
+	public void action() {
 
-    }
+	}
 }
