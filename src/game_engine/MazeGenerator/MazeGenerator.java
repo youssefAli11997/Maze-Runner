@@ -5,34 +5,6 @@ import java.util.Stack;
 import cells.Cell;
 
 public class MazeGenerator {
-	class GridCell{
-		int i ;
-		int j ;
-		private boolean [] walls = new boolean[4];
-		public GridCell(int i , int j) {
-			Arrays.fill(walls, true);
-			this.i = i;
-			this.j = j;
-		}
-		public void remove(String direction) {
-			switch (direction) {
-			case "up":
-				walls[0] = false;
-				break;
-			case "right":
-				walls[1] = false;
-				break;
-			case "down":
-				walls[2] = false;
-				break;
-			case "left":
-				walls[3] = false;
-				break;
-			default:
-				break;
-			}
-		}
-	}
 	private static GridCell[][] grid;
 	private static boolean[][] visited;
 	
