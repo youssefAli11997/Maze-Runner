@@ -25,9 +25,14 @@ public class MazeGenerator {
     	visited[current.getI()][current.getJ()] = true ;
     	Stack<GridCell> stack = new Stack<>();
     	while(hasUnVisited()) {
-    		if(has)
+    		if(hasNeighbours(current))
     	}	
     }
+
+	private boolean hasNeighbours(GridCell current) {
+		
+		return false;
+	}
 
 	private void initiate(GridCell[][] grid) {
 		for (int i = 0; i < grid.length; i++) {
