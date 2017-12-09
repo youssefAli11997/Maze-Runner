@@ -1,3 +1,4 @@
+package game_engine;
 import cells.Cell;
 
 public class Game {
@@ -9,5 +10,6 @@ public class Game {
     }
 
     private Game() {
+
     }
 }
