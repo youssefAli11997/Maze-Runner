@@ -4,7 +4,7 @@ import characters.GameCharacter;
 
 public class MoveRightCommand extends Command {
 
-	public MoveRightCommand(characters.GameCharacter player) {
+	public MoveRightCommand(GameCharacter player) {
 		super(player);
 	}
 

@@ -2,9 +2,10 @@ package utils.weapons;
 
 public abstract class Weapon {
 	private int bullets;
-    public Weapon() {
 
-    }
+	public Weapon() {
+
+	}
 
 	public abstract void action();
 
@@ -16,7 +17,8 @@ public abstract class Weapon {
 	}
 
 	/**
-	 * @param bullets the bullets to set
+	 * @param bullets
+	 *            the bullets to set
 	 */
 	public void setBullets(int bullets) {
 		this.bullets = bullets;

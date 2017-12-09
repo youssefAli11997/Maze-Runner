@@ -6,10 +6,9 @@ import utils.weapons.Weapon;
 
 public class BulletGift extends Gift {
 
-
 	@Override
 	public void action(GameCharacter character) {
-		Weapon  weapon =character.getWeapon();
+		Weapon weapon = character.getWeapon();
 		weapon.setBullets(weapon.getBullets() + 10);
 	}
 }
