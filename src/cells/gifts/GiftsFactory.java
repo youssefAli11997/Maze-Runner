@@ -3,8 +3,8 @@ package cells.gifts;
 import java.util.ArrayList;
 
 import cells.Cell;
-import cells.gifts.types.Bullet;
-import cells.gifts.types.Health;
+import cells.gifts.types.BulletGift;
+import cells.gifts.types.HealthGift;
 
 public class GiftsFactory {
 	private static ArrayList<String> gifts ;
@@ -20,9 +20,9 @@ public class GiftsFactory {
 	
 	public static Cell create(String wall) {
 		if(wall.equalsIgnoreCase("bullet"))
-			return new Bullet();
+			return new BulletGift();
 		else if (wall.equalsIgnoreCase("health"))
-			return new Health();
+			return new HealthGift();
 		return null;
 	}
 }	
