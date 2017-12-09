@@ -10,7 +10,7 @@ import characters.GameCharacter;
  */
 public class Immortal extends CharacterState {
 
-    public Immortal(GameCharacter character){
+    public Immortal(GameCharacter character) {
         super(character);
     }
 

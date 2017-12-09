@@ -9,7 +9,7 @@ import characters.GameCharacter;
  */
 public class PassThrough extends CharacterState {
 
-    public PassThrough(GameCharacter character){
+    public PassThrough(GameCharacter character) {
         super(character);
     }
 

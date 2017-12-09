@@ -13,13 +13,13 @@ import characters.GameCharacter;
 public class DoubleHealth extends CharacterState {
     GameCharacter character;
 
-    public DoubleHealth(GameCharacter character){
+    public DoubleHealth(GameCharacter character) {
         super(character);
     }
 
     @Override
     public void setHealthChange(int health) {
-        if (health < 0){
+        if (health < 0) {
             health /= 2;
         } else {
             health *= 2;
