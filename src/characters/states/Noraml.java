@@ -29,6 +29,6 @@ public class Noraml extends CharacterState {
 
     @Override
     public void die() {
-
+    	character.setHealth(0);
     }
 }
