@@ -80,7 +80,7 @@ public abstract class GameCharacter {
         currentState.setHealthChange(health);
     }
 
-    public int getHealthChange(){
+    public int getHealthChange() {
         return healthChange;
     }
 

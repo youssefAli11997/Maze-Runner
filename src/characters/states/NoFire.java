@@ -9,15 +9,9 @@ import characters.GameCharacter;
  * go to normal state after some time (10s)
  */
 public class NoFire extends CharacterState {
-    GameCharacter character;
 
-    public NoFire(GameCharacter character){
-        this.character = character;
-    }
-
-    @Override
-    public void setHealthChange(int health) {
-
+    public NoFire(GameCharacter character) {
+        super(character);
     }
 
     @Override
@@ -25,8 +19,4 @@ public class NoFire extends CharacterState {
         //do nothong
     }
 
-    @Override
-    public void die() {
-
-    }
 }

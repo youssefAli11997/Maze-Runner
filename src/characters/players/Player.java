@@ -19,7 +19,7 @@ public class Player extends GameCharacter {
     }
 
     public void loseLife() {
-        if (this.lives == 1){
+        if (this.lives == 1) {
             this.die();
         } else {
             this.lives--;
