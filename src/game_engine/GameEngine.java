@@ -7,23 +7,29 @@ import game_engine.MazeGenerator.MazeGenerator;
 
 
 public class GameEngine {
-    Cell[][] maze;
-    GameCharacter player;
+    private Cell[][] maze;
+    private GameCharacter player;
+    private boolean running;
 
-    public GameEngine(int rows, int columns){ // like setup in processing
+    public GameEngine(int rows, int columns){
         start(rows, columns);
     }
 
-    public void start(int rows, int columns){
+    public void start(int rows, int columns){ // like setup in processing
         maze = new MazeGenerator().create(rows, columns);
         player = new Player(0,0);
+        running = true;
     }
 
     public void loop(){ // like draw in processing
         //process input
         //update
         //render
+        if(!running){
+            return;
+        }
 
+        // if player died, set running by false
 
 
 
@@ -32,9 +38,6 @@ public class GameEngine {
     }
 
     public static void main(String[] args){
-        GameEngine ge = new GameEngine(10,10);
-        while(true){
-            ge.loop();
-        }
+
     }
 }

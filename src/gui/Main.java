@@ -1,3 +1,4 @@
+/*
 package gui;
 
 import javafx.application.Application;
@@ -6,9 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+*/
 /**
  * Created by M.Sharaf on 09/12/2017.
- */
+ *//*
+
 public class Main extends Application {
 
     @Override
@@ -26,3 +29,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+*/
