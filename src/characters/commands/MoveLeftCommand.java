@@ -2,9 +2,9 @@ package characters.commands;
 
 import characters.GameCharacter;
 
-public class moveLeftCommand extends Command {
+public class MoveLeftCommand extends Command {
 
-	public moveLeftCommand(GameCharacter player) {
+	public MoveLeftCommand(GameCharacter player) {
 		super(player);
 
 	}

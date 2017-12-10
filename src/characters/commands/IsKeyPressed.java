@@ -119,7 +119,7 @@ public class IsKeyPressed {
 			command.execute();
 		}
 		if (IsKeyPressed.isLeftButtonPressed()) {
-			command = new moveLeftCommand(player);
+			command = new MoveLeftCommand(player);
 			command.execute();
 		}
 		if (IsKeyPressed.isDownButtonPressed()) {
