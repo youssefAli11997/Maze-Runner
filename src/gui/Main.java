@@ -14,10 +14,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("menu_layout.fxml"));
         primaryStage.setMaximized(true);
         primaryStage.setTitle("Maze Runner");
-        String css = this.getClass().getResource("style.css").toExternalForm();
+        String css = this.getClass().getResource("menu_style.css").toExternalForm();
         root.getStylesheets().add(css);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
