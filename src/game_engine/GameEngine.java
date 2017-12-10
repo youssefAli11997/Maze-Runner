@@ -28,8 +28,8 @@ public class GameEngine {
         if(!running){
             return;
         }
-
         // if player died, set running by false
+
 
 
 
