@@ -1,6 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuController" />
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiMainPage.Controller">
+	<children>
+		<Canvas fx:id="canvas" height="508.0" width="800.0" />
+		<ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../../../../photos/nature/nature.jpg" />
+			</image>
+		</ImageView>
+		<VBox fx:id="mainMenuView" layoutX="250.0" layoutY="138.0" prefHeight="200.0" prefWidth="262.0" spacing="15.0">
+			<children>
+				<Button fx:id="startButtonId" mnemonicParsing="false" onAction="#goToDetermineLevelView" opacity="0.85" prefHeight="31.0" prefWidth="262.0" style="-fx-border-radius: 10px;" styleClass="startButtonClass" text="Start" textFill="#d73c3c">
+					<font>
+						<Font size="18.0" />
+					</font>
+				</Button>
+				<Button fx:id="highScoreButtonId" lineSpacing="10.0" mnemonicParsing="false" onAction="#showHighScore" opacity="0.85" prefHeight="31.0" prefWidth="264.0" style="-fx-border-radius: 10px;" styleClass="HighScoreButtonClass" text="High Score" textFill="#d73c3c">
+					<font>
+						<Font size="18.0" />
+					</font>
+				</Button>
+				<Button fx:id="uploadImagesId" mnemonicParsing="false" onAction="#goToUploadImagesView" opacity="0.85" prefHeight="31.0" prefWidth="273.0" styleClass="loadImagesButtonClass" text="Upload images" textFill="#d73c3c">
+					<font>
+						<Font size="18.0" />
+					</font>
+				</Button>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button fx:id="loadButtonId" mnemonicParsing="false" onAction="#goToLoadGameView" opacity="0.85" prefWidth="130.0" styleClass="loadButtonClass" text="Load" textFill="#d73c3c">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+      				<Button fx:id="quitButtonId" mnemonicParsing="false" onAction="#goToQuitView" opacity="0.85" prefHeight="31.0" prefWidth="130.0" styleClass="QuitButtonClass" text="Quit" textFill="#d73c3c">
+      					<font>
+      						<Font size="18.0" />
+      					</font>
+      				</Button>
+               </children>
+            </HBox>
+			</children>
+		</VBox>
+		<VBox fx:id="startGameView" layoutX="260.0" layoutY="148.0" prefHeight="201.0" prefWidth="280.0" spacing="25.0" visible="false">
+			<children>
+				<HBox prefHeight="31.0" prefWidth="227.0" spacing="60.0">
+					<children>
+						<Label fx:id="nameLabelId" styleClass="nameAreaClass" text="Name : " textFill="WHITE">
+							<font>
+								<Font size="18.0" />
+							</font>
+						</Label>
+						<TextField fx:id="nameAreaId" onAction="#getPlayerName" opacity="0.85" prefHeight="31.0" prefWidth="150.0" promptText="enter name " styleClass="nameAreaClass" />
+					</children>
+				</HBox>
+				<HBox prefHeight="30.0" prefWidth="227.0" spacing="20.0">
+					<children>
+						<Label fx:id="selectlevelLabelId" styleClass="selectlevelLabelClass" text="Select Level :" textFill="WHITE">
+							<font>
+								<Font size="18.0" />
+							</font>
+						</Label>
+						<VBox prefHeight="95.0" prefWidth="159.0" spacing="10.0">
+							<children>
+								<RadioButton fx:id="easyId" mnemonicParsing="false" onAction="#getGameLevelEasy" opacity="0.85" styleClass="easyClass" text="Easy" textFill="WHITE">
+									<font>
+										<Font size="17.0" />
+									</font>
+								</RadioButton>
+								<RadioButton fx:id="mediumId" mnemonicParsing="false" onAction="#getGameLevelMedium" opacity="0.85" styleClass="mediumClass" text="Medium" textFill="WHITE">
+									<font>
+										<Font size="17.0" />
+									</font>
+								</RadioButton>
+								<RadioButton fx:id="hardId" mnemonicParsing="false" onAction="#getGameLevelHard" opacity="0.85" styleClass="hardClass" text="Hard" textFill="WHITE">
+									<font>
+										<Font size="17.0" />
+									</font>
+								</RadioButton>
+							</children>
+						</VBox>
+					</children>
+				</HBox>
+            <HBox spacing="30.0">
+               <children>
+                  <Button fx:id="goBackFromSelectLevelView" mnemonicParsing="false" onAction="#goBackToMainViewFromSelectLevelView" opacity="0.85" prefWidth="120.0" text="back" />
+      				<Button fx:id="continueToGameId" mnemonicParsing="false" onAction="#goToGameView" opacity="0.85" prefWidth="120.0" styleClass="continutToGameClass" text="continue" />
+               </children>
+            </HBox>
+			</children>
+		</VBox>
+		<VBox fx:id="quitView" layoutX="210.0" layoutY="186.0" prefHeight="105.0" prefWidth="381.0" style="-fx-background-color: #ffffff; -fx-border-radius: 12px; -fx-opacity: 0.85;" visible="false">
+			<children>
+				<HBox prefHeight="100.0" prefWidth="200.0">
+					<children>
+						<Label fx:id="areYouSureId" prefHeight="63.0" prefWidth="381.0" styleClass="areYouSureClass" text="Are you sure ?" wrapText="true">
+							<font>
+								<Font size="18.0" />
+							</font>
+							<HBox.margin>
+								<Insets left="25.0" />
+							</HBox.margin>
+						</Label>
+					</children>
+				</HBox>
+				<HBox prefHeight="100.0" prefWidth="381.0" spacing="100.0">
+					<children>
+						<Button fx:id="yesId" mnemonicParsing="false" onAction="#quitTheGame" opacity="0.85" prefWidth="120.0" style="-fx-background-color: #d73c3c;" styleClass="yesClass" text="Yes">
+							<HBox.margin>
+								<Insets left="20.0" />
+							</HBox.margin>
+						</Button>
+						<Button fx:id="noId" mnemonicParsing="false" onAction="#returnToTheGameFromQuitView" opacity="0.85" prefWidth="120.0" style="-fx-background-color: #d73c3c;" styleClass="noClass" text="No" />
+					</children>
+				</HBox>
+			</children>
+		</VBox>
+      <VBox fx:id="uploadView" layoutX="281.0" layoutY="198.0" spacing="20.0" visible="false">
+         <children>
+            <HBox prefHeight="30.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label fx:id="treeId" styleClass="treeClass" text="Tree" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="uploadTreeId" mnemonicParsing="false" onAction="#uploadTreeImage" opacity="0.85" prefWidth="120.0" styleClass="uploadTreeClass" text="upload">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label fx:id="bombId" styleClass="bombClass" text="Bomb" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="uploadBombId" mnemonicParsing="false" onAction="#uploadBombImage" opacity="0.85" prefWidth="120.0" styleClass="uploadBombClass" text="upload" />
+               </children>
+            </HBox>
+            <HBox prefHeight="4.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="goBackFromUpload" mnemonicParsing="false" onAction="#gobackToMainViewFromUpload" opacity="0.85" prefWidth="80.0" text="back">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+	</children>
+</Pane>
