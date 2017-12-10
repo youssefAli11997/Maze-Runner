@@ -20,13 +20,8 @@ public class MazeGenerator {
 		initiate(grid);
 		dfs(grid[0][0]);
 		boolean[][] expandedMap = expandMaze(grid);
-		for(int i = 0 ; i < expandedMap.length ; i ++) {
-			for(int j = 0 ; j < expandedMap[0].length ; j++) {
-				System.out.print(expandedMap[i][j] == true ? "1" + " " : "0" + " ");
-			}
-			System.out.println();
-		}
-		return null;
+		Cell [][] basicMaze = mapMaze(expandedMap); 
+		return basicMaze;
 	}
 
 	private static void dfs(GridCell start) {
@@ -84,10 +79,12 @@ public class MazeGenerator {
 	
 
 	private static boolean[][] expandMaze(GridCell[][] grid) {
-		boolean[][] expandedGrid = new boolean[grid.length*2+1][grid[0].length*2+1];
+		int height = grid.length*2+1 ;
+		int width = grid[0].length*2+1 ;
+		boolean[][] expandedGrid = new boolean[height][width];
 		int m = 0 , n = 0 ;
-		for(int i = 0 ; i < expandedGrid.length-1 ; i++) {
-			for(int j = 0 ; j < expandedGrid[0].length ; j++) {
+		for(int i = 0 ; i < height-1 ; i++) {
+			for(int j = 0 ; j < width ; j++) {
 				if(i % 2 == 0) {
 					if(j % 2 == 0)
 						expandedGrid[i][j] = true;
@@ -112,14 +109,20 @@ public class MazeGenerator {
 			if(i % 2 != 0)
 				m ++ ;
 		}
-		for(int j = 0 ; j < expandedGrid[0].length ; j++) // last row;
-			expandedGrid[expandedGrid.length-1][j] = true;
+		for(int j = 0 ; j < width ; j++) // last row;
+			expandedGrid[height-1][j] = true;
 		expandedGrid[1][0] = false; // start portal
-		expandedGrid[expandedGrid.length-2][expandedGrid[0].length-1] = false; //end portal
+		expandedGrid[height-2][width-1] = false; //end portal
 		return expandedGrid;
 	}
 	
-	private static Cell[][] mapMaze(GridCell[][] grid) {
-		return null;
+	private static Cell[][] mapMaze(boolean[][] maze) {
+		int height = maze.length;
+		int width = maze[0].length;
+		Cell[][] mappedMaze = new Cell[height][width];
+		for(int i = 0 ; i < height ; i++)
+			for(int j = 0 ; j < width ; j++)
+				mappedMaze[i][j] = maze[i][j] ? FlyweightFactory.create("rock") : FlyweightFactory.create("empty");
+		return mappedMaze;
 	}
 }
