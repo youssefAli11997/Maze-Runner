@@ -15,9 +15,9 @@
   *
 
 * Yousef Ali :
-  *
-  *
-  *
+  * Created project structure (packages and classes)
+  * Game Logic (Not Finished Yet)
+  * Commands Factory
   *
   *
 
