@@ -22,7 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("game_layout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("menu_layout.fxml"));
         primaryStage.setMaximized(true);
         primaryStage.setTitle("Maze Runner");
         String css = this.getClass().getResource("menu_style.css").toExternalForm();

@@ -10,6 +10,8 @@ public class Gun extends Weapon {
 	@Override
 	public void action() {
 
+		setBullets(getBullets()-1);
+
 	}
 
 }

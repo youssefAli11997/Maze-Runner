@@ -142,7 +142,7 @@ public class MazeGenerator {
 		}
 		for(int j = 0 ; j < width ; j++) // last row;
 			expandedGrid[height-1][j] = true;
-		expandedGrid[1][0] = false; // start portal
+		expandedGrid[0][0] = false; // start portal
 		expandedGrid[height-2][width-1] = false; //end portal
 		return expandedGrid;
 	}

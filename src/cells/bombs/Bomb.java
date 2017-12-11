@@ -6,4 +6,9 @@ import characters.GameCharacter;
 public abstract class Bomb extends Cell {
 
 	public abstract void action(GameCharacter character);
+
+	@Override
+	public String toString() {
+		return "bomb";
+	}
 }

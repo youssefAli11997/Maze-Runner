@@ -8,7 +8,7 @@ public class MoveUpCommand extends Command {
 		super(player);
 	}
 
-	public void execute() {
-		player.move("up");
+	public boolean execute() {
+		return player.move("up");
 	}
 }

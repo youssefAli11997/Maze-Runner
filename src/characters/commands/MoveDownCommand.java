@@ -9,8 +9,8 @@ public class MoveDownCommand extends Command {
 
 	}
 
-	public void execute() {
-		player.move("down");
+	public boolean execute() {
+		return player.move("down");
 	}
 
 }
