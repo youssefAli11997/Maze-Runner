@@ -15,6 +15,7 @@ public class IsKeyPressed {
 	private final static int leftButton = KeyEvent.VK_LEFT;
 	private final static int fireButton = KeyEvent.VK_SPACE;
 	private final static int jumpButton = KeyEvent.VK_ALT;
+	private final static int toggleWeaponButton = KeyEvent.VK_T;
 
 	// Button booleans indicate if pressed
 	private static volatile boolean UpButtonPressed = false;
@@ -23,6 +24,7 @@ public class IsKeyPressed {
 	private static volatile boolean DownButtonPressed = false;
 	private static volatile boolean FireButtonPressed = false;
 	private static volatile boolean JumpButtonPressed = false;
+	private static volatile boolean toggleWeaponButtonPressed = false;
 
 	private static Command command;
 	protected static GameCharacter player;
@@ -79,6 +81,10 @@ public class IsKeyPressed {
 		case jumpButton:
 			JumpButtonPressed = true;
 			break;
+			
+		case toggleWeaponButton:
+			toggleWeaponButtonPressed = true;
+			break;
 		}
 	}
 
@@ -107,6 +113,10 @@ public class IsKeyPressed {
 		case jumpButton:
 			JumpButtonPressed = false;
 			break;
+			
+		case toggleWeaponButton:
+			toggleWeaponButtonPressed = false;
+			break;
 		}
 	}
 
@@ -133,6 +143,10 @@ public class IsKeyPressed {
 		}
 		if (IsKeyPressed.isJumpButtonPressed()) {
 			command = new JumpCommand(player);
+			command.execute();
+		}
+		if (IsKeyPressed.isToggleWeaponPressed()) {
+			command = new ToggleWeapon(player);
 			command.execute();
 		}
 	}
@@ -173,4 +187,9 @@ public class IsKeyPressed {
 		}
 	}
 
+	private static boolean isToggleWeaponPressed() {
+		synchronized (IsKeyPressed.class) {
+			return toggleWeaponButtonPressed;
+		}
+	}
 }
