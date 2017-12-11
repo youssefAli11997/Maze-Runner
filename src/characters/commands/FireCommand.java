@@ -8,8 +8,8 @@ public class FireCommand extends Command {
 		super(player);
 	}
 
-	public void execute() {
-		player.fire();
+	public boolean execute() {
+		return player.fire();
 	}
 
 }

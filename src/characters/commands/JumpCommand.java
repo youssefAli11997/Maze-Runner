@@ -9,8 +9,8 @@ public class JumpCommand extends Command {
 
 	}
 
-	public void execute() {
-		player.move("jump");
+	public boolean execute() {
+		return player.move("jump");
 	}
 
 }

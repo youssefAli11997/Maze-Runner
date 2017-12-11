@@ -38,15 +38,21 @@ public class GameEngine {
         }*/
 
        AnimationTimer animationTimer = new AnimationTimer() {
-            int i=0;
             @Override
             public void handle(long l) {
                 if(currentCommand != null){
-                    currentCommand.execute();
+                    if(currentCommand.execute()) {
+
+                    }
                 }
+
+
+
                 currentCommand = null;
-                System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
             }
+
+
         };
         animationTimer.start();
     }

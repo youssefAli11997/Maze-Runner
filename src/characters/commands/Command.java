@@ -2,7 +2,7 @@ package characters.commands;
 
 import characters.GameCharacter;
 
-public class Command {
+public abstract class Command {
 
 	protected GameCharacter player;
 
@@ -10,6 +10,5 @@ public class Command {
 		this.player = player;
 	}
 
-	public void execute() {
-	}
+	public abstract boolean execute();
 }

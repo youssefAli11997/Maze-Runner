@@ -9,8 +9,8 @@ public class MoveLeftCommand extends Command {
 
 	}
 
-	public void execute() {
-		player.move("left");
+	public boolean execute() {
+		return player.move("left");
 	}
 
 }
