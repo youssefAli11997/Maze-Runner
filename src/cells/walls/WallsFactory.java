@@ -33,4 +33,8 @@ public class WallsFactory {
 			return new Wooden();
 		return null;
 	}
+	
+	public static ArrayList<String> getSupportedWalls(){
+		return new ArrayList<String>(walls);
+	}
 }

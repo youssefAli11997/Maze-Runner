@@ -25,4 +25,8 @@ public class BombsFactory {
 			return new SmallBomb();
 		return null;
 	}
+	
+	public static ArrayList<String> getSupportedBombs(){
+		return new ArrayList<String>(bombs);
+	}
 }
