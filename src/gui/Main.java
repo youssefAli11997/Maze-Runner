@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.SyncFailedException;
 
@@ -17,11 +18,13 @@ import java.io.SyncFailedException;
  */
 
 public class Main extends Application {
+    public static Stage menu;
 
     GameEngine gameEngine;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        menu = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("menu_layout.fxml"));
         primaryStage.setMaximized(true);
         primaryStage.setTitle("Maze Runner");
@@ -52,6 +55,7 @@ public class Main extends Application {
         });
 
         primaryStage.setScene(new Scene(root));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }
 
