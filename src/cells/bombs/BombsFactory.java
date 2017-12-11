@@ -18,10 +18,10 @@ public class BombsFactory {
 		return bombs.contains(cell);
 	}
 
-	public static Cell create(String wall) {
-		if (wall.equalsIgnoreCase("bigbomb"))
+	public static Cell create(String bomb) {
+		if (bomb.equalsIgnoreCase("bigbomb"))
 			return new BigBomb();
-		else if (wall.equalsIgnoreCase("smallbomb"))
+		else if (bomb.equalsIgnoreCase("smallbomb"))
 			return new SmallBomb();
 		return null;
 	}

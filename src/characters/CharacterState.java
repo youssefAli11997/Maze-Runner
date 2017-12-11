@@ -1,7 +1,5 @@
 package characters;
 
-import game_engine.Game;
-
 /**
  * Created by M.Sharaf on 08/12/2017. both player and enemy can have them all
  * states should be obtained from gifts some states have same default
@@ -28,8 +26,8 @@ public abstract class CharacterState {
 
 	}
 
-	public void fire() {
-		character.getWeapon().action();
+	public void fire(Object object) {
+		character.getWeapon().action(object);
 	}
 
 	public void die() {

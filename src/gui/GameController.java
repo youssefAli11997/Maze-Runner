@@ -45,6 +45,7 @@ public class GameController {
                 OFFSET_X, OFFSET_Y,
                 WIDTH, HEIGHT
         );
+        
         animation.setCycleCount(Animation.INDEFINITE);
         animation.play();
 

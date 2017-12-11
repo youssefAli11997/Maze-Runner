@@ -7,7 +7,7 @@ public class Wall extends Cell {
 	private boolean breakable;
 	private int bulletsToBreak;
 	private int healthDecrease;
-
+	private boolean breaked = false;
 	public Wall(boolean breakable, int bulletsToBreak, int healthDecrease) {
 		this.breakable = breakable;
 		this.bulletsToBreak = bulletsToBreak;
@@ -30,10 +30,12 @@ public class Wall extends Cell {
 		this.bulletsToBreak = bulletsToBreak;
 	}
 
+	//for fire wall affect character health
 	public int getHealthDecrease() {
 		return healthDecrease;
 	}
 
+	//for fire wall affect character health
 	public void setHealthDecrease(int healthDecrease) {
 		this.healthDecrease = healthDecrease;
 	}
@@ -41,6 +43,19 @@ public class Wall extends Cell {
 	@Override
 	public void action(GameCharacter character) {
 		// TODO Auto-generated method stub
+	}
 
+	/**
+	 * @return the breaked
+	 */
+	public boolean isBreaked() {
+		return breaked;
+	}
+
+	/**
+	 * @param breaked the breaked to set
+	 */
+	public void setBreaked(boolean breaked) {
+		this.breaked = breaked;
 	}
 }

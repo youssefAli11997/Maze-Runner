@@ -101,8 +101,8 @@ public abstract class GameCharacter {
 		this.weapon = weapon;
 	}
 
-	public void fire() {
-		currentState.fire();
+	public void fire(Object object) {
+		currentState.fire(object);
 	}
 
 	public void die() {

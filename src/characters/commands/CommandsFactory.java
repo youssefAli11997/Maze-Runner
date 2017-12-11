@@ -17,9 +17,15 @@ public class CommandsFactory {
         if(commandBtn.equalsIgnoreCase("right")){
             return new MoveRightCommand(character);
         }
-        if(commandBtn.equalsIgnoreCase("space")){
-            return new FireCommand(character);
-        }
+
         return null;
     }
+    
+    public Command createFireCommand(GameCharacter character, String commandBtn, Object object){
+        if(commandBtn.equalsIgnoreCase("space")){
+            return new FireCommand(character,object);
+        }
+		return null;
+    }
+    
 }

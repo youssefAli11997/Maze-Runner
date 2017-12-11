@@ -26,6 +26,7 @@ public class IsKeyPressed {
 
 	private static Command command;
 	protected static GameCharacter player;
+	protected static Object object;
 
 	IsKeyPressed(GameCharacter player) {
 		IsKeyPressed.player = player;
@@ -127,7 +128,7 @@ public class IsKeyPressed {
 			command.execute();
 		}
 		if (IsKeyPressed.isFireButtonPressed()) {
-			command = new FireCommand(player);
+			command = new FireCommand(player,object);
 			command.execute();
 		}
 		if (IsKeyPressed.isJumpButtonPressed()) {

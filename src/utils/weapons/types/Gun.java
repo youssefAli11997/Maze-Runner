@@ -6,10 +6,4 @@ public class Gun extends Weapon {
 	public Gun() {
 		super();
 	}
-
-	@Override
-	public void action() {
-
-	}
-
 }
