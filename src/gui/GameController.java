@@ -30,15 +30,15 @@ public class GameController {
     private static final int OFFSET_Y =  25;
     private static final int WIDTH    = 374;
     private static final int HEIGHT   = 243;
-    private static final Image IMAGE = new Image("Assets/The_Horse_in_Motion.jpg");
+    //private static final Image IMAGE = new Image("Assets/The_Horse_in_Motion.jpg");
 
 
     public void initialize() throws IOException {
 
-        final ImageView imageView = new ImageView(IMAGE);
+        //final ImageView imageView = new ImageView(IMAGE);
 
 
-        final Animation animation = new RenderEngine(
+        /*final Animation animation = new RenderEngine(
                 imageView,
                 Duration.millis(1000),
                 COUNT, COLUMNS,
@@ -46,9 +46,9 @@ public class GameController {
                 WIDTH, HEIGHT
         );
         animation.setCycleCount(Animation.INDEFINITE);
-        animation.play();
+        animation.play();*/
 
-        imageView.setOnMouseClicked(event -> {
+        /*imageView.setOnMouseClicked(event -> {
             System.out.println("lol");
         });
         imageView.getStyleClass().add("border");
@@ -58,7 +58,7 @@ public class GameController {
 
         Image img = new Image("Assets/grass.png");
         Image def = new Image("Assets/def.png");
-        Image wall = new Image("Assets/wall.png");
+        Image wall = new Image("Assets/wall.png");*/
 
         int arr[][] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0},

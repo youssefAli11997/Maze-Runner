@@ -43,4 +43,9 @@ public class Wall extends Cell {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public String toString() {
+		return "wall";
+	}
 }
