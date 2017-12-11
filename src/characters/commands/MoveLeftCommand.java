@@ -13,4 +13,9 @@ public class MoveLeftCommand extends Command {
 		return player.move("left");
 	}
 
+	@Override
+	public boolean canExecute() {
+		return player.canMove("down");
+	}
+
 }

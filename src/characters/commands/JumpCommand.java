@@ -13,4 +13,9 @@ public class JumpCommand extends Command {
 		return player.move("jump");
 	}
 
+	@Override
+	public boolean canExecute() {
+		return false;
+	}
+
 }

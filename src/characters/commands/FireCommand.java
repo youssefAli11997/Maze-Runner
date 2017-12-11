@@ -11,4 +11,9 @@ public class FireCommand extends Command {
 	public boolean execute() {
 		return player.fire(object);
 	}
+
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
 }

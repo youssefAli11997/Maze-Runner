@@ -13,4 +13,9 @@ public class ToggleWeapon extends Command{
 		return false;
 	}
 
+	@Override
+	public boolean canExecute() {
+		return false;
+	}
+
 }

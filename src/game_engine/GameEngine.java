@@ -63,7 +63,7 @@ public class GameEngine {
                     if(currentCommand.execute()) {
                         // Move
                         if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof EmptyCell){
-                            
+
                         }
                         System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                     }

@@ -12,4 +12,9 @@ public class MoveRightCommand extends Command {
 		return player.move("right");
 	}
 
+	@Override
+	public boolean canExecute() {
+		return player.canMove("down");
+	}
+
 }

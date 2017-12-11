@@ -37,6 +37,34 @@ public abstract class GameCharacter {
 		this.currentRow = currentRow;
 	}
 
+	public boolean canMove(String direction) {
+		if (direction.equalsIgnoreCase("up")) {
+			if(currentRow == 0){
+				return false;
+			}
+			return true;
+		}
+		if (direction.equalsIgnoreCase("down")) {
+			if(currentRow == gridRows - 1){
+				return false;
+			}
+			return true;
+		}
+		if (direction.equalsIgnoreCase("left")) {
+			if(currentColumn == 0){
+				return false;
+			}
+			return true;
+		}
+		if (direction.equalsIgnoreCase("right")) {
+			if(currentColumn == gridColumns - 1){
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+
 	public boolean move(String direction) {
 		if (direction.equalsIgnoreCase("up")) {
 			if(currentRow == 0){

@@ -11,4 +11,9 @@ public class MoveUpCommand extends Command {
 	public boolean execute() {
 		return player.move("up");
 	}
+
+	@Override
+	public boolean canExecute() {
+		return player.canMove("down");
+	}
 }
