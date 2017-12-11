@@ -10,7 +10,12 @@ import javafx.animation.AnimationTimer;
 
 
 public class GameEngine {
-    private Cell[][] maze;
+	
+    //score Magho -- score & time start value --
+	private int playerScore  = 20;//depend on level
+	final long StartGameTime = System.currentTimeMillis();
+    
+	private Cell[][] maze;
     private GameCharacter player;
     private boolean running;
     private Command currentCommand;
@@ -23,10 +28,23 @@ public class GameEngine {
     private void start(int rows, int columns){ // like setup in processing
         maze = new MazeGenerator().create(rows, columns); // not finished yet
         player = new Player(0,0, rows, columns);
+
+        //score Magho -- set score at the begging --
+        //show player.getscore not playerScore on the screen 
+        ((Player)player).setScore(playerScore);
+
         running = true;
     }
 
-    private void loop(){ // like draw in processing
+    private void loop(){
+    	//score Magho -- end game when score == 0 
+    	if (playerScore == 0){
+    		//TODO end the game
+    	}
+        //score Magho -- get time at each loop --
+    	long StartLoopTime = System.currentTimeMillis();
+    	
+    	// like draw in processing
         /*while(true){
             //process input
             //update
@@ -63,6 +81,12 @@ public class GameEngine {
 
        };
         animationTimer.start();
+        
+        //score Magho -- change score depend on time --
+        long timePassed = StartLoopTime - StartGameTime;
+        playerScore = (int) (playerScore - timePassed/3600);
+        ((Player)player).setScore(playerScore);
+        
     }
 
     public Command getCurrentCommand() {

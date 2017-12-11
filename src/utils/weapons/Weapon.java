@@ -2,12 +2,16 @@ package utils.weapons;
 
 import cells.walls.Wall;
 import characters.monsters.Monster;
+import characters.players.Player;
 
 public abstract class Weapon {
 	private int bullets;
+	private final int increasedInScore = 3;
+	Player player;
+	
 
-	public Weapon() {
-
+	public Weapon(Player player) {
+		this.player = player;
 	}
 
 	public void action(Object object) {
@@ -16,6 +20,7 @@ public abstract class Weapon {
 			if (!this.isWeaponEmpty()) {
 				this.setBullets(this.getBullets() - 1);
 				((Monster) object).die();
+				player.setScore(player.getScore() + increasedInScore);
 			}
 
 		} else if (object instanceof Wall) {
@@ -25,6 +30,7 @@ public abstract class Weapon {
 					((Wall) object).setBulletsToBreak(((Wall) object).getBulletsToBreak() - 1);
 					if (((Wall) object).getBulletsToBreak() == 0) {
 						((Wall) object).setBreaked(true);
+						player.setScore(player.getScore() + increasedInScore);
 					}
 				}
 			}
