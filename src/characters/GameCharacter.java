@@ -122,8 +122,9 @@ public abstract class GameCharacter {
 		this.weapon = weapon;
 	}
 
-	public void fire(Object object) {
+	public boolean fire(Object object) {
 		currentState.fire(object);
+		return weapon.getBullets() == 0;
 	}
 
 	public void die() {

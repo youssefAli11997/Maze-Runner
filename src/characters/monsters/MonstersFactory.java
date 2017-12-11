@@ -10,9 +10,14 @@ public class MonstersFactory {
 
 	private static int row;
 	private static int coloumn;
-	MonstersFactory (int row , int coloumn){
+	private static int gridRows;
+	private static int gridColoumns;
+	
+	MonstersFactory (int row , int coloumn, int gridRows, int gridColumns){
 		MonstersFactory.row = row;
 		MonstersFactory.coloumn = coloumn;
+		MonstersFactory.gridRows = gridRows;
+		MonstersFactory.gridColoumns = gridColumns;
 	}
 	
 	private static ArrayList<String> monsters;
@@ -27,10 +32,10 @@ public class MonstersFactory {
 	}
 
 	public static Monster create(String monster) {
-		if (monster.equalsIgnoreCase("dunamic"))
-			return new DynamicMonster(row, coloumn);
+		if (monster.equalsIgnoreCase("dynamic"))
+			return new DynamicMonster(row, coloumn,gridRows,gridColoumns);
 		else if (monster.equalsIgnoreCase("static"))
-			return new StaticMonster(row, coloumn);
+			return new StaticMonster(row, coloumn,gridRows, gridColoumns);
 		return null;
 	}
 }

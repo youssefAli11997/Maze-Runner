@@ -8,10 +8,14 @@ public class PlayersFactory {
 
 	private static int row;
 	private static int coloumn;
-
-	PlayersFactory(int row, int coloumn) {
+	private static int gridRows;
+	private static int gridColumns;
+	
+	PlayersFactory(int row, int coloumn, int gridRows, int gridColumns) {
 		PlayersFactory.row = row;
 		PlayersFactory.coloumn = coloumn;
+		PlayersFactory.gridRows = gridRows;
+		PlayersFactory.gridColumns = gridColumns;
 	}
 
 	private static ArrayList<String> players;
@@ -27,9 +31,9 @@ public class PlayersFactory {
 
 	public static Player create(String player) {
 		if (player.equalsIgnoreCase("man"))
-			return new Man(row, coloumn);
+			return new Man(row, coloumn,gridRows, gridColumns);
 		else if (player.equalsIgnoreCase("woman"))
-			return new Woman(row, coloumn);
+			return new Woman(row, coloumn,gridRows, gridColumns);
 		return null;
 	}
 }
