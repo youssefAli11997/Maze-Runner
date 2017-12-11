@@ -3,13 +3,13 @@ package gui;
 
 import game_engine.RenderEngine;
 import javafx.animation.Animation;
-import javafx.geometry.Rectangle2D;
+import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -20,45 +20,32 @@ import java.io.IOException;
  */
 
 public class GameController {
-    public Canvas canvas;
-    public Pane mainLayout;
-    GraphicsContext graphicsContext;
+    @FXML
+    private Pane gameLayout;
 
-    private static final int COLUMNS  =   4;
-    private static final int COUNT    =  10;
-    private static final int OFFSET_X =  18;
-    private static final int OFFSET_Y =  25;
-    private static final int WIDTH    = 374;
-    private static final int HEIGHT   = 243;
-    private static final Image IMAGE = new Image("Assets/The_Horse_in_Motion.jpg");
+    @FXML
+    private Canvas canvas;
+
+    private GridPane grid;
+    private GraphicsContext graphicsContext;
+    private static final Image IMAGE = new Image("assets/img/big-bomb.png");
 
 
     public void initialize() throws IOException {
-
         final ImageView imageView = new ImageView(IMAGE);
 
 
-        final Animation animation = new RenderEngine(
-                imageView,
-                Duration.millis(1000),
-                COUNT, COLUMNS,
-                OFFSET_X, OFFSET_Y,
-                WIDTH, HEIGHT
-        );
+        final Animation animation = new RenderEngine(imageView, Duration.seconds(1));
         animation.setCycleCount(Animation.INDEFINITE);
         animation.play();
 
-        imageView.setOnMouseClicked(event -> {
-            System.out.println("lol");
-        });
-        imageView.getStyleClass().add("border");
-        mainLayout.getChildren().add(imageView);
+        gameLayout.getChildren().add(imageView);
 
         graphicsContext = canvas.getGraphicsContext2D();
 
-        Image img = new Image("Assets/grass.png");
-        Image def = new Image("Assets/def.png");
-        Image wall = new Image("Assets/wall.png");
+        Image img = new Image("assets/img/grass.png");
+        Image def = new Image("assets/img/def.png");
+        Image wall = new Image("assets/img/wall.png");
 
         int arr[][] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
