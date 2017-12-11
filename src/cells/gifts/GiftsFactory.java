@@ -45,4 +45,9 @@ public class GiftsFactory {
 			return new NoFireGift();
 		return null;
 	}
+	
+	public static ArrayList<String> getSupportedGifts() {
+		return new ArrayList<String>(gifts);
+	}
+	
 }

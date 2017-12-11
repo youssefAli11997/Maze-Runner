@@ -8,9 +8,17 @@ import java.util.Stack;
 import cells.Cell;
 import cells.EmptyCell;
 import cells.FlyweightFactory;
+import cells.bombs.BombsFactory;
+import cells.gifts.GiftsFactory;
+import cells.walls.WallsFactory;
 import utilsMath.RandomGenerator;
 
 public class MazeGenerator {
+	static {
+		supportedObjects = new ArrayList<>();
+		addSupportedObjects();
+	}
+	private static ArrayList<ArrayList<String>> supportedObjects; 
 	private static final double MEDIUM = .4 ;
 	private static GridCell[][] grid;
 	private static boolean[][] visited;
@@ -25,13 +33,22 @@ public class MazeGenerator {
 		boolean[][] expandedMap = expandMaze(grid);
 		Cell [][] basicMaze = mapMaze(expandedMap);
 		Cell [][] fullMaze = randomize(basicMaze);
-		return basicMaze;
+		return fullMaze;
 	}
 
 	private static Cell[][] randomize(Cell[][] basicMaze) {
 		ArrayList<Point> emptyCells = getEmptyCells(basicMaze);
 		ArrayList<Point> selectedCells = selectRandomCells(emptyCells);
-		return null;
+		Cell [][] randomized = randomizeSelected(basicMaze , selectedCells);
+		return randomized;
+	}
+
+	private static Cell[][] randomizeSelected(Cell[][] basicMaze, ArrayList<Point> selectedCells) {
+		for(Point selected : selectedCells) {
+			ArrayList<String> objectType = supportedObjects.get(RandomGenerator.generateRandom(supportedObjects.size()));
+			basicMaze[selected.x][selected.y] = FlyweightFactory.create(objectType.get(RandomGenerator.generateRandom(objectType.size())));
+		}
+		return basicMaze;
 	}
 
 	private static ArrayList<Point> selectRandomCells(ArrayList<Point> emptyCells) {
@@ -156,4 +173,17 @@ public class MazeGenerator {
 				mappedMaze[i][j] = maze[i][j] ? FlyweightFactory.create("rock") : FlyweightFactory.create("empty");
 		return mappedMaze;
 	}
+	
+	private static void addSupportedObjects() {
+		ArrayList<String> excludedWalls = new ArrayList<>();
+		excludedWalls.add("rock");
+		excludedWalls.add("fire");
+		supportedObjects.add(GiftsFactory.getSupportedGifts());
+		supportedObjects.add(BombsFactory.getSupportedBombs());
+		ArrayList<String> walls = WallsFactory.getSupportedWalls();
+		walls.removeAll(excludedWalls);
+		supportedObjects.add(walls);
+	}
+	
+	
 }
