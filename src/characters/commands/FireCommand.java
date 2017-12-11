@@ -8,9 +8,7 @@ public class FireCommand extends Command {
 	public FireCommand(GameCharacter player, Object object) {
 		super(player);
 	}
-
 	public void execute() {
 		player.fire(object);
 	}
-
 }

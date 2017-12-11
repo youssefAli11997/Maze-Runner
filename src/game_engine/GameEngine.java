@@ -21,8 +21,8 @@ public class GameEngine {
     }
 
     private void start(int rows, int columns){ // like setup in processing
-       // maze = new MazeGenerator().create(rows, columns); // not finished yet
-        player = new Player(0,0);
+        maze = new MazeGenerator().create(rows, columns); // not finished yet
+        player = new Player(0,0, rows, columns);
         running = true;
     }
 
@@ -38,16 +38,30 @@ public class GameEngine {
         }*/
 
        AnimationTimer animationTimer = new AnimationTimer() {
-            int i=0;
             @Override
             public void handle(long l) {
                 if(currentCommand != null){
-                    currentCommand.execute();
+                    if(currentCommand.execute()) {
+                        // Move
+                        /*if(cellType(maze[player.getCurrentRow()][player.getCurrentColumn()]).equalsIgnoreCase("empty")){
+
+                        }*/
+                        System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                    }
                 }
+
+
+
                 currentCommand = null;
-                System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
             }
-        };
+
+           private String cellType(Cell cell) {
+               return cell.toString();
+           }
+
+
+       };
         animationTimer.start();
     }
 

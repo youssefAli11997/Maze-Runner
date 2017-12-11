@@ -1,14 +1,17 @@
 package game_engine.MazeGenerator;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 import cells.Cell;
+import cells.EmptyCell;
 import cells.FlyweightFactory;
 import utilsMath.RandomGenerator;
 
 public class MazeGenerator {
+	private static final double MEDIUM = .4 ;
 	private static GridCell[][] grid;
 	private static boolean[][] visited;
 	private static int visitedCount = 0;
@@ -20,8 +23,36 @@ public class MazeGenerator {
 		initiate(grid);
 		dfs(grid[0][0]);
 		boolean[][] expandedMap = expandMaze(grid);
-		Cell [][] basicMaze = mapMaze(expandedMap); 
+		Cell [][] basicMaze = mapMaze(expandedMap);
+		Cell [][] fullMaze = randomize(basicMaze);
 		return basicMaze;
+	}
+
+	private static Cell[][] randomize(Cell[][] basicMaze) {
+		ArrayList<Point> emptyCells = getEmptyCells(basicMaze);
+		ArrayList<Point> selectedCells = selectRandomCells(emptyCells);
+		return null;
+	}
+
+	private static ArrayList<Point> selectRandomCells(ArrayList<Point> emptyCells) {
+		int numberToSelect = (int)Math.floor(emptyCells.size() * MEDIUM);
+		ArrayList<Point> selectCells = new ArrayList<>();
+		while(numberToSelect != 0) {
+			selectCells.add(emptyCells.get(RandomGenerator.generateRandom(emptyCells.size())));
+			numberToSelect --;
+		}
+		return selectCells;
+	}
+
+	private static ArrayList<Point> getEmptyCells(Cell[][] basicMaze) {
+		int height = basicMaze.length;
+		int width = basicMaze[0].length;
+		ArrayList<Point> emptyCells = new ArrayList<>();
+		for(int i = 0 ; i < height ; i ++)
+			for(int j = 0 ; j < width ; j++)
+				if(basicMaze[i][j] instanceof EmptyCell)
+					emptyCells.add(new Point(i,j));
+		return emptyCells;
 	}
 
 	private static void dfs(GridCell start) {
@@ -111,7 +142,7 @@ public class MazeGenerator {
 		}
 		for(int j = 0 ; j < width ; j++) // last row;
 			expandedGrid[height-1][j] = true;
-		expandedGrid[1][0] = false; // start portal
+		expandedGrid[0][0] = false; // start portal
 		expandedGrid[height-2][width-1] = false; //end portal
 		return expandedGrid;
 	}

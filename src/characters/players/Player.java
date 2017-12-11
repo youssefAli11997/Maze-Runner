@@ -6,8 +6,8 @@ public class Player extends GameCharacter {
 
 	private int lives;
 
-	public Player(int currentRow, int currentColumn) {
-		super(currentRow, currentColumn);
+	public Player(int currentRow, int currentColumn, int gridRows, int gridColumns) {
+		super(currentRow, currentColumn, gridRows, gridColumns);
 	}
 
 	public int getLives() {

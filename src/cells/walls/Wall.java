@@ -58,4 +58,9 @@ public class Wall extends Cell {
 	public void setBreaked(boolean breaked) {
 		this.breaked = breaked;
 	}
+
+	@Override
+	public String toString() {
+		return "wall";
+	}
 }

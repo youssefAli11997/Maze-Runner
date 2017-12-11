@@ -8,8 +8,8 @@ public class MoveRightCommand extends Command {
 		super(player);
 	}
 
-	public void execute() {
-		player.move("right");
+	public boolean execute() {
+		return player.move("right");
 	}
 
 }
