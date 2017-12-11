@@ -30,7 +30,9 @@
 
 * Mohamed el-maghraby - magho - :
   * made the design of the project.
-  * implemented cells.gift & cells.bombs packages.
+  * implemented cells.gift & cells.bombs & cells.players & cells.weapons & cells.monsters packages.
   * implemented the command design pattern and buttons logic for controling the player.
-  * implemented menu control page in GUI. 
-  
+  * Score computation.
+  * factory design pattern in weapon & enemy & player.
+  * Memento design pattern for undo and redo.
+  * strategy design pattern for monster - not finished yet -.
