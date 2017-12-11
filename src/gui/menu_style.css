@@ -1,6 +1,6 @@
 .menu-bg {
     -fx-background-image: url("../assets/img/maze.gif");
-    -fx-background-size: 1367 768;
+    -fx-background-size: cover ;
 }
 
 .menu-button {
