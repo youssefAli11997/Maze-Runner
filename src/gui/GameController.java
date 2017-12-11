@@ -30,12 +30,12 @@ public class GameController {
     private GraphicsContext graphicsContext;
     private static final Image IMAGE = new Image("assets/img/big-bomb.png");
 
-
     public void initialize() throws IOException {
         final ImageView imageView = new ImageView(IMAGE);
 
 
         final Animation animation = new RenderEngine(imageView, Duration.seconds(1));
+        
         animation.setCycleCount(Animation.INDEFINITE);
         animation.play();
 
@@ -46,6 +46,8 @@ public class GameController {
         Image img = new Image("assets/img/grass.png");
         Image def = new Image("assets/img/def.png");
         Image wall = new Image("assets/img/wall.png");
+
+        graphicsContext = canvas.getGraphicsContext2D();
 
         int arr[][] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0},

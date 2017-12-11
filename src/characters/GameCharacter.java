@@ -6,14 +6,18 @@ public abstract class GameCharacter {
 
 	private int currentRow;
 	private int currentColumn;
+	private int gridRows;
+	private int gridColumns;
 	private int health;
 	private int healthChange;
 	private Weapon weapon;
 	private CharacterState currentState;
 
-	public GameCharacter(int currentRow, int currentColumn) {
+	public GameCharacter(int currentRow, int currentColumn, int gridRows, int gridColumns) {
 		this.currentRow = currentRow;
 		this.currentColumn = currentColumn;
+		this.gridRows = gridRows;
+		this.gridColumns = gridColumns;
 	}
 
 	public int getCurrentColumn() {
@@ -33,19 +37,36 @@ public abstract class GameCharacter {
 		this.currentRow = currentRow;
 	}
 
-	public void move(String direction) {
+	public boolean move(String direction) {
 		if (direction.equalsIgnoreCase("up")) {
+			if(currentRow == 0){
+				return false;
+			}
 			currentRow--;
+			return true;
 		}
 		if (direction.equalsIgnoreCase("down")) {
+			if(currentRow == gridRows - 1){
+				return false;
+			}
 			currentRow++;
+			return true;
 		}
 		if (direction.equalsIgnoreCase("left")) {
+			if(currentColumn == 0){
+				return false;
+			}
 			currentColumn--;
+			return true;
 		}
 		if (direction.equalsIgnoreCase("right")) {
+			if(currentColumn == gridColumns - 1){
+				return false;
+			}
 			currentColumn++;
+			return true;
 		}
+		return false;
 	}
 
 	public void draw() {
@@ -101,8 +122,9 @@ public abstract class GameCharacter {
 		this.weapon = weapon;
 	}
 
-	public void fire() {
-		currentState.fire();
+	public boolean fire(Object object) {
+		currentState.fire(object);
+		return weapon.getBullets() == 0;
 	}
 
 	public void die() {

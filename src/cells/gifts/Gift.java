@@ -7,4 +7,9 @@ public abstract class Gift extends Cell {
 
 	@Override
 	public abstract void action(GameCharacter character);
+
+	@Override
+	public String toString() {
+		return "gift";
+	}
 }

@@ -14,7 +14,7 @@ public class NoFire extends CharacterState {
 	}
 
 	@Override
-	public void fire() {
+	public void fire(Object object) {
 		// do nothong
 	}
 

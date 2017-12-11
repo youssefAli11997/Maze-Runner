@@ -8,16 +8,16 @@
 
 ### Members roles :
 * Mohamed Mashaal :
-  * 
-  *
+  * Maze Generation Algorithm.
+  * implemented Factory Design Pattern along with Flyweight for Game Objects.
   *
   *
   *
 
 * Yousef Ali :
-  *
-  *
-  *
+  * Created project structure (packages and classes)
+  * Game Logic (Not Finished Yet)
+  * Commands Factory
   *
   *
 

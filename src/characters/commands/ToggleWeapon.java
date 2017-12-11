@@ -2,15 +2,15 @@ package characters.commands;
 
 import characters.GameCharacter;
 
-public class JumpCommand extends Command {
+public class ToggleWeapon extends Command{
 
-	public JumpCommand(GameCharacter player) {
+	public ToggleWeapon(GameCharacter player) {
 		super(player);
-
 	}
 
+	@Override
 	public boolean execute() {
-		return player.move("jump");
+		return false;
 	}
 
 }
