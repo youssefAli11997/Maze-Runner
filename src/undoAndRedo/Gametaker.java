@@ -12,6 +12,7 @@ public class Gametaker {
 	public void addUndoMemento(Memento m) {
 		undoMementos.add(m);
 		currentUndoMoment++;
+		
 	}
 
 	public void addRedoMemento(Memento m) {

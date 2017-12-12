@@ -75,7 +75,7 @@ public class GameEngine {
                 //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                 //score Magho -- change score depend on time --
                 long timePassed = StartLoopTime - StartGameTime;
-                playerScore = (int) (playerScore - timePassed/3600);
+                playerScore = (int) (playerScore - timePassed/1000);
                 ((Player)player).setScore(playerScore);
             }
 
