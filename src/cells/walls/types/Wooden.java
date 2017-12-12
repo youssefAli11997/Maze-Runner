@@ -1,9 +1,14 @@
 package cells.walls.types;
 
 import cells.walls.Wall;
+import javafx.scene.image.Image;
 
 public class Wooden extends Wall {
-	public Wooden() {
-		super(true, 1, 0);
-	}
+    private static final Image IMAGE = new Image("assets/img/wooden-wall.png");
+
+    public Wooden() {
+        super(true, 1, 0);
+
+        super.cellImage = IMAGE;
+    }
 }
