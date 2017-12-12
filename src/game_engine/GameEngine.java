@@ -2,6 +2,9 @@ package game_engine;
 
 import cells.Cell;
 import cells.EmptyCell;
+import cells.bombs.Bomb;
+import cells.gifts.Gift;
+import cells.walls.types.Tree;
 import characters.GameCharacter;
 import characters.commands.Command;
 import characters.commands.CommandsFactory;
@@ -20,16 +23,17 @@ public class GameEngine {
     private GameCharacter player;
     private boolean running;
     private Command currentCommand;
+    private boolean fireMode;
 
     public GameEngine(int rows, int columns){
         start(rows, columns);
         loop();
     }
 
-    private void start(int rows, int columns){ // like setup in processing
-        maze = MazeGenerator.create(rows, columns); // not finished yet
+    private void start(int rows, int columns){
+        maze = MazeGenerator.create(rows, columns);
         player = new Player(0,0, rows, columns);
-
+        deactivateFireMode();
         //score Magho -- set score at the begging --
         //show player.getscore not playerScore on the screen 
         ((Player)player).setScore(playerScore);
@@ -39,33 +43,43 @@ public class GameEngine {
 
     private void loop(){
     	long StartLoopTime = System.currentTimeMillis();
-    	
-    	// like draw in processing
-        /*while(true){
-            //process input
-            //update
-            //render
-            if(!running){
-                return;
-            }
-            // if player died, set running by false
-        }*/
 
        AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 //score Magho -- end game when score == 0
-                if (playerScore == 0){
+                if (playerScore == 0 || player.getHealth() <= 0){
                     //TODO end the game
                 }
 
                 if(currentCommand != null){
-                    if(currentCommand.execute()) {
+                    System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                    if(currentCommand.canExecute()) {
                         // Move
                         if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof EmptyCell){
-
+                            currentCommand.execute();
                         }
-                        System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                        else if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof Tree){
+                            currentCommand.execute();
+                        }
+                        else if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof Bomb){
+                            currentCommand.execute();
+                            maze[player.getCurrentRow()][player.getCurrentColumn()].action(player);
+                            maze[player.getCurrentRow()][player.getCurrentColumn()] = new EmptyCell();
+                            maze[player.getCurrentRow()][player.getCurrentColumn()].draw();
+                        }
+                        else if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof Gift){
+                            currentCommand.execute();
+                            maze[player.getCurrentRow()][player.getCurrentColumn()].action(player);
+                            maze[player.getCurrentRow()][player.getCurrentColumn()] = new EmptyCell();
+                            maze[player.getCurrentRow()][player.getCurrentColumn()].draw();
+                        }
+                        // Monsters: to be implemented
+
+                        // Fire
+
+
+                        //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                     }
                 }
 
@@ -78,12 +92,6 @@ public class GameEngine {
                 playerScore = (int) (playerScore - timePassed/3600);
                 ((Player)player).setScore(playerScore);
             }
-
-           private String cellType(Cell cell) {
-               return cell.toString();
-           }
-
-
        };
         animationTimer.start();
         
@@ -95,5 +103,13 @@ public class GameEngine {
 
     public void setCurrentCommand(String currentCommand) {
         this.currentCommand = new CommandsFactory().create(player, currentCommand);
+    }
+
+    public void activateFireMode(){
+        fireMode = true;
+    }
+
+    public void deactivateFireMode(){
+        fireMode = false;
     }
 }

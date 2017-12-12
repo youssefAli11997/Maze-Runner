@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -43,13 +44,25 @@ public class Main extends Application {
         root.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                gameEngine.setCurrentCommand(event.getCode().toString());
+                System.out.println(event.getCode());
+                if(event.getCode().equals(KeyCode.SPACE)){
+                    gameEngine.activateFireMode();
+                    System.out.println("H: " + event.getCode());
+                }
+                else {
+                    gameEngine.setCurrentCommand(event.getCode().toString());
+                }
             }
         });
 
         root.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
+                System.out.println("sap: " + event.getCode());
+                if(event.getCode().equals(KeyCode.SPACE)){
+                    gameEngine.activateFireMode();
+                    System.out.println("H: " + event.getCode());
+                }
                 gameEngine.setCurrentCommand("released");
             }
         });
