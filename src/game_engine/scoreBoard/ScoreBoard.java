@@ -14,19 +14,24 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class ScoreBoard {
-	private static ScoreBoard uniqueInstance = new ScoreBoard();
+	private volatile static ScoreBoard uniqueInstance ; // lazy instantiation
 	private  Map<String , Double> scoreBoard ;
 	private static final String path = "scoreboard.txt";
 	
+	public static ScoreBoard getInstance() {
+		if(uniqueInstance == null) {
+			synchronized (ScoreBoard.class) {
+				if(uniqueInstance == null)
+				uniqueInstance = new ScoreBoard();
+			}
+		}
+		return uniqueInstance;
+	}
 	
 	private ScoreBoard() {
 		if(!load(path)) {
 			scoreBoard = new HashMap<>();
 		}
-	}
-	
-	public ScoreBoard getUniqueInstance() {
-		return uniqueInstance;
 	}
 	
 	public boolean addScore(String playerName ,Double score) {
@@ -55,7 +60,7 @@ public class ScoreBoard {
 			FileWriter fw = new FileWriter(file);
 			StringBuilder builder = new StringBuilder();
 			for(Map.Entry<String,Double > entry : scoreBoard.entrySet()) {
-				builder.append(entry.getKey() + " " + entry.getValue() + "\n");
+				builder.append(entry.getKey() + " " + entry.getValue() + System.getProperty("line.separator"));
 			}
 			fw.write(builder.toString());
 			fw.close();
