@@ -1,9 +1,14 @@
 package cells.walls.types;
 
 import cells.walls.Wall;
+import javafx.scene.image.Image;
 
 public class Tree extends Wall {
-	public Tree() {
-		super(true, 0, 0);
-	}
+    private static final Image IMAGE = new Image("assets/img/tree.png");
+
+    public Tree() {
+        super(true, 0, 0);
+
+        super.cellImage = IMAGE;
+    }
 }

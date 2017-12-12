@@ -66,13 +66,13 @@ public class GameEngine {
                             currentCommand.execute();
                             maze[player.getCurrentRow()][player.getCurrentColumn()].action(player);
                             maze[player.getCurrentRow()][player.getCurrentColumn()] = new EmptyCell();
-                            maze[player.getCurrentRow()][player.getCurrentColumn()].draw();
+                            //maze[player.getCurrentRow()][player.getCurrentColumn()].draw();
                         }
                         else if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof Gift){
                             currentCommand.execute();
                             maze[player.getCurrentRow()][player.getCurrentColumn()].action(player);
                             maze[player.getCurrentRow()][player.getCurrentColumn()] = new EmptyCell();
-                            maze[player.getCurrentRow()][player.getCurrentColumn()].draw();
+                            //maze[player.getCurrentRow()][player.getCurrentColumn()].draw();
                         }
                         // Monsters: to be implemented
 
@@ -89,7 +89,7 @@ public class GameEngine {
                 //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                 //score Magho -- change score depend on time --
                 long timePassed = StartLoopTime - StartGameTime;
-                playerScore = (int) (playerScore - timePassed/3600);
+                playerScore = (int) (playerScore - timePassed/1000);
                 ((Player)player).setScore(playerScore);
             }
        };

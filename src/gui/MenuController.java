@@ -1,12 +1,14 @@
 package gui;
 
 
-import game_engine.GameEngine;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,9 +23,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
-import java.io.IOException;
-
 public class MenuController {
 
     @FXML
@@ -34,8 +33,8 @@ public class MenuController {
 
     @FXML
     private VBox menuVbox;
-
-    private double windowWidth = 1376, windowHeight = 800;
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private double windowWidth = screenSize.getWidth(), windowHeight = screenSize.getHeight();
     private MediaPlayer mediaPlayer;
 
     @FXML
