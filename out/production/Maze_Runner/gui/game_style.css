@@ -1,9 +1,0 @@
-.info-bar {
-    -fx-background-color: rgb(65, 67, 69);
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 5, 0, 0, 2);
-}
-
-.game-bg {
-    -fx-background-image: url("../assets/img/bg.jpg");
-    -fx-background-repeat: repeat;
-}
