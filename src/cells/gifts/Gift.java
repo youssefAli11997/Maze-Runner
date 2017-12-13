@@ -12,6 +12,7 @@ public abstract class Gift extends Cell {
     private static final Image IMAGE = new Image("assets/img/gift.png");
 
     public Gift() {
+        super();
         super.cellImage = IMAGE;
         super.animation = true;
     }

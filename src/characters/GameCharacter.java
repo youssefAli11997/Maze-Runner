@@ -98,6 +98,7 @@ public abstract class GameCharacter {
 	}
 
 	public void draw() {
+
 	}
 
 	public void setCurrentState(CharacterState newState) {

@@ -1,12 +1,13 @@
 package gui;
 
 
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
+import game_engine.Game;
+import game_engine.GameEngine;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,7 +45,7 @@ public class MenuController {
         menuVbox.setPrefSize(windowWidth, windowHeight);
 
         String bip = "src/assets/sound/Forest of Forgetfulness.mp3";
-       Media hit = new Media(new File(bip).toURI().toString());
+        Media hit = new Media(new File(bip).toURI().toString());
         mediaPlayer = new MediaPlayer(hit);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
@@ -72,8 +73,9 @@ public class MenuController {
     }
 
     @FXML
-    void onStartNewGame () throws IOException {
+    void onStartNewGame() throws IOException {
         Stage stage = new Stage();
+        GameEngine.getInstance(5,5);
         Parent root = FXMLLoader.load(getClass().getResource("game_layout.fxml"));
         stage.setTitle("Maze Runner");
         String css = this.getClass().getResource("game_style.css").toExternalForm();
@@ -81,15 +83,18 @@ public class MenuController {
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.setMaximized(true);
-        stage.initStyle(StageStyle.UNDECORATED);
+        //stage.initStyle(StageStyle.UNDECORATED);
         mediaPlayer.stop();
         mediaPlayer = null;
+
+        GameEngine.addKeyListeners(root.getScene());
+
         stage.show();
         Main.menu.close();
     }
 
     @FXML
-    void onExitClick (){
+    void onExitClick() {
         Main.menu.close();
     }
 
