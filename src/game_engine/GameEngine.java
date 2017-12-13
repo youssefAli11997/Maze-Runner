@@ -55,25 +55,23 @@ public class GameEngine {
                 if(currentCommand != null){
                     System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                     if(currentCommand.canExecute()) {
-                        int newRow = (int) (player.getCurrentRow() + player.getOffset().getX());
-                        int newCol = (int) (player.getCurrentColumn() + player.getOffset().getY());
                         // Move
-                        if(maze[newRow][newCol] instanceof EmptyCell){
+                        if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof EmptyCell){
                             currentCommand.execute();
                         }
-                        else if(maze[newRow][newCol] instanceof Tree){
+                        else if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof Tree){
                             currentCommand.execute();
                         }
-                        else if(maze[newRow][newCol] instanceof Bomb){
+                        else if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof Bomb){
                             currentCommand.execute();
-                            maze[newRow][newCol].action(player);
-                            maze[newRow][newCol] = new EmptyCell();
+                            maze[player.getCurrentRow()][player.getCurrentColumn()].action(player);
+                            maze[player.getCurrentRow()][player.getCurrentColumn()] = new EmptyCell();
                             //maze[player.getCurrentRow()][player.getCurrentColumn()].draw();
                         }
-                        else if(maze[newRow][newCol] instanceof Gift){
+                        else if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof Gift){
                             currentCommand.execute();
-                            maze[newRow][newCol].action(player);
-                            maze[newRow][newCol] = new EmptyCell();
+                            maze[player.getCurrentRow()][player.getCurrentColumn()].action(player);
+                            maze[player.getCurrentRow()][player.getCurrentColumn()] = new EmptyCell();
                             //maze[player.getCurrentRow()][player.getCurrentColumn()].draw();
                         }
                         // Monsters: to be implemented
