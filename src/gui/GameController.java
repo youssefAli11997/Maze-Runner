@@ -1,4 +1,3 @@
-
 package gui;
 
 import cells.Cell;
@@ -6,7 +5,6 @@ import game_engine.GameEngine;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -76,7 +74,7 @@ public class GameController {
         }
     }
 
-    public static void movePlayer (int playerRow,int playerColumn){
+    public static void movePlayer(int playerRow, int playerColumn) {
         graphicsContext.clearRect(0, 0, windowWidth, windowHeight);
         graphicsContext.drawImage(playerImage, playerRow, playerColumn);
     }
@@ -85,6 +83,5 @@ public class GameController {
     void onTestScroll() {
 
     }
-
+     
 }
-
