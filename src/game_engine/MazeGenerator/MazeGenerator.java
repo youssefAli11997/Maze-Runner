@@ -19,7 +19,7 @@ public class MazeGenerator {
 		addSupportedObjects();
 	}
 	private static ArrayList<ArrayList<String>> supportedObjects; 
-	private static final double MEDIUM = .4 ;
+	private static final double MEDIUM = .2 ;
 	private static GridCell[][] grid;
 	private static boolean[][] visited;
 	private static int visitedCount = 0;
@@ -46,7 +46,10 @@ public class MazeGenerator {
 	private static Cell[][] randomizeSelected(Cell[][] basicMaze, ArrayList<Point> selectedCells) {
 		for(Point selected : selectedCells) {
 			ArrayList<String> objectType = supportedObjects.get(RandomGenerator.generateRandom(supportedObjects.size()));
-			basicMaze[selected.x][selected.y] = FlyweightFactory.create(objectType.get(RandomGenerator.generateRandom(objectType.size())));
+			String x = objectType.get(RandomGenerator.generateRandom(objectType.size()));
+			basicMaze[selected.x][selected.y] = FlyweightFactory.create(x);
+			if(basicMaze[selected.x][selected.y] == null)
+				System.out.println(x);
 		}
 		return basicMaze;
 	}
@@ -159,7 +162,7 @@ public class MazeGenerator {
 		}
 		for(int j = 0 ; j < width ; j++) // last row;
 			expandedGrid[height-1][j] = true;
-		expandedGrid[0][0] = false; // start portal
+		expandedGrid[1][0] = false; // start portal
 		expandedGrid[height-2][width-1] = false; //end portal
 		return expandedGrid;
 	}

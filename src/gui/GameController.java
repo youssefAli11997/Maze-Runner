@@ -1,17 +1,21 @@
 
 package gui;
 
-import game_engine.RenderEngine;
-import javafx.animation.Animation;
+import cells.Cell;
+import game_engine.Game;
+import game_engine.GameEngine;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 
 import java.awt.*;
 import java.io.IOException;
@@ -22,60 +26,44 @@ import java.io.IOException;
 
 public class GameController {
 
+    private GameEngine gameEngine = GameEngine.getInstance();
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private double windowWidth = screenSize.getWidth(), windowHeight = screenSize.getHeight();
+    private Cell[][] maze;
 
     @FXML
     private Pane gameLayout;
+
+    @FXML
+    private HBox infoBar;
 
     @FXML
     private Canvas canvas;
 
     private GridPane grid;
     private GraphicsContext graphicsContext;
-    private static final Image IMAGE = new Image("assets/img/tree.png");
 
     public void initialize() throws IOException {
+        grid = new GridPane();
+        gameEngine.setGridPane(grid);
+        maze = gameEngine.getMaze();
+
+        infoBar.setPrefHeight(windowHeight * .1);
         gameLayout.setPrefHeight(windowHeight);
         gameLayout.setPrefWidth(windowWidth);
 
-        final ImageView imageView = new ImageView(IMAGE);
-        grid = new GridPane();
-
-
-//        final Animation animation = new RenderEngine(imageView, Duration.seconds(1));
-//
-//        animation.setCycleCount(Animation.INDEFINITE);
-//        animation.play();
-
-        gameLayout.getChildren().add(imageView);
-
-        //graphicsContext = canvas.getGraphicsContext2D();
-
-        int arr[][] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
-                {2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0},
-                {2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0},
-                {2, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0},
-                {2, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0},
-                {2, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-                {2, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0},
-                {2, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-                {2, 1, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0}};
-
-//        for (int i = 0; i < arr.length; i++) {
-//            for (int j = 0; j < arr[0].length; j++) {
-//                if (arr[i][j] == 0) {
-//                    graphicsContext.drawImage(img, j * 70, i * 70);
-//                } else if (arr[i][j] == 1) {
-//                    graphicsContext.drawImage(def, j * 70, i * 70);
-//                } else {
-//                    graphicsContext.drawImage(wall, j * 70, i * 70);
-//                }
-//            }
-//        }
+        initMaze();
+        gameLayout.getChildren().add(grid);
     }
 
+    private void initMaze() {
+        for (int i = 0; i < maze.length; i++) {
+            grid.addColumn(i);
+            for (int j = 0; j < maze[0].length; j++) {
+                maze[j][i].draw(grid, i, j);
+            }
+        }
+    }
 
 }
 

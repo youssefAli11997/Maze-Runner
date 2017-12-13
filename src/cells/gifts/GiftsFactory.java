@@ -18,10 +18,10 @@ public class GiftsFactory {
 		gifts.add("bullet");
 		gifts.add("health");
 		gifts.add("armor");
-		gifts.add("doubleHealth");
-		gifts.add("eatEnemy");
-		gifts.add("passThrough");
-		gifts.add("noFire");
+		gifts.add("doublehealth");
+		gifts.add("eatenemy");
+		gifts.add("passthrough");
+		gifts.add("nofire");
 	}
 
 	public static boolean canCreate(String cell) {
