@@ -2,22 +2,19 @@
 package gui;
 
 import cells.Cell;
-import game_engine.Game;
 import game_engine.GameEngine;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.IOException;
 
 /**
@@ -27,12 +24,19 @@ import java.io.IOException;
 public class GameController {
 
     private GameEngine gameEngine = GameEngine.getInstance();
-    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private double windowWidth = screenSize.getWidth(), windowHeight = screenSize.getHeight();
+    private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private static double windowWidth = screenSize.getWidth(), windowHeight = screenSize.getHeight();
     private Cell[][] maze;
+    private int mazeRows, mazeColumns;
+    private static GridPane grid;
+    private static GraphicsContext graphicsContext;
+    private static Image playerImage = new Image("assets/img/player.png");
 
     @FXML
-    private Pane gameLayout;
+    private ScrollPane scrollPane;
+
+    @FXML
+    private AnchorPane gameLayout;
 
     @FXML
     private HBox infoBar;
@@ -40,29 +44,46 @@ public class GameController {
     @FXML
     private Canvas canvas;
 
-    private GridPane grid;
-    private GraphicsContext graphicsContext;
-
-    public void initialize() throws IOException {
+    @FXML
+    void initialize() throws IOException {
         grid = new GridPane();
         gameEngine.setGridPane(grid);
         maze = gameEngine.getMaze();
+        mazeRows = maze.length;
+        mazeColumns = maze[0].length;
 
         infoBar.setPrefHeight(windowHeight * .1);
-        gameLayout.setPrefHeight(windowHeight);
-        gameLayout.setPrefWidth(windowWidth);
+        gameLayout.setPrefHeight(mazeColumns * 70);
+        gameLayout.setPrefWidth(mazeRows * 70);
 
         initMaze();
-        gameLayout.getChildren().add(grid);
+        gameLayout.getChildren().add(0, grid);
+
+        graphicsContext = canvas.getGraphicsContext2D();
+        canvas.setWidth(mazeRows * 70);
+        canvas.setHeight(mazeColumns * 70);
+        canvas.getStyleClass().add("red");
+
+        graphicsContext.drawImage(playerImage, 0, 70);
     }
 
     private void initMaze() {
-        for (int i = 0; i < maze.length; i++) {
+        for (int i = 0; i < mazeRows; i++) {
             grid.addColumn(i);
-            for (int j = 0; j < maze[0].length; j++) {
+            for (int j = 0; j < mazeColumns; j++) {
                 maze[j][i].draw(grid, i, j);
             }
         }
+    }
+
+    public static void movePlayer (int playerRow,int playerColumn){
+        graphicsContext.clearRect(0, 0, windowWidth, windowHeight);
+        graphicsContext.drawImage(playerImage, playerRow, playerColumn);
+    }
+
+    @FXML
+    void onTestScroll() {
+
     }
 
 }

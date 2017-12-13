@@ -11,6 +11,7 @@ import characters.commands.Command;
 import characters.commands.CommandsFactory;
 import characters.players.Player;
 import game_engine.MazeGenerator.MazeGenerator;
+import gui.GameController;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -92,6 +93,7 @@ public class GameEngine {
                 if(currentCommand != null){
                     System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                     if(currentCommand.canExecute()) {
+                        GameController.movePlayer (player.getCurrentRow(),player.getCurrentColumn());
                         // Move
                         if(maze[player.getCurrentRow()][player.getCurrentColumn()] instanceof EmptyCell){
                             currentCommand.execute();

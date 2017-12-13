@@ -75,7 +75,7 @@ public class MenuController {
     @FXML
     void onStartNewGame() throws IOException {
         Stage stage = new Stage();
-        GameEngine.getInstance(5,5);
+        GameEngine.getInstance(10,10);
         Parent root = FXMLLoader.load(getClass().getResource("game_layout.fxml"));
         stage.setTitle("Maze Runner");
         String css = this.getClass().getResource("game_style.css").toExternalForm();
