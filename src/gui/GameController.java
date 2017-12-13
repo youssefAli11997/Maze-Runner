@@ -33,7 +33,7 @@ public class GameController {
 
     private GridPane grid;
     private GraphicsContext graphicsContext;
-    private static final Image IMAGE = new Image("assets/img/tree.png");
+    private static final Image IMAGE = new Image("assets/img/big-bomb.png");
 
     public void initialize() throws IOException {
         gameLayout.setPrefHeight(windowHeight);
@@ -43,10 +43,10 @@ public class GameController {
         grid = new GridPane();
 
 
-//        final Animation animation = new RenderEngine(imageView, Duration.seconds(1));
-//
-//        animation.setCycleCount(Animation.INDEFINITE);
-//        animation.play();
+        final Animation animation = new RenderEngine(imageView, Duration.seconds(1));
+
+        animation.setCycleCount(Animation.INDEFINITE);
+        animation.play();
 
         gameLayout.getChildren().add(imageView);
 
