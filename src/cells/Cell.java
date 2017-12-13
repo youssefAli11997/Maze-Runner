@@ -13,11 +13,14 @@ public abstract class Cell {
     protected Image cellImage;
     protected boolean animation;
     private ImageView imageView;
+    private boolean firstCreation = true;
 
     //TODO not in proper place !!
     private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
+        System.out.println(gridPane);
         for (Node node : gridPane.getChildren()) {
-            if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
+            System.out.println(GridPane.getColumnIndex(node));
+            if (gridPane.getColumnIndex(node) == col && gridPane.getRowIndex(node) == row) {
                 return node;
             }
         }
@@ -27,15 +30,21 @@ public abstract class Cell {
     public void draw(GridPane gridPane, int row, int column) {
         imageView = new ImageView(cellImage);
 
-        if (animation){
+        if (animation) {
             Animation animation = new RenderEngine(imageView, Duration.seconds(1));
             animation.setCycleCount(Animation.INDEFINITE);
             animation.play();
         }
 
         //if was cell -> replace it, if not add the new one
-        Node destroyedCell = getNodeFromGridPane(gridPane, row, column);
-        if (destroyedCell != null){//check if not working properly
+
+        Node destroyedCell = null;
+
+        if (!firstCreation) {
+            destroyedCell = getNodeFromGridPane(gridPane, row, column);
+            firstCreation = false;
+        }
+        if (destroyedCell != null) {//check if not working properly
             destroyedCell = imageView;
         } else {
             gridPane.add(imageView, row, column);

@@ -2,6 +2,8 @@ package characters;
 
 import utils.weapons.Weapon;
 
+import java.awt.*;
+
 public abstract class GameCharacter {
 
 	private int currentRow;
@@ -10,6 +12,7 @@ public abstract class GameCharacter {
 	private int gridColumns;
 	private int health;
 	private int healthChange;
+	private Point offset;
 	private Weapon weapon;
 	private CharacterState currentState;
 
@@ -40,24 +43,28 @@ public abstract class GameCharacter {
 	public boolean canMove(String direction) {
 		if (direction.equalsIgnoreCase("up")) {
 			if(currentRow == 0){
+				offset = new Point(-1,0);
 				return false;
 			}
 			return true;
 		}
 		if (direction.equalsIgnoreCase("down")) {
 			if(currentRow == gridRows - 1){
+				offset = new Point(1,0);
 				return false;
 			}
 			return true;
 		}
 		if (direction.equalsIgnoreCase("left")) {
 			if(currentColumn == 0){
+				offset = new Point(0,-1);
 				return false;
 			}
 			return true;
 		}
 		if (direction.equalsIgnoreCase("right")) {
 			if(currentColumn == gridColumns - 1){
+				offset = new Point(0,1);
 				return false;
 			}
 			return true;
@@ -98,6 +105,7 @@ public abstract class GameCharacter {
 	}
 
 	public void draw() {
+
 	}
 
 	public void setCurrentState(CharacterState newState) {
@@ -158,5 +166,9 @@ public abstract class GameCharacter {
 	public void die() {
 		// TODO implement death better to call die than setting health to 0
 		currentState.die();
+	}
+
+	public Point getOffset() {
+		return offset;
 	}
 }
