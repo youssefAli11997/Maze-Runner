@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.IOException;
 
 /**
@@ -20,6 +21,10 @@ import java.io.IOException;
  */
 
 public class GameController {
+
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private double windowWidth = screenSize.getWidth(), windowHeight = screenSize.getHeight();
+
     @FXML
     private Pane gameLayout;
 
@@ -28,27 +33,24 @@ public class GameController {
 
     private GridPane grid;
     private GraphicsContext graphicsContext;
-    private static final Image IMAGE = new Image("assets/img/gift.png");
+    private static final Image IMAGE = new Image("assets/img/tree.png");
 
     public void initialize() throws IOException {
+        gameLayout.setPrefHeight(windowHeight);
+        gameLayout.setPrefWidth(windowWidth);
+
         final ImageView imageView = new ImageView(IMAGE);
         grid = new GridPane();
 
 
-        final Animation animation = new RenderEngine(imageView, Duration.seconds(1));
-
-        animation.setCycleCount(Animation.INDEFINITE);
-        animation.play();
+//        final Animation animation = new RenderEngine(imageView, Duration.seconds(1));
+//
+//        animation.setCycleCount(Animation.INDEFINITE);
+//        animation.play();
 
         gameLayout.getChildren().add(imageView);
 
-        graphicsContext = canvas.getGraphicsContext2D();
-
-        Image img = new Image("assets/img/grass.png");
-        Image def = new Image("assets/img/def.png");
-        Image wall = new Image("assets/img/wall.png");
-
-        graphicsContext = canvas.getGraphicsContext2D();
+        //graphicsContext = canvas.getGraphicsContext2D();
 
         int arr[][] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
