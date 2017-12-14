@@ -29,7 +29,7 @@ public class GameController {
     private static GridPane grid;
     private static GraphicsContext graphicsContext;
     private static Image playerImage = new Image("assets/img/player.png");
-    private double scrollHValue, screllVvalue;
+    private double scrollHValue, scrollVvalue;
 
 
     @FXML
@@ -57,7 +57,7 @@ public class GameController {
         gameLayout.setPrefWidth(mazeRows * 70 + 20);
 
         scrollHValue = 70 / (mazeColumns * 70 - windowWidth);
-        screllVvalue = 70 / (mazeRows * 70 - windowHeight);
+        scrollVvalue = 70 / (mazeRows * 70 - windowHeight);
 
 
         initMaze();
@@ -82,12 +82,12 @@ public class GameController {
 
     public static void movePlayer(int playerRow, int playerColumn) {
         graphicsContext.clearRect(0, 0, windowWidth, windowHeight);
-        graphicsContext.drawImage(playerImage, playerRow, playerColumn);
+        graphicsContext.drawImage(playerImage, playerColumn * 70, playerRow * 70);
     }
 
     @FXML
     void onVScroll() {
-        scrollPane.setVvalue(scrollPane.getVvalue() + screllVvalue);
+        scrollPane.setVvalue(scrollPane.getVvalue() + scrollVvalue);
     }
 
     @FXML

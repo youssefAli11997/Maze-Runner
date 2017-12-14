@@ -1,5 +1,7 @@
 package characters;
 
+import characters.states.Normal;
+import constants.Map;
 import utils.weapons.Weapon;
 
 import java.awt.*;
@@ -21,6 +23,8 @@ public abstract class GameCharacter {
 		this.currentColumn = currentColumn;
 		this.gridRows = gridRows;
 		this.gridColumns = gridColumns;
+		currentState = new Normal(this);
+		offset = new Point(0,0);
 	}
 
 	public int getCurrentColumn() {
@@ -35,66 +39,61 @@ public abstract class GameCharacter {
 		this.currentColumn = currentColumn;
 	}
 
-	// why to set ! move method does the job
-	public void setCurrentRow(int currentRow) {
-		this.currentRow = currentRow;
-	}
-
 	public boolean canMove(String direction) {
-		if (direction.equalsIgnoreCase("up")) {
+		if (direction.equalsIgnoreCase(Map.playerKeys.UP)) {
 			if(currentRow == 0){
-				offset = new Point(-1,0);
 				return false;
 			}
+			offset = new Point(-1,0);
 			return true;
 		}
-		if (direction.equalsIgnoreCase("down")) {
+		if (direction.equalsIgnoreCase(Map.playerKeys.DOWN)) {
 			if(currentRow == gridRows - 1){
-				offset = new Point(1,0);
 				return false;
 			}
+			offset = new Point(1,0);
 			return true;
 		}
-		if (direction.equalsIgnoreCase("left")) {
+		if (direction.equalsIgnoreCase(Map.playerKeys.LEFT)) {
 			if(currentColumn == 0){
-				offset = new Point(0,-1);
 				return false;
 			}
+			offset = new Point(0,-1);
 			return true;
 		}
-		if (direction.equalsIgnoreCase("right")) {
+		if (direction.equalsIgnoreCase(Map.playerKeys.RIGHT)) {
 			if(currentColumn == gridColumns - 1){
-				offset = new Point(0,1);
 				return false;
 			}
+			offset = new Point(0,1);
 			return true;
 		}
 		return false;
 	}
 
 	public boolean move(String direction) {
-		if (direction.equalsIgnoreCase("up")) {
+		if (direction.equalsIgnoreCase(Map.playerKeys.UP)) {
 			if(currentRow == 0){
 				return false;
 			}
 			currentRow--;
 			return true;
 		}
-		if (direction.equalsIgnoreCase("down")) {
+		if (direction.equalsIgnoreCase(Map.playerKeys.DOWN)) {
 			if(currentRow == gridRows - 1){
 				return false;
 			}
 			currentRow++;
 			return true;
 		}
-		if (direction.equalsIgnoreCase("left")) {
+		if (direction.equalsIgnoreCase(Map.playerKeys.LEFT)) {
 			if(currentColumn == 0){
 				return false;
 			}
 			currentColumn--;
 			return true;
 		}
-		if (direction.equalsIgnoreCase("right")) {
+		if (direction.equalsIgnoreCase(Map.playerKeys.RIGHT)) {
 			if(currentColumn == gridColumns - 1){
 				return false;
 			}

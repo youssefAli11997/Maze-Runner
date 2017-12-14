@@ -1,3 +1,4 @@
+/*
 package characters.players;
 
 import java.util.ArrayList;
@@ -37,3 +38,4 @@ public class PlayersFactory {
 		return null;
 	}
 }
+*/
