@@ -1,5 +1,6 @@
 package characters;
 
+import characters.states.Normal;
 import utils.weapons.Weapon;
 
 import java.awt.*;
@@ -12,7 +13,7 @@ public abstract class GameCharacter {
 	private int gridColumns;
 	private int health;
 	private int healthChange;
-	private Point offset;
+	private Point offset = new Point(0,0);
 	private Weapon weapon;
 	private CharacterState currentState;
 
@@ -21,6 +22,7 @@ public abstract class GameCharacter {
 		this.currentColumn = currentColumn;
 		this.gridRows = gridRows;
 		this.gridColumns = gridColumns;
+		currentState = new Normal(this);
 	}
 
 	public int getCurrentColumn() {

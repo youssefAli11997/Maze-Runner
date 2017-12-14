@@ -86,9 +86,8 @@ public class GameEngine {
             public void handle(long l) {
                 //score Magho -- end game when score == 0
                 if (playerScore == 0 || player.getHealth() <= 0){
-                   stop();
+                   //stop();
                 }
-
                 if(currentCommand != null){
                     System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                     if(currentCommand.canExecute()) {
@@ -97,10 +96,10 @@ public class GameEngine {
                         int newCol = (int) (player.getCurrentColumn() + player.getOffset().getY());
                         if(maze[newRow][newCol] instanceof EmptyCell){
                             currentCommand.execute();
-                            if(!(maze[1][0] instanceof Rock)){
+                            /*if(!(maze[1][0] instanceof Rock)){
                                 maze[1][0] = new Rock();
                                 maze[1][0].draw(gridPane,1,0);
-                            }
+                            }*/
                         }
                         else if(maze[newRow][newCol] instanceof Tree){
                             currentCommand.execute();
@@ -168,26 +167,27 @@ public class GameEngine {
         gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println(event.getCode());
+                System.out.println(currentCommand);
                 if(event.getCode().equals(KeyCode.SPACE)){
                     activateFireMode();
-                    System.out.println("H: " + event.getCode());
                 }
                 else {
                     setCurrentCommand(event.getCode().toString());
                 }
+                System.out.println(currentCommand);
             }
         });
 
         gameScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println("sap: " + event.getCode());
                 if(event.getCode().equals(KeyCode.SPACE)){
-                    activateFireMode();
-                    System.out.println("H: " + event.getCode());
+                    //activateFireMode();
                 }
-                setCurrentCommand("released");
+                /*else {
+                    setCurrentCommand("released");
+                }*/
+                System.out.println(currentCommand);
             }
         });
     }
