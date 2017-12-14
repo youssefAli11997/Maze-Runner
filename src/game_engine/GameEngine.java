@@ -102,8 +102,8 @@ public class GameEngine {
                         if(maze[newRow][newCol] instanceof EmptyCell){
                             System.out.println("empty");
                             currentCommand.execute();
-                            if(!(maze[1][0] instanceof Fire)){
-                                maze[1][0] = new Fire();
+                            if(!(maze[1][0] instanceof Rock)){
+                                maze[1][0] = new Rock();
                                 maze[1][0].draw(gridPane,0,1);
                             }
                         }
