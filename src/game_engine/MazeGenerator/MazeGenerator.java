@@ -68,10 +68,14 @@ public class MazeGenerator {
 		int height = basicMaze.length;
 		int width = basicMaze[0].length;
 		ArrayList<Point> emptyCells = new ArrayList<>();
-		for(int i = 0 ; i < height ; i ++)
-			for(int j = 0 ; j < width ; j++)
+		for(int i = 0 ; i < height ; i ++) {
+			for(int j = 0 ; j < width ; j++) {
+			  if((i == 1 && j == 0 )||(i == height-2 && j == width-1)) // start and end portal
+			    continue ;
 				if(basicMaze[i][j] instanceof EmptyCell)
 					emptyCells.add(new Point(i,j));
+				}
+			}
 		return emptyCells;
 	}
 

@@ -13,7 +13,7 @@ public abstract class GameCharacter {
 	private int gridColumns;
 	private int health;
 	private int healthChange;
-	private Point offset = new Point(0,0);
+	private Point offset;
 	private Weapon weapon;
 	private CharacterState currentState;
 
@@ -23,6 +23,7 @@ public abstract class GameCharacter {
 		this.gridRows = gridRows;
 		this.gridColumns = gridColumns;
 		currentState = new Normal(this);
+		offset = new Point(0,0);
 	}
 
 	public int getCurrentColumn() {

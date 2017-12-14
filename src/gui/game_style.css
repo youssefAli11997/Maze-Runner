@@ -3,7 +3,11 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 5, 0, 0, 2);
 }
 
-.game-bg {
+.scroll-pane > .viewport {
     -fx-background-image: url("../assets/img/bg.jpg");
     -fx-background-repeat: repeat;
+}
+
+.red {
+    -fx-background-color: rgba(134,5,0,0.5);
 }
