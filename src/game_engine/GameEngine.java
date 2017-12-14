@@ -1,4 +1,4 @@
-package game_engine;
+  package game_engine;
 
 import cells.Cell;
 import cells.EmptyCell;
@@ -70,7 +70,7 @@ public class GameEngine {
 
     private void start(int rows, int columns){
         maze = MazeGenerator.create(rows, columns);
-        player = Player.getInstance(1,0, rows, columns);
+        player = Player.getInstance(1,0, maze.length, maze[0].length);
         deactivateFireMode();
         //score Magho -- set score at the begging --
         //show player.getscore not playerScore on the screen
