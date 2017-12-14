@@ -1,6 +1,7 @@
 package characters.commands;
 
 import characters.GameCharacter;
+import constants.Map;
 
 public class MoveLeftCommand extends Command {
 
@@ -10,12 +11,12 @@ public class MoveLeftCommand extends Command {
 	}
 
 	public boolean execute() {
-		return player.move("left");
+		return player.move(Map.playerKeys.LEFT);
 	}
 
 	@Override
 	public boolean canExecute() {
-		return player.canMove("down");
+		return player.canMove(Map.playerKeys.LEFT);
 	}
 
 }

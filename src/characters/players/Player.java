@@ -7,8 +7,22 @@ public class Player extends GameCharacter {
 	private int lives;
 	private String playerName;
 	private long Score;
+	private static Player ourInstance;
 
-	public Player(int currentRow, int currentColumn, int gridRows, int gridColumns) {
+	public static Player getInstance(){
+		if(ourInstance != null)
+			return ourInstance;
+		return null;
+	}
+
+	public static Player getInstance(int rows, int columns, int gridRows, int gridColumns) {
+		if(ourInstance == null){
+			ourInstance = new Player(rows,columns,gridRows,gridColumns);
+		}
+		return ourInstance;
+	}
+
+	private Player(int currentRow, int currentColumn, int gridRows, int gridColumns) {
 		super(currentRow, currentColumn, gridRows, gridColumns);
 	}
 

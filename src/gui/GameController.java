@@ -82,7 +82,7 @@ public class GameController {
 
     public static void movePlayer(int playerRow, int playerColumn) {
         graphicsContext.clearRect(0, 0, windowWidth, windowHeight);
-        graphicsContext.drawImage(playerImage, playerRow, playerColumn);
+        graphicsContext.drawImage(playerImage, playerColumn * 70, playerRow * 70);
     }
 
     @FXML

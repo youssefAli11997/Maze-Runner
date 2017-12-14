@@ -1,4 +1,4 @@
-package characters.players.types;
+/*package characters.players.types;
 
 import characters.players.Player;
 
@@ -9,3 +9,4 @@ public class Man extends Player {
 	}
 	
 }
+*/
