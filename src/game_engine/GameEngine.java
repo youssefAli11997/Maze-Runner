@@ -101,10 +101,10 @@ public class GameEngine {
                         if(maze[newRow][newCol] instanceof EmptyCell){
                             System.out.println("empty");
                             currentCommand.execute();
-                            /*if(!(maze[1][0] instanceof Rock)){
+                            if(!(maze[1][0] instanceof Rock)){
                                 maze[1][0] = new Rock();
                                 maze[1][0].draw(gridPane,1,0);
-                            }*/
+                            }
                         }
                         else if(maze[newRow][newCol] instanceof Tree){
                             System.out.println("tree");
