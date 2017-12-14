@@ -83,7 +83,7 @@ public class MenuController {
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.setMaximized(true);
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         mediaPlayer.stop();
         mediaPlayer = null;
 

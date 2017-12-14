@@ -9,11 +9,12 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="1376.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GameController">
    <children>
-      <HBox fx:id="infoBar" prefHeight="50.0" prefWidth="1376.0" styleClass="info-bar" stylesheets="@game_style.css">
+      <HBox fx:id="infoBar" minHeight="50.0" prefHeight="50.0" prefWidth="1376.0" styleClass="info-bar" stylesheets="@game_style.css">
          <children>
-            <Button mnemonicParsing="false" onAction="#onTestScroll" text="test scroll" />
+            <Button mnemonicParsing="false" onAction="#onVScroll" text="V scroll" />
+            <Button mnemonicParsing="false" onAction="#onHScroll" text="H scroll" />
          </children></HBox>
-      <ScrollPane fx:id="scrollPane" stylesheets="@game_style.css">
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" stylesheets="@game_style.css" vbarPolicy="NEVER">
         <content>
           <AnchorPane fx:id="gameLayout" minHeight="0.0" minWidth="0.0" prefHeight="291.0" prefWidth="318.0">
                <children>

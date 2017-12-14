@@ -29,6 +29,8 @@ public class GameController {
     private static GridPane grid;
     private static GraphicsContext graphicsContext;
     private static Image playerImage = new Image("assets/img/player.png");
+    private double scrollHValue, screllVvalue;
+
 
     @FXML
     private ScrollPane scrollPane;
@@ -51,8 +53,12 @@ public class GameController {
         mazeColumns = maze[0].length;
 
         infoBar.setPrefHeight(windowHeight * .1);
-        gameLayout.setPrefHeight(mazeColumns * 70);
-        gameLayout.setPrefWidth(mazeRows * 70);
+        gameLayout.setPrefHeight(mazeColumns * 70 + 20);
+        gameLayout.setPrefWidth(mazeRows * 70 + 20);
+
+        scrollHValue = 70 / (mazeColumns * 70 - windowWidth);
+        screllVvalue = 70 / (mazeRows * 70 - windowHeight);
+
 
         initMaze();
         gameLayout.getChildren().add(0, grid);
@@ -80,8 +86,13 @@ public class GameController {
     }
 
     @FXML
-    void onTestScroll() {
-
+    void onVScroll() {
+        scrollPane.setVvalue(scrollPane.getVvalue() + screllVvalue);
     }
-     
+
+    @FXML
+    void onHScroll() {
+        scrollPane.setHvalue(scrollPane.getHvalue() + scrollHValue);
+    }
+
 }
