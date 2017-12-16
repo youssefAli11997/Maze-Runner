@@ -90,6 +90,7 @@ public class GameEngine {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
+                boolean moved = false;
                 //score Magho -- end game when score == 0
                 if (playerScore == 0 || player.getHealth() <= 0){
                     //stop();
@@ -112,10 +113,12 @@ public class GameEngine {
                                 maze[1][0] = new Rock();
                                 maze[1][0].draw(gridPane,0,1);
                             }
+                            moved = true;
                         }
                         else if(maze[newRow][newCol] instanceof Tree){
                             //System.out.println("tree");
                             currentCommand.execute();
+                            moved = true;
                         }
                         else if(maze[newRow][newCol] instanceof Bomb){
                             //System.out.println("bomb");
@@ -123,6 +126,7 @@ public class GameEngine {
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
                             maze[newRow][newCol].draw(gridPane, newCol, newRow);
+                            moved = true;
                         }
                         else if(maze[newRow][newCol] instanceof Gift){
                             //System.out.println("gift");
@@ -130,6 +134,7 @@ public class GameEngine {
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
                             maze[newRow][newCol].draw(gridPane, newCol, newRow);
+                            moved = true;
                         }
                         // Monsters: to be implemented
 
@@ -137,7 +142,9 @@ public class GameEngine {
                         //System.out.println("after " + player.getCurrentRow() + " " + player.getCurrentColumn());
                         //GameController.movePlayer(player.getCurrentRow(), player.getCurrentColumn());
                         try {
-                            player.draw(directionMapped(), player.getCurrentRow(), player.getCurrentColumn());
+                            if(moved){
+                                player.draw(directionMapped(), player.getCurrentRow(), player.getCurrentColumn());
+                            }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

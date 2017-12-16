@@ -52,8 +52,6 @@ public class GameController {
 
     @FXML
     void initialize() throws IOException, InterruptedException {
-        player.setPlayerImage("dragon");
-        player.draw(Map.PlayerDirection.RIGHT, 2, 0);
 
         grid = new GridPane();
         gameEngine.setGridPane(grid);
@@ -71,6 +69,8 @@ public class GameController {
 
         initMaze();
         gameLayout.getChildren().add(0, grid);
+        player.setPlayerImage("dragon");
+        player.draw(Map.PlayerDirection.RIGHT, 1, 0);
         gameLayout.getChildren().add(player.getPlayerImageView());
 
         graphicsContext = canvas.getGraphicsContext2D();
