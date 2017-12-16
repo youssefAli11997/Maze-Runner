@@ -7,6 +7,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import utils.weapons.Weapon;
+import utils.weapons.types.Gun;
 import utils.weapons.types.Sword;
 
 import java.awt.*;
@@ -21,6 +22,8 @@ public abstract class GameCharacter {
     private int healthChange;
     private Point offset;
     private Weapon weapon;
+    private Gun gun;
+    private Sword sword;
     private CharacterState currentState;
     private javafx.scene.image.Image playerImage;
     private ImageView playerImageView;
@@ -40,10 +43,21 @@ public abstract class GameCharacter {
         this.currentColumn = currentColumn;
         this.gridRows = gridRows;
         this.gridColumns = gridColumns;
-        weapon = new Sword((Player) this);
+        sword = new Sword((Player) this);
+        gun = new Gun((Player) this);
+        weapon = sword;
         currentState = new Normal(this);
         offset = new Point(0, 0);
         playerImageView = new ImageView();
+    }
+
+    public void toggleWeapon(){
+        if(weapon instanceof Sword){
+            weapon = gun;
+        }
+        else{
+            weapon = sword;
+        }
     }
 
     public int getCurrentColumn() {

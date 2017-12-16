@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import utils.weapons.types.Sword;
 
 import java.awt.*;
 
@@ -151,12 +152,11 @@ public class GameEngine {
                     }
 
                     // Fire
-                    System.out.println(currentCommand.canExecute() + " " + fireMode);
                     if(currentCommand.canExecute() && fireMode){
                         //System.out.println("in fire");
                         Point firstTarget = getFirstTarget();
-                        int row = (int) getFirstTarget().getX();
-                        int col = (int) getFirstTarget().getY();
+                        int row = (int) firstTarget.getX();
+                        int col = (int) firstTarget.getY();
                         if(firstTarget != null){
                             //System.out.println(currentCommand.toString() + " " + firstTarget);
                             player.fire(maze[row][col]);
@@ -182,14 +182,14 @@ public class GameEngine {
 
     private int directionMapped() {
         if (currentCommand.toString().equalsIgnoreCase("up")) {
-                return Map.PlayerDirection.UP;
-            } else if (currentCommand.toString().equalsIgnoreCase("down")) {
-                return Map.PlayerDirection.DOWN;
-            } else if (currentCommand.toString().equalsIgnoreCase("left")) {
-                return Map.PlayerDirection.LEFT;
-            } else if (currentCommand.toString().equalsIgnoreCase("right")) {
-                return Map.PlayerDirection.RIGHT;
-            }
+            return Map.PlayerDirection.UP;
+        } else if (currentCommand.toString().equalsIgnoreCase("down")) {
+            return Map.PlayerDirection.DOWN;
+        } else if (currentCommand.toString().equalsIgnoreCase("left")) {
+            return Map.PlayerDirection.LEFT;
+        } else if (currentCommand.toString().equalsIgnoreCase("right")) {
+            return Map.PlayerDirection.RIGHT;
+        }
         return 0;
     }
 
@@ -199,30 +199,58 @@ public class GameEngine {
         int currCol = player.getCurrentColumn();
 
         if(direction.equalsIgnoreCase("up")){
-            for(int i = currRow + 1; i >= 0; i--){
-                if(canShoot(maze[i][currCol])) {
-                    return new Point(i, currCol);
+            if(player.getWeapon() instanceof Sword){
+                if(currRow > 0 && canShoot(maze[currRow - 1][currCol])){
+                    return new Point(currRow - 1, currCol);
+                }
+            }
+            else{
+                for(int i = currRow + 1; i >= 0; i--){
+                    if(canShoot(maze[i][currCol])) {
+                        return new Point(i, currCol);
+                    }
                 }
             }
         }
         if(direction.equalsIgnoreCase("down")){
-            for(int i = currRow + 1; i <= maze.length; i++){
-                if(canShoot(maze[i][currCol])) {
-                    return new Point(i, currCol);
+            if(player.getWeapon() instanceof Sword){
+                if(currRow < maze.length - 1 && canShoot(maze[currRow + 1][currCol])){
+                    return new Point(currRow + 1, currCol);
+                }
+            }
+            else{
+                for(int i = currRow + 1; i <= maze.length; i++){
+                    if(canShoot(maze[i][currCol])) {
+                        return new Point(i, currCol);
+                    }
                 }
             }
         }
         if(direction.equalsIgnoreCase("left")){
-            for(int i = currCol + 1; i >= 0; i--){
-                if(canShoot(maze[currRow][i])) {
-                    return new Point(currRow, i);
+            if(player.getWeapon() instanceof Sword){
+                if(currCol > 0 && canShoot(maze[currRow][currCol - 1])){
+                    return new Point(currRow, currCol - 1);
+                }
+            }
+            else{
+                for(int i = currCol + 1; i >= 0; i--){
+                    if(canShoot(maze[currRow][i])) {
+                        return new Point(currRow, i);
+                    }
                 }
             }
         }
         if(direction.equalsIgnoreCase("right")){
-            for(int i = currCol + 1; i <= maze[0].length; i++){
-                if(canShoot(maze[currRow][i])) {
-                    return new Point(currRow, i);
+            if(player.getWeapon() instanceof Sword){
+                if(currCol < maze[0].length - 1 && canShoot(maze[currRow][currCol + 1])){
+                    return new Point(currRow, currCol + 1);
+                }
+            }
+            else{
+                for(int i = currCol + 1; i <= maze[0].length; i++){
+                    if(canShoot(maze[currRow][i])) {
+                        return new Point(currRow, i);
+                    }
                 }
             }
         }
@@ -264,6 +292,9 @@ public class GameEngine {
                 // System.out.println(currentCommand);
                 if(event.getCode().equals(KeyCode.X)){
                     toggleFireMode();
+                }
+                else if(event.getCode().equals(KeyCode.T)){
+                    player.toggleWeapon();
                 }
                 else {
                     setCurrentCommand(event.getCode().toString());
