@@ -1,6 +1,7 @@
 package characters.players;
 
 import characters.GameCharacter;
+import characters.PlayerImageFactory;
 
 public class Player extends GameCharacter {
 
@@ -24,6 +25,10 @@ public class Player extends GameCharacter {
 
 	private Player(int currentRow, int currentColumn, int gridRows, int gridColumns) {
 		super(currentRow, currentColumn, gridRows, gridColumns);
+	}
+
+	public void setPlayerImage (String image){
+		super.setPlayerImage(PlayerImageFactory.setImage(image));
 	}
 
 	public int getLives() {

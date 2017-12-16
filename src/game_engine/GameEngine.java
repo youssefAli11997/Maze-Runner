@@ -1,4 +1,4 @@
-  package game_engine;
+package game_engine;
 
 import cells.Cell;
 import cells.EmptyCell;
@@ -10,6 +10,7 @@ import characters.GameCharacter;
 import characters.commands.Command;
 import characters.commands.CommandsFactory;
 import characters.players.Player;
+import constants.Map;
 import game_engine.MazeGenerator.MazeGenerator;
 import gui.GameController;
 import javafx.animation.AnimationTimer;
@@ -24,7 +25,7 @@ import javafx.scene.layout.GridPane;
  */
 public class GameEngine {
     //score Magho -- score & time start value --
-    private int playerScore  = 20;//depends on level
+    private int playerScore = 20;//depends on level
     private final long StartGameTime = System.currentTimeMillis();
 
     private Cell[][] maze;
@@ -43,20 +44,20 @@ public class GameEngine {
 
     private static GameEngine ourInstance;
 
-    public static GameEngine getInstance(){
-        if(ourInstance != null)
+    public static GameEngine getInstance() {
+        if (ourInstance != null)
             return ourInstance;
         return null;
     }
 
     public static GameEngine getInstance(int rows, int columns) {
-        if(ourInstance == null){
-            ourInstance = new GameEngine(rows,columns);
+        if (ourInstance == null) {
+            ourInstance = new GameEngine(rows, columns);
         }
         return ourInstance;
     }
 
-    private GameEngine(int rows, int columns){
+    private GameEngine(int rows, int columns) {
         this.rows = rows;
         this.cols = columns;
 
@@ -68,56 +69,59 @@ public class GameEngine {
         return maze;
     }
 
-    private void start(int rows, int columns){
+    private void start(int rows, int columns) {
         maze = MazeGenerator.create(rows, columns);
-        player = Player.getInstance(1,0, maze.length, maze[0].length);
+        player = Player.getInstance(1, 0, maze.length, maze[0].length);
         deactivateFireMode();
         //score Magho -- set score at the begging --
         //show player.getscore not playerScore on the screen
-        ((Player)player).setScore(playerScore);
+        ((Player) player).setScore(playerScore);
 
         running = true;
     }
 
-    private void loop(){
+    private void loop() {
         long StartLoopTime = System.currentTimeMillis();
 
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 //score Magho -- end game when score == 0
-                if (playerScore == 0 || player.getHealth() <= 0){
-                   //stop();
+                if (playerScore == 0 || player.getHealth() <= 0) {
+                    //stop();
                 }
                 //System.out.println(currentCommand);
-                if(currentCommand != null){
-                    if(currentCommand.canExecute()) {
+                if (currentCommand != null) {
+                    if (currentCommand.canExecute()) {
                         System.out.println("before " + player.getCurrentRow() + " " + player.getCurrentColumn());
-                        GameController.movePlayer (player.getCurrentRow(),player.getCurrentColumn());
+                        //TODO
+                        /*try {
+                            player.draw(Map.PlayerDirection.RIGHT, player.getCurrentRow(), player.getCurrentColumn());
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }*/
+                        //GameController.movePlayer (player.getCurrentRow(),player.getCurrentColumn());
                         // Move
                         int newRow = (int) (player.getCurrentRow() + player.getOffset().getX());
                         int newCol = (int) (player.getCurrentColumn() + player.getOffset().getY());
                         //System.out.println(newRow + " " + newCol);
-                        if(maze[newRow][newCol] instanceof EmptyCell){
+                        if (maze[newRow][newCol] instanceof EmptyCell) {
                             System.out.println("empty");
                             currentCommand.execute();
                             /*if(!(maze[1][0] instanceof Rock)){
                                 maze[1][0] = new Rock();
                                 maze[1][0].draw(gridPane,1,0);
                             }*/
-                        }
-                        else if(maze[newRow][newCol] instanceof Tree){
+                        } else if (maze[newRow][newCol] instanceof Tree) {
                             System.out.println("tree");
                             currentCommand.execute();
-                        }
-                        else if(maze[newRow][newCol] instanceof Bomb){
+                        } else if (maze[newRow][newCol] instanceof Bomb) {
                             System.out.println("bomb");
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
                             maze[newRow][newCol].draw(gridPane, newRow, newCol);
-                        }
-                        else if(maze[newRow][newCol] instanceof Gift){
+                        } else if (maze[newRow][newCol] instanceof Gift) {
                             System.out.println("gift");
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
@@ -131,7 +135,14 @@ public class GameEngine {
 
                         //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                         System.out.println("after " + player.getCurrentRow() + " " + player.getCurrentColumn());
-                        GameController.movePlayer(player.getCurrentRow(), player.getCurrentColumn());
+
+                        //TODO call draw in loop
+                        try {
+                            player.draw(directionMapped(), player.getCurrentRow(), player.getCurrentColumn());
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //GameController.movePlayer(player.getCurrentRow(), player.getCurrentColumn());
                     }
                 }
 
@@ -139,12 +150,26 @@ public class GameEngine {
                 //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                 //score Magho -- change score depend on time --
                 long timePassed = StartLoopTime - StartGameTime;
-                playerScore = (int) (playerScore - timePassed/1000);
-                ((Player)player).setScore(playerScore);
+                playerScore = (int) (playerScore - timePassed / 1000);
+                ((Player) player).setScore(playerScore);
             }
         };
         animationTimer.start();
 
+    }
+
+    private int directionMapped() {
+        if (currentCommand.toString().equalsIgnoreCase("up")) {
+            return Map.PlayerDirection.UP;
+        } else if (currentCommand.toString().equalsIgnoreCase("down")) {
+            return Map.PlayerDirection.DOWN;
+        } else if (currentCommand.toString().equalsIgnoreCase("left")) {
+            return Map.PlayerDirection.LEFT;
+        } else if (currentCommand.toString().equalsIgnoreCase("right")) {
+            return Map.PlayerDirection.RIGHT;
+        }
+        System.out.println(currentCommand.toString());
+        return 0;
     }
 
     public Command getCurrentCommand() {
@@ -155,11 +180,11 @@ public class GameEngine {
         currentCommand = new CommandsFactory().create(Player.getInstance(), currentCmd);
     }
 
-    public static void activateFireMode(){
+    public static void activateFireMode() {
         fireMode = true;
     }
 
-    public static void deactivateFireMode(){
+    public static void deactivateFireMode() {
         fireMode = false;
     }
 
@@ -171,28 +196,26 @@ public class GameEngine {
         return cols;
     }
 
-    public static void addKeyListeners(Scene gameScene){
+    public static void addKeyListeners(Scene gameScene) {
         gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-               // System.out.println(currentCommand);
-                if(event.getCode().equals(KeyCode.SPACE)){
+                // System.out.println(currentCommand);
+                if (event.getCode().equals(KeyCode.SPACE)) {
                     activateFireMode();
-                }
-                else {
+                } else {
                     setCurrentCommand(event.getCode().toString());
                 }
-               // System.out.println(currentCommand);
+                // System.out.println(currentCommand);
             }
         });
 
         gameScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if(event.getCode().equals(KeyCode.SPACE)){
+                if (event.getCode().equals(KeyCode.SPACE)) {
                     deactivateFireMode();
-                }
-                else {
+                } else {
                     setCurrentCommand("released");
                 }
             }
