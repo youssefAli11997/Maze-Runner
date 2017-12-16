@@ -19,4 +19,8 @@ public class MoveLeftCommand extends Command {
 		return player.canMove(Map.playerKeys.LEFT);
 	}
 
+	@Override
+	public String toString() {
+		return "left";
+	}
 }

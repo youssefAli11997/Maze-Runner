@@ -46,9 +46,9 @@ public class MenuController {
 
         String bip = "src/assets/sound/Forest of Forgetfulness.mp3";
         Media hit = new Media(new File(bip).toURI().toString());
-        mediaPlayer = new MediaPlayer(hit);
+        /*mediaPlayer = new MediaPlayer(hit);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+        mediaPlayer.play();*/
     }
 
     @FXML
@@ -84,8 +84,8 @@ public class MenuController {
         stage.setResizable(false);
         stage.setMaximized(true);
         stage.initStyle(StageStyle.UNDECORATED);
-        mediaPlayer.stop();
-        mediaPlayer = null;
+        /*mediaPlayer.stop();
+        mediaPlayer = null;*/
 
         GameEngine.addKeyListeners(root.getScene());
 

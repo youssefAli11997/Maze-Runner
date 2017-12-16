@@ -19,4 +19,8 @@ public class MoveDownCommand extends Command {
 		return player.canMove(Map.playerKeys.DOWN);
 	}
 
+	@Override
+	public String toString() {
+		return "down";
+	}
 }

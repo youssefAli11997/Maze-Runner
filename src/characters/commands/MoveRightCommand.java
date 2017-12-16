@@ -18,4 +18,8 @@ public class MoveRightCommand extends Command {
 		return player.canMove(Map.playerKeys.RIGHT);
 	}
 
+	@Override
+	public String toString() {
+		return "right";
+	}
 }

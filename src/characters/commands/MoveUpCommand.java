@@ -17,4 +17,9 @@ public class MoveUpCommand extends Command {
 	public boolean canExecute() {
 		return player.canMove(Map.playerKeys.UP);
 	}
+
+	@Override
+	public String toString() {
+		return "up";
+	}
 }
