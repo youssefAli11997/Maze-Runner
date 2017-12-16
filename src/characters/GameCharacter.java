@@ -1,8 +1,10 @@
 package characters;
 
+import characters.players.Player;
 import characters.states.Normal;
 import constants.Map;
 import utils.weapons.Weapon;
+import utils.weapons.types.Sword;
 
 import java.awt.*;
 
@@ -23,6 +25,7 @@ public abstract class GameCharacter {
 		this.currentColumn = currentColumn;
 		this.gridRows = gridRows;
 		this.gridColumns = gridColumns;
+		weapon = new Sword((Player) this);
 		currentState = new Normal(this);
 		offset = new Point(0,0);
 	}

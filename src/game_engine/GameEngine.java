@@ -4,6 +4,7 @@ import cells.Cell;
 import cells.EmptyCell;
 import cells.bombs.Bomb;
 import cells.gifts.Gift;
+import cells.walls.types.Fire;
 import cells.walls.types.Rock;
 import cells.walls.types.Tree;
 import characters.GameCharacter;
@@ -101,10 +102,10 @@ public class GameEngine {
                         if(maze[newRow][newCol] instanceof EmptyCell){
                             System.out.println("empty");
                             currentCommand.execute();
-                            /*if(!(maze[1][0] instanceof Rock)){
+                            if(!(maze[1][0] instanceof Rock)){
                                 maze[1][0] = new Rock();
-                                maze[1][0].draw(gridPane,1,0);
-                            }*/
+                                maze[1][0].draw(gridPane,0,1);
+                            }
                         }
                         else if(maze[newRow][newCol] instanceof Tree){
                             System.out.println("tree");
@@ -115,14 +116,14 @@ public class GameEngine {
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
-                            maze[newRow][newCol].draw(gridPane, newRow, newCol);
+                            maze[newRow][newCol].draw(gridPane, newCol, newRow);
                         }
                         else if(maze[newRow][newCol] instanceof Gift){
                             System.out.println("gift");
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
-                            maze[newRow][newCol].draw(gridPane, newRow, newCol);
+                            maze[newRow][newCol].draw(gridPane, newCol, newRow);
                         }
                         // Monsters: to be implemented
 
