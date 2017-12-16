@@ -1,4 +1,4 @@
-  package game_engine;
+package game_engine;
 
 import cells.Cell;
 import cells.EmptyCell;
@@ -7,10 +7,12 @@ import cells.gifts.Gift;
 import cells.walls.types.Fire;
 import cells.walls.types.Rock;
 import cells.walls.types.Tree;
+import cells.walls.types.Wooden;
 import characters.GameCharacter;
 import characters.commands.Command;
 import characters.commands.CommandsFactory;
 import characters.players.Player;
+import constants.Map;
 import game_engine.MazeGenerator.MazeGenerator;
 import gui.GameController;
 import javafx.animation.AnimationTimer;
@@ -19,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+
+import java.awt.*;
 
 /**
  * Created by M.Sharaf on 13/12/2017.
@@ -72,7 +76,7 @@ public class GameEngine {
     private void start(int rows, int columns){
         maze = MazeGenerator.create(rows, columns);
         player = Player.getInstance(1,0, maze.length, maze[0].length);
-        deactivateFireMode();
+        fireMode = false;
         //score Magho -- set score at the begging --
         //show player.getscore not playerScore on the screen
         ((Player)player).setScore(playerScore);
@@ -88,19 +92,21 @@ public class GameEngine {
             public void handle(long l) {
                 //score Magho -- end game when score == 0
                 if (playerScore == 0 || player.getHealth() <= 0){
-                   //stop();
+                    //stop();
                 }
-                //System.out.println(currentCommand);
+                //if(fireMode)
+                //    System.out.println(currentCommand);
                 if(currentCommand != null){
-                    if(currentCommand.canExecute()) {
-                        System.out.println("before " + player.getCurrentRow() + " " + player.getCurrentColumn());
-                        GameController.movePlayer (player.getCurrentRow(),player.getCurrentColumn());
+                    if(currentCommand.canExecute() && !fireMode) {
+                        System.out.println("here");
+                        //System.out.println("before " + player.getCurrentRow() + " " + player.getCurrentColumn());
+                        //GameController.movePlayer (player.getCurrentRow(),player.getCurrentColumn());
                         // Move
                         int newRow = (int) (player.getCurrentRow() + player.getOffset().getX());
                         int newCol = (int) (player.getCurrentColumn() + player.getOffset().getY());
                         //System.out.println(newRow + " " + newCol);
                         if(maze[newRow][newCol] instanceof EmptyCell){
-                            System.out.println("empty");
+                            //System.out.println("empty");
                             currentCommand.execute();
                             if(!(maze[1][0] instanceof Rock)){
                                 maze[1][0] = new Rock();
@@ -108,18 +114,18 @@ public class GameEngine {
                             }
                         }
                         else if(maze[newRow][newCol] instanceof Tree){
-                            System.out.println("tree");
+                            //System.out.println("tree");
                             currentCommand.execute();
                         }
                         else if(maze[newRow][newCol] instanceof Bomb){
-                            System.out.println("bomb");
+                            //System.out.println("bomb");
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
                             maze[newRow][newCol].draw(gridPane, newCol, newRow);
                         }
                         else if(maze[newRow][newCol] instanceof Gift){
-                            System.out.println("gift");
+                            //System.out.println("gift");
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
@@ -127,13 +133,32 @@ public class GameEngine {
                         }
                         // Monsters: to be implemented
 
-                        // Fire
-
-
                         //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
-                        System.out.println("after " + player.getCurrentRow() + " " + player.getCurrentColumn());
-                        GameController.movePlayer(player.getCurrentRow(), player.getCurrentColumn());
+                        //System.out.println("after " + player.getCurrentRow() + " " + player.getCurrentColumn());
+                        //GameController.movePlayer(player.getCurrentRow(), player.getCurrentColumn());
+                        try {
+                            player.draw(directionMapped(), player.getCurrentRow(), player.getCurrentColumn());
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
+
+                    // Fire
+                    System.out.println(currentCommand.canExecute() + " " + fireMode);
+                    if(currentCommand.canExecute() && fireMode){
+                        //System.out.println("in fire");
+                        Point firstTarget = getFirstTarget();
+                        int row = (int) getFirstTarget().getX();
+                        int col = (int) getFirstTarget().getY();
+                        if(firstTarget != null){
+                            //System.out.println(currentCommand.toString() + " " + firstTarget);
+                            player.fire(maze[row][col]);
+                            maze[row][col] = new EmptyCell();
+                            maze[row][col].draw(gridPane, col, row);
+                        }
+                        toggleFireMode();
+                    }
+
                 }
 
                 currentCommand = null;
@@ -148,6 +173,62 @@ public class GameEngine {
 
     }
 
+    private int directionMapped() {
+        if (currentCommand.toString().equalsIgnoreCase("up")) {
+                return Map.PlayerDirection.UP;
+            } else if (currentCommand.toString().equalsIgnoreCase("down")) {
+                return Map.PlayerDirection.DOWN;
+            } else if (currentCommand.toString().equalsIgnoreCase("left")) {
+                return Map.PlayerDirection.LEFT;
+            } else if (currentCommand.toString().equalsIgnoreCase("right")) {
+                return Map.PlayerDirection.RIGHT;
+            }
+        return 0;
+    }
+
+    private Point getFirstTarget() {
+        String direction = currentCommand.toString();
+        int currRow = player.getCurrentRow();
+        int currCol = player.getCurrentColumn();
+
+        if(direction.equalsIgnoreCase("up")){
+            for(int i = currRow + 1; i >= 0; i--){
+                if(canShoot(maze[i][currCol])) {
+                    return new Point(i, currCol);
+                }
+            }
+        }
+        if(direction.equalsIgnoreCase("down")){
+            for(int i = currRow + 1; i <= maze.length; i++){
+                if(canShoot(maze[i][currCol])) {
+                    return new Point(i, currCol);
+                }
+            }
+        }
+        if(direction.equalsIgnoreCase("left")){
+            for(int i = currCol + 1; i >= 0; i--){
+                if(canShoot(maze[currRow][i])) {
+                    return new Point(currRow, i);
+                }
+            }
+        }
+        if(direction.equalsIgnoreCase("right")){
+            for(int i = currCol + 1; i <= maze[0].length; i++){
+                if(canShoot(maze[currRow][i])) {
+                    return new Point(currRow, i);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    private boolean canShoot(Cell cell) {
+        return cell instanceof Wooden ||
+                cell instanceof Gift ||
+                cell instanceof Bomb;
+    }
+
     public Command getCurrentCommand() {
         return currentCommand;
     }
@@ -156,12 +237,9 @@ public class GameEngine {
         currentCommand = new CommandsFactory().create(Player.getInstance(), currentCmd);
     }
 
-    public static void activateFireMode(){
-        fireMode = true;
-    }
-
-    public static void deactivateFireMode(){
-        fireMode = false;
+    public static void toggleFireMode(){
+        fireMode = !fireMode;
+        System.out.println("fire toggles");
     }
 
     public int getRows() {
@@ -176,22 +254,22 @@ public class GameEngine {
         gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-               // System.out.println(currentCommand);
-                if(event.getCode().equals(KeyCode.SPACE)){
-                    activateFireMode();
+                // System.out.println(currentCommand);
+                if(event.getCode().equals(KeyCode.X)){
+                    toggleFireMode();
                 }
                 else {
                     setCurrentCommand(event.getCode().toString());
                 }
-               // System.out.println(currentCommand);
+                // System.out.println(currentCommand);
             }
         });
 
         gameScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if(event.getCode().equals(KeyCode.SPACE)){
-                    deactivateFireMode();
+                if(event.getCode().equals(KeyCode.X)){
+                    //deactivateFireMode();
                 }
                 else {
                     setCurrentCommand("released");

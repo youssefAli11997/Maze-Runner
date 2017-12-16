@@ -34,6 +34,8 @@ public abstract class Weapon {
 					}
 				}
 			}
+		} else {
+			player.setScore(player.getScore() + increasedInScore);
 		}
 	}
 
