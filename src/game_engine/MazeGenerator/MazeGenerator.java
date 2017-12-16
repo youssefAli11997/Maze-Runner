@@ -88,7 +88,7 @@ public class MazeGenerator {
     		List<String> unVisitedNeighbours = getUnvisitedNeighbours(current);
     		if(!unVisitedNeighbours.isEmpty()) {
     			stack.push(current);
-    			String nextDirection = randomPick(current , unVisitedNeighbours);
+    			String nextDirection = randomPick(unVisitedNeighbours);
     			GridCell next = grid[current.getINeighbour(nextDirection)][current.getJNeighbour(nextDirection)];
     			current.removeWall(nextDirection);
     			next.removeOppositeWall(nextDirection);
@@ -102,7 +102,7 @@ public class MazeGenerator {
     	}	
     }
 
-	private static String randomPick(GridCell current , List<String> unVisitedNeighbours) {
+	private static String randomPick(List<String> unVisitedNeighbours) {
 		int picked = RandomGenerator.generateRandom(unVisitedNeighbours.size());
 		String direction = unVisitedNeighbours.get(picked);
 		return direction;
