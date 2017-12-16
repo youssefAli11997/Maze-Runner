@@ -42,7 +42,7 @@ public abstract class GameCharacter {
         this.gridColumns = gridColumns;
         weapon = new Sword((Player) this);
         currentState = new Normal(this);
-        offset = new Point(0,0);
+        offset = new Point(0, 0);
         playerImageView = new ImageView();
     }
 
@@ -60,31 +60,31 @@ public abstract class GameCharacter {
 
     public boolean canMove(String direction) {
         if (direction.equalsIgnoreCase(Map.playerKeys.UP)) {
-            if(currentRow == 0){
+            if (currentRow == 0) {
                 return false;
             }
-            offset = new Point(-1,0);
+            offset = new Point(-1, 0);
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.DOWN)) {
-            if(currentRow == gridRows - 1){
+            if (currentRow == gridRows - 1) {
                 return false;
             }
-            offset = new Point(1,0);
+            offset = new Point(1, 0);
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.LEFT)) {
-            if(currentColumn == 0){
+            if (currentColumn == 0) {
                 return false;
             }
-            offset = new Point(0,-1);
+            offset = new Point(0, -1);
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.RIGHT)) {
-            if(currentColumn == gridColumns - 1){
+            if (currentColumn == gridColumns - 1) {
                 return false;
             }
-            offset = new Point(0,1);
+            offset = new Point(0, 1);
             return true;
         }
         return false;
@@ -92,28 +92,28 @@ public abstract class GameCharacter {
 
     public boolean move(String direction) {
         if (direction.equalsIgnoreCase(Map.playerKeys.UP)) {
-            if(currentRow == 0){
+            if (currentRow == 0) {
                 return false;
             }
             currentRow--;
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.DOWN)) {
-            if(currentRow == gridRows - 1){
+            if (currentRow == gridRows - 1) {
                 return false;
             }
             currentRow++;
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.LEFT)) {
-            if(currentColumn == 0){
+            if (currentColumn == 0) {
                 return false;
             }
             currentColumn--;
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.RIGHT)) {
-            if(currentColumn == gridColumns - 1){
+            if (currentColumn == gridColumns - 1) {
                 return false;
             }
             currentColumn++;
@@ -122,16 +122,31 @@ public abstract class GameCharacter {
         return false;
     }
 
+    private String directionMapped(int dir) {
+        if (dir == Map.PlayerDirection.UP) {
+            return Map.playerKeys.UP;
+        } else if (dir == Map.PlayerDirection.RIGHT) {
+            return Map.playerKeys.RIGHT;
+        } else if (dir == Map.PlayerDirection.LEFT) {
+            return Map.playerKeys.LEFT;
+        } else if (dir == Map.PlayerDirection.DOWN) {
+            return Map.playerKeys.DOWN;
+        }
+        return null;
+    }
+
     public void draw(int dir, int row, int column) throws InterruptedException {
         //TODO make calculations -> crop photo and change offset
-        System.out.println("sharaf*********" + dir);
-        dir *= 70;
+        if (!canMove(directionMapped(dir)))
+            return;
+
+        System.out.println(dir);
         int offsetX = 1;
         int offsetY = 1;
 
         if (dir == Map.PlayerDirection.UP) {
             offsetY = -1;
-        } else if (dir == Map.PlayerDirection.RIGHT) {
+        } else if (dir == Map.PlayerDirection.LEFT) {
             offsetX = -1;
         }
 
@@ -139,22 +154,23 @@ public abstract class GameCharacter {
         int finalOffsetY = offsetY;
         int finalOffsetX = offsetX;
         final int[] imageIndex = {0};
+
         Thread t1 = new Thread(() -> {
             for (int i = 1; i <= 4; i++) {
                 imageIndex[0] *= 70;
-                playerImageView.setViewport(new Rectangle2D(imageIndex[0], finalDir, 70, 70));
+                playerImageView.setViewport(new Rectangle2D(imageIndex[0], finalDir * 70, 70, 70));
 
                 if (finalDir == Map.PlayerDirection.UP || finalDir == Map.PlayerDirection.DOWN) {
                     playerImageView.setLayoutX(column * 70);
-                    playerImageView.setLayoutY(row * 70 + (17.5 * finalOffsetY * i) - 70);
+                    playerImageView.setLayoutY(row * 70 - (70 * finalOffsetY) + (17.5 * finalOffsetY * i));
                 } else if (finalDir == Map.PlayerDirection.RIGHT || finalDir == Map.PlayerDirection.LEFT) {
-                    playerImageView.setLayoutX(column * 70 + (17.5 * finalOffsetX * i) - 70);
+                    playerImageView.setLayoutX(column * 70 - (70 * finalOffsetX) + (17.5 * finalOffsetX * i));
                     playerImageView.setLayoutY(row * 70);
                 }
 
-                imageIndex[0]++;
+                imageIndex[0] = i;
                 try {
-                    Thread.sleep(20);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -181,16 +197,14 @@ public abstract class GameCharacter {
     }
 
     /**
-     * @param health
-     *            the health to set
+     * @param health the health to set
      */
     public void setHealth(int health) {
         this.health = health;
     }
 
     /**
-     * @param health
-     *            the health change to set
+     * @param health the health change to set
      */
     public void setHealthChange(int health) {
         currentState.setHealthChange(health);
@@ -208,8 +222,7 @@ public abstract class GameCharacter {
     }
 
     /**
-     * @param weapon
-     *            the weapon to set
+     * @param weapon the weapon to set
      */
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
