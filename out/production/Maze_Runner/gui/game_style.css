@@ -1,0 +1,13 @@
+.info-bar {
+    -fx-background-color: rgb(65, 67, 69);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 5, 0, 0, 2);
+}
+
+.scroll-pane > .viewport {
+    -fx-background-image: url("../assets/img/bg.jpg");
+    -fx-background-repeat: repeat;
+}
+
+.red {
+    -fx-background-color: rgba(134,5,0,0.5);
+}

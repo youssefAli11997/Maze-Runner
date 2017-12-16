@@ -137,10 +137,7 @@ public abstract class GameCharacter {
 
     public void draw(int dir, int row, int column) throws InterruptedException {
         //TODO make calculations -> crop photo and change offset
-        if (!canMove(directionMapped(dir)))
-            return;
 
-        System.out.println(dir);
         int offsetX = 1;
         int offsetY = 1;
 
