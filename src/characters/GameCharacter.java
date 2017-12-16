@@ -1,5 +1,6 @@
 package characters;
 
+import characters.players.Player;
 import characters.states.Normal;
 import constants.Map;
 import javafx.geometry.Rectangle2D;
@@ -8,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import utils.weapons.Weapon;
+import utils.weapons.types.Sword;
 
 import java.awt.Point;
 import java.util.concurrent.TimeUnit;

@@ -4,6 +4,7 @@ import cells.Cell;
 import cells.EmptyCell;
 import cells.bombs.Bomb;
 import cells.gifts.Gift;
+import cells.walls.types.Fire;
 import cells.walls.types.Rock;
 import cells.walls.types.Tree;
 import characters.GameCharacter;
@@ -108,25 +109,42 @@ public class GameEngine {
                         if (maze[newRow][newCol] instanceof EmptyCell) {
                             System.out.println("empty");
                             currentCommand.execute();
-                            /*if(!(maze[1][0] instanceof Rock)){
+                            if(!(maze[1][0] instanceof Rock)){
                                 maze[1][0] = new Rock();
-                                maze[1][0].draw(gridPane,1,0);
-                            }*/
-                        } else if (maze[newRow][newCol] instanceof Tree) {
-                            System.out.println("tree");
-                            currentCommand.execute();
-                        } else if (maze[newRow][newCol] instanceof Bomb) {
-                            System.out.println("bomb");
-                            currentCommand.execute();
-                            maze[newRow][newCol].action(player);
-                            maze[newRow][newCol] = new EmptyCell();
-                            maze[newRow][newCol].draw(gridPane, newRow, newCol);
-                        } else if (maze[newRow][newCol] instanceof Gift) {
+                                //***************
+
+//<<<<<<< HEAD
+//                                maze[1][0].draw(gridPane,1,0);
+//                            }*/
+//                        } else if (maze[newRow][newCol] instanceof Tree) {
+//=======
+//                                maze[1][0].draw(gridPane,0,1);
+//                            }
+//                        }
+//                        else if(maze[newRow][newCol] instanceof Tree){
+//>>>>>>> e2d69e70231043d02ec561d04c0bf1144e57df3a
+//                            System.out.println("tree");
+//                            currentCommand.execute();
+//                        } else if (maze[newRow][newCol] instanceof Bomb) {
+//                            System.out.println("bomb");
+//                            currentCommand.execute();
+//                            maze[newRow][newCol].action(player);
+//                            maze[newRow][newCol] = new EmptyCell();
+//<<<<<<< HEAD
+//                            maze[newRow][newCol].draw(gridPane, newRow, newCol);
+//                        } else if (maze[newRow][newCol] instanceof Gift) {
+//=======
+//                            maze[newRow][newCol].draw(gridPane, newCol, newRow);
+//                        }
+//                        else if(maze[newRow][newCol] instanceof Gift){
+//>>>>>>> e2d69e70231043d02ec561d04c0bf1144e57df3a
+
+                                //*************************
                             System.out.println("gift");
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
-                            maze[newRow][newCol].draw(gridPane, newRow, newCol);
+                            maze[newRow][newCol].draw(gridPane, newCol, newRow);
                         }
                         // Monsters: to be implemented
 
