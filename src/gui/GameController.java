@@ -1,18 +1,22 @@
 package gui;
 
 import cells.Cell;
+import characters.players.Player;
+import constants.Map;
 import game_engine.GameEngine;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -25,11 +29,13 @@ public class GameController {
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private static double windowWidth = screenSize.getWidth(), windowHeight = screenSize.getHeight();
     private Cell[][] maze;
-    private int mazeRows, mazeColumns;
+    private static int mazeRows, mazeColumns;
     private static GridPane grid;
     private static GraphicsContext graphicsContext;
     private static Image playerImage = new Image("assets/img/player.png");
     private double scrollHValue, scrollVvalue;
+
+    private Player player = Player.getInstance();
 
 
     @FXML
@@ -45,7 +51,10 @@ public class GameController {
     private Canvas canvas;
 
     @FXML
-    void initialize() throws IOException {
+    void initialize() throws IOException, InterruptedException {
+        player.setPlayerImage("dragon");
+        player.draw(Map.PlayerDirection.RIGHT, 2, 0);
+
         grid = new GridPane();
         gameEngine.setGridPane(grid);
         maze = gameEngine.getMaze();
@@ -62,13 +71,12 @@ public class GameController {
 
         initMaze();
         gameLayout.getChildren().add(0, grid);
+        gameLayout.getChildren().add(player.getPlayerImageView());
 
         graphicsContext = canvas.getGraphicsContext2D();
         canvas.setWidth(mazeRows * 70);
         canvas.setHeight(mazeColumns * 70);
         canvas.getStyleClass().add("red");
-
-        graphicsContext.drawImage(playerImage, 0, 70);
     }
 
     private void initMaze() {
@@ -78,11 +86,6 @@ public class GameController {
                 maze[j][i].draw(grid, i, j);
             }
         }
-    }
-
-    public static void movePlayer(int playerRow, int playerColumn) {
-        graphicsContext.clearRect(0, 0, windowWidth, windowHeight);
-        graphicsContext.drawImage(playerImage, playerColumn * 70, playerRow * 70);
     }
 
     @FXML

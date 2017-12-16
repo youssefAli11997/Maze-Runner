@@ -1,4 +1,4 @@
-  package game_engine;
+package game_engine;
 
 import cells.Cell;
 import cells.EmptyCell;
@@ -12,6 +12,7 @@ import characters.GameCharacter;
 import characters.commands.Command;
 import characters.commands.CommandsFactory;
 import characters.players.Player;
+import constants.Map;
 import game_engine.MazeGenerator.MazeGenerator;
 import gui.GameController;
 import javafx.animation.AnimationTimer;
@@ -23,7 +24,7 @@ import javafx.scene.layout.GridPane;
 
 import java.awt.*;
 
-  /**
+/**
  * Created by M.Sharaf on 13/12/2017.
  */
 public class GameEngine {
@@ -91,7 +92,7 @@ public class GameEngine {
             public void handle(long l) {
                 //score Magho -- end game when score == 0
                 if (playerScore == 0 || player.getHealth() <= 0){
-                   //stop();
+                    //stop();
                 }
                 //if(fireMode)
                 //    System.out.println(currentCommand);
@@ -99,7 +100,7 @@ public class GameEngine {
                     if(currentCommand.canExecute() && !fireMode) {
                         System.out.println("here");
                         //System.out.println("before " + player.getCurrentRow() + " " + player.getCurrentColumn());
-                        GameController.movePlayer (player.getCurrentRow(),player.getCurrentColumn());
+                        //GameController.movePlayer (player.getCurrentRow(),player.getCurrentColumn());
                         // Move
                         int newRow = (int) (player.getCurrentRow() + player.getOffset().getX());
                         int newCol = (int) (player.getCurrentColumn() + player.getOffset().getY());
@@ -134,7 +135,12 @@ public class GameEngine {
 
                         //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                         //System.out.println("after " + player.getCurrentRow() + " " + player.getCurrentColumn());
-                        GameController.movePlayer(player.getCurrentRow(), player.getCurrentColumn());
+                        //GameController.movePlayer(player.getCurrentRow(), player.getCurrentColumn());
+                        try {
+                            player.draw(directionMapped(), player.getCurrentRow(), player.getCurrentColumn());
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     // Fire
@@ -167,7 +173,20 @@ public class GameEngine {
 
     }
 
-      private Point getFirstTarget() {
+    private int directionMapped() {
+        if (currentCommand.toString().equalsIgnoreCase("up")) {
+                return Map.PlayerDirection.UP;
+            } else if (currentCommand.toString().equalsIgnoreCase("down")) {
+                return Map.PlayerDirection.DOWN;
+            } else if (currentCommand.toString().equalsIgnoreCase("left")) {
+                return Map.PlayerDirection.LEFT;
+            } else if (currentCommand.toString().equalsIgnoreCase("right")) {
+                return Map.PlayerDirection.RIGHT;
+            }
+        return 0;
+    }
+
+    private Point getFirstTarget() {
         String direction = currentCommand.toString();
         int currRow = player.getCurrentRow();
         int currCol = player.getCurrentColumn();
@@ -202,15 +221,15 @@ public class GameEngine {
         }
 
         return null;
-      }
+    }
 
-      private boolean canShoot(Cell cell) {
+    private boolean canShoot(Cell cell) {
         return cell instanceof Wooden ||
-               cell instanceof Gift ||
-               cell instanceof Bomb;
-      }
+                cell instanceof Gift ||
+                cell instanceof Bomb;
+    }
 
-      public Command getCurrentCommand() {
+    public Command getCurrentCommand() {
         return currentCommand;
     }
 
@@ -235,14 +254,14 @@ public class GameEngine {
         gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-               // System.out.println(currentCommand);
+                // System.out.println(currentCommand);
                 if(event.getCode().equals(KeyCode.X)){
                     toggleFireMode();
                 }
                 else {
                     setCurrentCommand(event.getCode().toString());
                 }
-               // System.out.println(currentCommand);
+                // System.out.println(currentCommand);
             }
         });
 

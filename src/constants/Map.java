@@ -1,5 +1,7 @@
 package constants;
 
+import javafx.scene.image.Image;
+
 /**
  * Created by M.Sharaf on 07/12/2017.
  */
@@ -20,6 +22,17 @@ public class Map {
 		public static final int GIFT = 3;
 	}
 
+	public static class PlayerImage{
+		public static final Image dragon = new Image("assets/img/playerImage/dragon.png");
+	}
+
+	public class PlayerDirection {
+		public static final int DOWN = 0;
+		public static final int LEFT = 1;
+		public static final int RIGHT = 2;
+		public static final int UP = 3;
+	}
+
 	public class BombType {
 
 	}
@@ -31,5 +44,6 @@ public class Map {
 	public class WeaponType {
 
 	}
+
 
 }
