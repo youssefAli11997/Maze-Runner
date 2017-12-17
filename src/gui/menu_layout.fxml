@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -12,9 +14,9 @@
    <children>
       <HBox fx:id="mainHbox" alignment="CENTER" prefHeight="505.0" prefWidth="760.0">
          <children>
-            <VBox fx:id="menuVbox" alignment="CENTER" prefHeight="484.0" prefWidth="800.0" spacing="8.0">
+            <VBox fx:id="menuVbox" alignment="CENTER" prefHeight="484.0" prefWidth="500.0" spacing="8.0">
                <children>
-                  <Label text="MAZE RUNNER الضريم طيم" textFill="#3d2775">
+                  <Label text="MAZE RUNNER" textFill="#3d2775">
                      <font>
                         <Font name="Calibri Bold Italic" size="60.0" />
                      </font>
@@ -24,10 +26,51 @@
                   </Label>
                   <Button mnemonicParsing="false" onAction="#onStartNewGame" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="START NEW GAME" />
                   <Button mnemonicParsing="false" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="HIGH SCORE" />
-                  <Button mnemonicParsing="false" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="SETTINGS" />
+                  <Button mnemonicParsing="false" onAction="#onSettingsClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="SETTINGS" />
                   <Button mnemonicParsing="false" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="SAVE" />
                   <Button mnemonicParsing="false" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="LOAD" />
                   <Button mnemonicParsing="false" onAction="#onExitClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="EXIT" />
+               </children>
+            </VBox>
+            <VBox fx:id="settingsVbox" alignment="CENTER" prefHeight="484.0" prefWidth="500.0" spacing="8.0">
+               <children>
+                  <Label text="Settings" textFill="#3d2775">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="60.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Difficulty" textFill="#c30000">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="40.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <RadioButton fx:id="rbEasy" mnemonicParsing="false" stylesheets="@menu_style.css" text="EASY" />
+                        <RadioButton fx:id="rbMedium" mnemonicParsing="false" text="MEDIUM" />
+                        <RadioButton fx:id="rbHard" mnemonicParsing="false" text="HARD" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label text="Character" textFill="#c30000">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="40.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="imgPrev" mnemonicParsing="false" onAction="#onPrevClick" stylesheets="@menu_style.css" text="prev" />
+                        <ImageView fx:id="playerImageView" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="imgNext" mnemonicParsing="false" onAction="#onNextClick" stylesheets="@menu_style.css" text="next" />
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#onExitClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" stylesheets="@menu_style.css" text="Load Image" />
+                  <Button mnemonicParsing="false" onAction="#onApplyClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="APPLY" />
                </children>
             </VBox>
          </children>

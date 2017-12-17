@@ -23,7 +23,10 @@ public class Map {
 	}
 
 	public static class PlayerImage{
-		public static final Image dragon = new Image("assets/img/playerImage/dragon.png");
+		public static final Image DRAGON = new Image("assets/img/playerImage/dragon.png");
+		public static final Image HORSE = new Image("assets/img/playerImage/horse.png");
+		public static final Image CHICKEN = new Image("assets/img/playerImage/chicken.png");
+		public static final Image PERSON = new Image("assets/img/playerImage/person.png");
 	}
 
 	public class PlayerDirection {

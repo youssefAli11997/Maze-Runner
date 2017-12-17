@@ -69,7 +69,7 @@ public class GameController {
 
         initMaze();
         gameLayout.getChildren().add(0, grid);
-        player.setPlayerImage("dragon");
+        player.setPlayerImage(MenuController.playerImage);
         player.draw(Map.PlayerDirection.RIGHT, 1, 0);
         gameLayout.getChildren().add(player.getPlayerImageView());
 
