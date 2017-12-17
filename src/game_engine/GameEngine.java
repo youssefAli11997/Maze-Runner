@@ -91,6 +91,7 @@ public class GameEngine {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
+              System.out.println(System.currentTimeMillis());
                 boolean moved = false;
                 //score Magho -- end game when score == 0
                 if (playerScore == 0 || player.getHealth() <= 0){
@@ -157,6 +158,14 @@ public class GameEngine {
                 currentCommand = null;
                 //score Magho -- change score depend on time --
                 long timePassed = StartLoopTime - StartGameTime;
+                try {
+                  Thread.sleep(100);
+                } catch (InterruptedException e) {
+                  // TODO Auto-generated catch block
+                  e.printStackTrace();
+                }
+                
+                System.out.println(System.currentTimeMillis());
                 playerScore = (int) (playerScore - timePassed/1000);
                 ((Player)player).setScore(playerScore);
 
