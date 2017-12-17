@@ -19,6 +19,6 @@ public class SmallBomb extends Bomb {
     @Override
     public void action(GameCharacter character) {
 		log.info("small bomb is applied decreas in health");
-        character.setCurrentColumn(character.getHealth() - 10);
+		character.setHealth(character.getHealth() - 10);
     }
 }
