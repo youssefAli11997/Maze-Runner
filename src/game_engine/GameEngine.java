@@ -160,7 +160,7 @@ public class GameEngine {
                 //score Magho -- change score depend on time --
                 long timePassed = StartLoopTime - StartGameTime;
                 try {
-                  Thread.sleep(100);
+                  Thread.sleep(75);
                 } catch (InterruptedException e) {
                   // TODO Auto-generated catch block
                   e.printStackTrace();

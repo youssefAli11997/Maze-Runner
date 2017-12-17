@@ -181,7 +181,7 @@ public abstract class GameCharacter {
 
                 imageIndex[0] = i;
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(75);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
