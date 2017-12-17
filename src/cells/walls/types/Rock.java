@@ -4,6 +4,7 @@ import cells.walls.Wall;
 import javafx.scene.image.Image;
 
 public class Rock extends Wall {
+
     private static final Image IMAGE = new Image("assets/img/rock-wall2.png");
 
     public Rock() {

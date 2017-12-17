@@ -1,5 +1,7 @@
 package cells;
 
+import org.apache.log4j.Logger;
+
 import characters.GameCharacter;
 import game_engine.RenderEngine;
 import javafx.animation.Animation;
@@ -10,6 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
 public abstract class Cell {
+	static Logger log = Logger.getLogger(Cell.class.getName());
+
     protected Image cellImage;
     protected boolean animation;
     private ImageView imageView;

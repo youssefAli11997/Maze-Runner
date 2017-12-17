@@ -9,10 +9,11 @@ import javafx.scene.image.ImageView;
 import utils.weapons.Weapon;
 import utils.weapons.types.Gun;
 import utils.weapons.types.Sword;
-
 import java.awt.*;
+import org.apache.log4j.Logger;
 
 public abstract class GameCharacter {
+	static Logger log = Logger.getLogger(GameCharacter.class.getName());
 
     private int currentRow;
     private int currentColumn;
@@ -193,6 +194,7 @@ public abstract class GameCharacter {
     }
 
     public void setCurrentState(CharacterState newState) {
+    	log.info("set state" + newState.getClass().getName() + "to the player");
         currentState = newState;
     }
 
@@ -211,6 +213,7 @@ public abstract class GameCharacter {
      * @param health the health to set
      */
     public void setHealth(int health) {
+		log.info("set health");
         this.health = health;
     }
 
@@ -236,6 +239,7 @@ public abstract class GameCharacter {
      * @param weapon the weapon to set
      */
     public void setWeapon(Weapon weapon) {
+		log.info("add weapon");
         this.weapon = weapon;
     }
 
@@ -245,8 +249,8 @@ public abstract class GameCharacter {
     }
 
     public void die() {
-        // TODO implement death better to call die than setting health to 0
-        currentState.die();
+		log.info("player died");
+    	currentState.die();
     }
 
     public Point getOffset() {
