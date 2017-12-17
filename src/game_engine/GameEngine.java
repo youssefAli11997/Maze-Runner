@@ -14,6 +14,7 @@ import characters.commands.CommandsFactory;
 import characters.players.Player;
 import constants.Map;
 import game_engine.MazeGenerator.MazeGenerator;
+import game_engine.timer.Timer;
 import gui.GameController;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
@@ -32,7 +33,7 @@ public class GameEngine {
     //score Magho -- score & time start value --
     private int playerScore  = 20;//depends on level
     private final long StartGameTime = System.currentTimeMillis();
-
+    private Timer timer ;
     private Cell[][] maze;
     private static GameCharacter player;
     private boolean running;
@@ -91,7 +92,7 @@ public class GameEngine {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-              System.out.println(System.currentTimeMillis());
+                double startTime = System.currentTimeMillis();
                 boolean moved = false;
                 //score Magho -- end game when score == 0
                 if (playerScore == 0 || player.getHealth() <= 0){
@@ -165,7 +166,7 @@ public class GameEngine {
                   e.printStackTrace();
                 }
                 
-                System.out.println(System.currentTimeMillis());
+                timer.addTime(startTime, System.currentTimeMillis());
                 playerScore = (int) (playerScore - timePassed/1000);
                 ((Player)player).setScore(playerScore);
 
@@ -313,5 +314,9 @@ public class GameEngine {
             }
         });
     }
+
+	public void attach(Timer timer) {
+		this.timer = timer;
+	}
 
 }
