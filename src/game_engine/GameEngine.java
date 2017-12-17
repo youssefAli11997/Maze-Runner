@@ -96,19 +96,13 @@ public class GameEngine {
                 if (playerScore == 0 || player.getHealth() <= 0){
                     //stop();
                 }
-                //if(fireMode)
-                //    System.out.println(currentCommand);
                 if(currentCommand != null){
                     if(currentCommand.canExecute() && !fireMode) {
                         System.out.println("here");
-                        //System.out.println("before " + player.getCurrentRow() + " " + player.getCurrentColumn());
-                        //GameController.movePlayer (player.getCurrentRow(),player.getCurrentColumn());
                         // Move
                         int newRow = (int) (player.getCurrentRow() + player.getOffset().getX());
                         int newCol = (int) (player.getCurrentColumn() + player.getOffset().getY());
-                        //System.out.println(newRow + " " + newCol);
                         if(maze[newRow][newCol] instanceof EmptyCell){
-                            //System.out.println("empty");
                             currentCommand.execute();
                             if(!(maze[1][0] instanceof Rock)){
                                 maze[1][0] = new Rock();
@@ -117,12 +111,10 @@ public class GameEngine {
                             moved = true;
                         }
                         else if(maze[newRow][newCol] instanceof Tree){
-                            //System.out.println("tree");
                             currentCommand.execute();
                             moved = true;
                         }
                         else if(maze[newRow][newCol] instanceof Bomb){
-                            //System.out.println("bomb");
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
@@ -130,7 +122,6 @@ public class GameEngine {
                             moved = true;
                         }
                         else if(maze[newRow][newCol] instanceof Gift){
-                            //System.out.println("gift");
                             currentCommand.execute();
                             maze[newRow][newCol].action(player);
                             maze[newRow][newCol] = new EmptyCell();
@@ -139,9 +130,6 @@ public class GameEngine {
                         }
                         // Monsters: to be implemented
 
-                        //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
-                        //System.out.println("after " + player.getCurrentRow() + " " + player.getCurrentColumn());
-                        //GameController.movePlayer(player.getCurrentRow(), player.getCurrentColumn());
                         try {
                             if(moved){
                                 player.draw(directionMapped(), player.getCurrentRow(), player.getCurrentColumn());
@@ -153,12 +141,10 @@ public class GameEngine {
 
                     // Fire
                     if(currentCommand.canExecute() && fireMode){
-                        //System.out.println("in fire");
                         Point firstTarget = getFirstTarget();
-                        int row = (int) firstTarget.getX();
-                        int col = (int) firstTarget.getY();
                         if(firstTarget != null){
-                            //System.out.println(currentCommand.toString() + " " + firstTarget);
+                            int row = (int) firstTarget.getX();
+                            int col = (int) firstTarget.getY();
                             player.fire(maze[row][col]);
                             maze[row][col] = new EmptyCell();
                             maze[row][col].draw(gridPane, col, row);
@@ -169,11 +155,14 @@ public class GameEngine {
                 }
 
                 currentCommand = null;
-                //System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
                 //score Magho -- change score depend on time --
                 long timePassed = StartLoopTime - StartGameTime;
                 playerScore = (int) (playerScore - timePassed/1000);
                 ((Player)player).setScore(playerScore);
+
+                System.out.println("score: " + ((Player) player).getScore());
+                System.out.println("lives: " + ((Player) player).getLives());
+                System.out.println("health: " + player.getHealth());
             }
         };
         animationTimer.start();
