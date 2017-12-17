@@ -13,7 +13,7 @@ public class Timer implements TimerSubject{
 	private TimerStrategy timer;
 	public Timer(String mode , double time) {
 		observers = new ArrayList<>();
-		this.time = time ;
+		this.time = time * 1000 ;
 		if(mode.equalsIgnoreCase("rush")) {
 			timer = new RushTimer();
 		}
