@@ -13,9 +13,9 @@
 }
 
 .label{
-	-fx-font-size: 22px;
-	-fx-border-radius: 5px;
-	-fx-border-style: solid;
-	-fx-padding: 5px;
-	-fx-background-color: #fff;
+    -fx-font-size: 20;
+    -fx-font-style: oblique;
+    -fx-text-fill: #86babc;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }

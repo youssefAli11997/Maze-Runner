@@ -26,7 +26,7 @@ public class Main extends Application {
         root.getStylesheets().add(css);
 
         primaryStage.setScene(new Scene(root));
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }
 

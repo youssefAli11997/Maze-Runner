@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import observer.Observer;
 import observer.Subject;
 import observer.TimerObserver;
@@ -39,8 +40,8 @@ public class GameController implements TimerObserver{
     private Cell[][] maze;
     private static int mazeRows, mazeColumns;
     private static GridPane grid;
-    private static GraphicsContext graphicsContext;
-    private static Image playerImage = new Image("assets/img/player.png");
+    public static GraphicsContext graphicsContext;
+    private static Image collision = new Image("assets/img/collision.png");
     private double scrollHValue, scrollVvalue;
 
     private Player player = Player.getInstance();
@@ -68,7 +69,8 @@ public class GameController implements TimerObserver{
     private Label scoreLabel;
     @FXML
     void initialize() throws IOException, InterruptedException {
-    	timer= new Timer("survival", 40);
+
+    	timer= new Timer("rush", 0);
         grid = new GridPane();
         gameEngine.setGridPane(grid);
         gameEngine.attach(timer);
@@ -78,7 +80,7 @@ public class GameController implements TimerObserver{
         maze = gameEngine.getMaze();
         mazeRows = maze.length;
         mazeColumns = maze[0].length;
-        
+
         infoBar.setPrefHeight(windowHeight * .1);
         gameLayout.setPrefHeight(mazeColumns * 70 + 20);
         gameLayout.setPrefWidth(mazeRows * 70 + 20);
@@ -97,6 +99,11 @@ public class GameController implements TimerObserver{
         canvas.setWidth(mazeRows * 70);
         canvas.setHeight(mazeColumns * 70);
         canvas.getStyleClass().add("red");
+        graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext.setFill(Color.RED);
+        graphicsContext.setLineWidth(3);
+        graphicsContext.setStroke(Color.ORANGE);
+        scrollPane.requestFocus();
     }
 
     private void initMaze() {
@@ -109,13 +116,9 @@ public class GameController implements TimerObserver{
     }
 
     @FXML
-    void onVScroll() {
-        scrollPane.setVvalue(scrollPane.getVvalue() + scrollVvalue);
-    }
-
-    @FXML
-    void onHScroll() {
-        scrollPane.setHvalue(scrollPane.getHvalue() + scrollHValue);
+    void onMenuClick (){
+        MenuController.gameStage.hide();
+        Main.menu.show();
     }
 
 	@Override
@@ -130,5 +133,27 @@ public class GameController implements TimerObserver{
 		DateFormat timeFormat = new SimpleDateFormat( "mm:ss" );
 		timerLabel.setText(timeFormat.format(time));
 	}
+
+	public static void drawFire (int playerRow, int playerCol, int cellRow, int cellCol){
+        GameController.graphicsContext.fillPolygon(
+                new double[]{playerCol * 70 + 35, cellCol * 70 + 35, cellCol * 70 + 40, playerCol * 70 + 40},
+                new double[]{playerRow * 70 + 35, cellRow * 70 + 35, cellRow * 70 + 40, playerRow * 70 + 40},
+                4
+        );
+
+        GameController.graphicsContext.strokePolygon(
+                new double[]{playerCol * 70 + 35, cellCol * 70 + 35, cellCol * 70 + 40, playerCol * 70 + 40},
+                new double[]{playerRow * 70 + 35, cellRow * 70 + 35, cellRow * 70 + 40, playerRow * 70 + 40},
+                4
+        );
+    }
+
+	public static void clearCanvas(){
+        graphicsContext.clearRect(0, 0, mazeRows * 70, mazeColumns * 70);
+    }
+
+    public static void drawwCollision (int row, int col) {
+        graphicsContext.drawImage(collision, col * 70, row * 70);
+    }
 
 }

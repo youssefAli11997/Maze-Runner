@@ -9,7 +9,6 @@ import java.util.LinkedList;
 
 import characters.PlayerImageFactory;
 import characters.players.Player;
-import game_engine.Game;
 import game_engine.GameEngine;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -61,6 +58,9 @@ public class MenuController {
     private Button imgNext;
 
     @FXML
+    private Button continueBtn;
+
+    @FXML
     private ImageView playerImageView;
 
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -70,6 +70,8 @@ public class MenuController {
     private LinkedList<String> images = new LinkedList<>();
     private int imageIndex;
     public static String playerImage = "person";
+    public static Stage gameStage;
+    private static Button ourContinueBtn;
 
     @FXML
     void initialize() {
@@ -78,6 +80,8 @@ public class MenuController {
         mainPane.setPrefSize(windowWidth, windowHeight);
         mainHbox.setPrefSize(windowWidth, windowHeight);
         menuVbox.setPrefSize(windowWidth, windowHeight);
+
+        ourContinueBtn = continueBtn;
 
         toggleGroup = new ToggleGroup();
         rbEasy.setToggleGroup(toggleGroup);
@@ -132,30 +136,47 @@ public class MenuController {
 
     @FXML
     void onStartNewGame() throws IOException {
-        Stage stage = new Stage();
-        GameEngine.getInstance(10,10);
+        gameStage = new Stage();
+        GameEngine.getInstance(5,5);
         Player.getInstance().addObserver(GameEngine.getInstance());
         Parent root = FXMLLoader.load(getClass().getResource("game_layout.fxml"));
-        stage.setTitle("Maze Runner");
+        gameStage.setTitle("Maze Runner");
         String css = this.getClass().getResource("game_style.css").toExternalForm();
         root.getStylesheets().add(css);
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.setMaximized(true);
-        stage.initStyle(StageStyle.UNDECORATED);
+        gameStage.setScene(new Scene(root));
+        gameStage.setResizable(false);
+        gameStage.setMaximized(true);
+        gameStage.initStyle(StageStyle.UNDECORATED);
         /*mediaPlayer.stop();
         mediaPlayer = null;*/
 
         GameEngine.addKeyListeners(root.getScene());
 
-        stage.show();
-        Main.menu.close();
+        ourContinueBtn.setDisable(false);
+        gameStage.show();
+        Main.menu.hide();
+    }
+
+    @FXML
+    void onHighScore() {
+        
     }
 
     @FXML
     void onSettingsClick(){
         mainHbox.getChildren().remove(menuVbox);
         mainHbox.getChildren().add(settingsVbox);
+    }
+
+
+    @FXML
+    void onLoadClick() {
+
+    }
+
+    @FXML
+    void onSaveClick() {
+
     }
 
     @FXML
@@ -184,11 +205,27 @@ public class MenuController {
     }
 
     @FXML
+    void onLoadImageClick() {
+
+    }
+
+    @FXML
     void onApplyClick() {
         mainHbox.getChildren().remove(settingsVbox);
         mainHbox.getChildren().add(menuVbox);
         //TODO set difficulty
         playerImage = images.get(imageIndex);
+    }
+
+    public static void disableContinue(){
+        ourContinueBtn.setDisable(true);
+    }
+
+    @FXML
+    void onContinueGame (){
+        Player.getInstance().setPlayerImage(playerImage);
+        Main.menu.hide();
+        gameStage.show();
     }
 
 }
