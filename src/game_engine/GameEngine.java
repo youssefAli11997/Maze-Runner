@@ -41,6 +41,7 @@ import java.util.ArrayList;
 public class GameEngine implements Observer, Subject {
     //score Magho -- score & time start value --
     private ArrayList<Observer> observers;
+    private String mode ; 
     private boolean win = false;
     private boolean lose = false;
     //private int playerScore  = 20;//depends on level
@@ -69,19 +70,20 @@ public class GameEngine implements Observer, Subject {
         return null;
     }
 
-    public static GameEngine getInstance(int rows, int columns) {
+    public static GameEngine getInstance(String diff , String mode ,int rows, int columns) {
         if (ourInstance == null) {
-            ourInstance = new GameEngine(rows, columns);
+            ourInstance = new GameEngine(diff ,mode ,rows , columns);
         }
         return ourInstance;
     }
 
-    private GameEngine(int rows, int columns) {
+    private GameEngine(String diff , String mode , int rows, int columns) {
         observers = new ArrayList<>();
+        this.mode = mode;
         this.rows = rows;
         this.cols = columns;
 
-        start(rows, columns);
+        start(diff ,rows, columns);
         loop();
     }
 
@@ -89,8 +91,8 @@ public class GameEngine implements Observer, Subject {
         return maze;
     }
 
-    private void start(int rows, int columns) {
-        maze = MazeGenerator.create(rows, columns);
+    private void start(String diff , int rows, int columns) {
+        maze = MazeGenerator.create(diff ,rows, columns);
         player = Player.getInstance(1, 0, maze.length, maze[0].length);
         fireMode = false;
         //score Magho -- set score at the begging --
@@ -112,6 +114,7 @@ public class GameEngine implements Observer, Subject {
                 //score Magho -- end game when score == 0
                 if (win || lose) {
                     stop();
+                    showWinLoseDialogue();
                 }
                 if (currentCommand != null) {
                     if (currentCommand.canExecute() && !fireMode) {
@@ -351,21 +354,11 @@ public class GameEngine implements Observer, Subject {
         System.out.println((maze.length - 2) + " " + (maze[0].length - 1));
         if (Player.getInstance().getHealth() == 0 && Player.getInstance().getLives() == 0)
             lose = true;
+        else if(timer.getTimeMilliSeconds() == 0 && mode.equalsIgnoreCase("survival")){
+        	lose = true;
+        }
         else if (Player.getInstance().getCurrentRow() == maze.length - 2 && Player.getInstance().getCurrentColumn() == maze[0].length - 1) {
             win = true;
-            winStage = new Stage();
-            Parent root = null;
-            try {
-                root = FXMLLoader.load(getClass().getResource("/gui/win-layout.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            winStage.initStyle(StageStyle.UNDECORATED);
-            String css = this.getClass().getResource("/gui/win_layout.css").toExternalForm();
-            root.getStylesheets().add(css);
-            winStage.setScene(new Scene(root));
-            winStage.setResizable(false);
-            winStage.show();
         }
         notifyObservers();
     }
@@ -387,14 +380,21 @@ public class GameEngine implements Observer, Subject {
         for (Observer ob : observers)
             ob.update();
     }
-
-    public String getGameState() {
-        if (win)
-            return "WIN";
-        else if (lose)
-            return "LOSE";
-        else
-            return "PLAYING";
+    
+    private void showWinLoseDialogue() {
+    	winStage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/gui/win-layout.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        winStage.initStyle(StageStyle.UNDECORATED);
+        String css = this.getClass().getResource("/gui/win_layout.css").toExternalForm();
+        root.getStylesheets().add(css);
+        winStage.setScene(new Scene(root));
+        winStage.setResizable(false);
+        winStage.show();
     }
-
+    
 }

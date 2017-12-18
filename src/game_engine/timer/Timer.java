@@ -11,14 +11,15 @@ public class Timer implements TimerSubject{
 	private ArrayList<TimerObserver> observers ;
 	private double time = 0; // inMilliSeconds
 	private TimerStrategy timer;
-	public Timer(String mode , double time) {
+	public Timer(String mode) {
 		observers = new ArrayList<>();
-		this.time = time * 1000 ;
 		if(mode.equalsIgnoreCase("rush")) {
 			timer = new RushTimer();
+			this.time = 0 * 1000 ;
 		}
 		else if(mode.equalsIgnoreCase("survival")) {
 			timer = new SurvivalTimer();
+			this.time = 150 * 1000 ;
 		}
 	}
 	

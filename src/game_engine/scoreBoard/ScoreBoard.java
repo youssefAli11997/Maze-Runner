@@ -15,8 +15,10 @@ import java.util.Scanner;
 
 public class ScoreBoard {
 	private volatile static ScoreBoard uniqueInstance ; // lazy instantiation
-	private  Map<String , Double> scoreBoard ;
-	private static final String path = "scoreboard.txt";
+	private  Map<String , Double> rushScoreBoard ;
+	private  Map<String , Double> survivalScoreBoard ;
+	private static final String rushPath = "rushScoreboard.txt";
+	private static final String survivalPath = "survivalScoreboard.txt";
 	
 	public static ScoreBoard getInstance() {
 		if(uniqueInstance == null) {
@@ -29,37 +31,60 @@ public class ScoreBoard {
 	}
 	
 	private ScoreBoard() {
-		if(!load(path)) {
-			scoreBoard = new HashMap<>();
-		}
+		rushScoreBoard = new HashMap<>();
+		survivalScoreBoard = new HashMap<>();
+		load(rushPath, rushScoreBoard);
+		load(survivalPath, survivalScoreBoard);
 	}
 	
-	public boolean addScore(String playerName ,Double score) {
-		if(scoreBoard.containsKey(playerName)) {
-			Double currentValue = scoreBoard.get(playerName);
-			if(score <= currentValue)
-				return false;
-			scoreBoard.put(playerName, score);
-			save(path);
-			return true;
+	public boolean addScore(String mode , String playerName ,Double score) {
+		if(mode.equalsIgnoreCase("rush")) {
+			if(rushScoreBoard.containsKey(playerName)) {
+				Double currentValue = rushScoreBoard.get(playerName);
+				if(score <= currentValue)
+					return false;
+				rushScoreBoard.put(playerName, score);
+				save(rushPath , rushScoreBoard);
+				return true;
+			}
+			else {
+				rushScoreBoard.put(playerName, score);
+				save(rushPath , rushScoreBoard);
+				return true;
+			}
 		}
-		else {
-			scoreBoard.put(playerName, score);
-			save(path);
-			return true;
+		else if (mode.equalsIgnoreCase("survival")) {
+			if(survivalScoreBoard.containsKey(playerName)) {
+				Double currentValue = survivalScoreBoard.get(playerName);
+				if(score <= currentValue)
+					return false;
+				survivalScoreBoard.put(playerName, score);
+				save(survivalPath , survivalScoreBoard);
+				return true;
+			}
+			else {
+				survivalScoreBoard.put(playerName, score);
+				save(survivalPath , survivalScoreBoard);
+				return true;
+			}
 		}
+		return false;
 	}
 	
-	public Map<String , Double> getScoreBoard(){
-		return sort(scoreBoard);
+	public Map<String , Double> getRushScoreBoard(){
+		return sort(rushScoreBoard);
 	}
 	
-	public void save(String path) {
+	public Map<String , Double> getSurvivalScoreBoard(){
+		return sort(survivalScoreBoard);
+	}
+	
+	public void save(String path , Map<String ,Double> toSave) {
 		File file = new File(path);
 		try {
 			FileWriter fw = new FileWriter(file);
 			StringBuilder builder = new StringBuilder();
-			for(Map.Entry<String,Double > entry : scoreBoard.entrySet()) {
+			for(Map.Entry<String,Double > entry : toSave.entrySet()) {
 				builder.append(entry.getKey() + " " + entry.getValue() + System.getProperty("line.separator"));
 			}
 			fw.write(builder.toString());
@@ -69,16 +94,15 @@ public class ScoreBoard {
 		}
 	}
 	
-	public boolean load(String path) {
+	public boolean load(String path, Map<String , Double> toLoad) {
 		File file = new File(path);
 		if(!file.exists())
 			return false;
 		try {
 			Scanner sc = new Scanner(file);
-			scoreBoard = new HashMap<>();
 			while(sc.hasNextLine()) {
 				String [] score_board = sc.nextLine().split("\\s+");
-				scoreBoard.put(score_board[0], new Double(score_board[1]));
+				toLoad.put(score_board[0], new Double(score_board[1]));
 			}
 			sc.close();
 		} catch (IOException e) {

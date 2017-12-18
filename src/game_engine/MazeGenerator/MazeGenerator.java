@@ -19,12 +19,16 @@ public class MazeGenerator {
 		addSupportedObjects();
 	}
 	private static ArrayList<ArrayList<String>> supportedObjects; 
-	private static final double MEDIUM = .2 ;
+	private static final double EASY = .2;
+	private static final double MEDIUM = .25 ;
+	private static final double HARD = .3;
+	private static double LEVEL = EASY;
 	private static GridCell[][] grid;
 	private static boolean[][] visited;
 	private static int visitedCount = 0;
 
-	public static Cell[][] create(int rows, int columns) {
+	public static Cell[][] create(String diff , int rows, int columns) {
+		assignLevel(diff);
 		visited = new boolean[rows][columns];
 		visitedCount = rows * columns;
 		grid = new GridCell[rows][columns];
@@ -34,6 +38,15 @@ public class MazeGenerator {
 		Cell [][] basicMaze = mapMaze(expandedMap);
 		Cell [][] fullMaze = randomize(basicMaze);
 		return fullMaze;
+	}
+
+	private static void assignLevel(String diff) {
+		if(diff.equalsIgnoreCase("easy"))
+			LEVEL = EASY;
+		else if(diff.equalsIgnoreCase("medium"))
+			LEVEL = MEDIUM;
+		else if(diff.equalsIgnoreCase("hard"))
+			LEVEL = HARD;
 	}
 
 	private static Cell[][] randomize(Cell[][] basicMaze) {
@@ -55,7 +68,7 @@ public class MazeGenerator {
 	}
 
 	private static ArrayList<Point> selectRandomCells(ArrayList<Point> emptyCells) {
-		int numberToSelect = (int)Math.floor(emptyCells.size() * MEDIUM);
+		int numberToSelect = (int)Math.floor(emptyCells.size() * LEVEL);
 		ArrayList<Point> selectCells = new ArrayList<>();
 		while(numberToSelect != 0) {
 			selectCells.add(emptyCells.get(RandomGenerator.generateRandom(emptyCells.size())));

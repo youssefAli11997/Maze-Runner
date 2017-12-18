@@ -33,7 +33,7 @@ public class WinController {
     @FXML
     void onSubmitClick() throws IOException {
         if (!playerName.getText().equals("")) {
-            ScoreBoard.getInstance().addScore(playerName.getText(), (double) Player.getInstance().getScore());
+            ScoreBoard.getInstance().addScore(MenuController.mode , playerName.getText(), (double) Player.getInstance().getScore());
 
             MenuController.gameStage.close();
             GameEngine.getInstance().winStage.close();

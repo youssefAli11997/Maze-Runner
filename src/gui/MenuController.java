@@ -98,7 +98,8 @@ public class MenuController {
         rbEasy.setUserData("easy");
         rbMedium.setUserData("medium");
         rbHard.setUserData("hard");
-
+        diff = "easy";
+        
         rbEasy.setSelected(true);
 
         modeToggleGroup = new ToggleGroup();
@@ -109,7 +110,7 @@ public class MenuController {
         rbRush.setUserData("rush");
 
         rbRush.setSelected(true);
-
+        mode = "rush";
         String bip = "src/assets/sound/Forest of Forgetfulness.mp3";
         Media hit = new Media(new File(bip).toURI().toString());
         /*mediaPlayer = new MediaPlayer(hit);
@@ -153,7 +154,7 @@ public class MenuController {
     @FXML
     void onStartNewGame() throws IOException {
         gameStage = new Stage();
-        GameEngine.getInstance(5,5);
+        GameEngine.getInstance(diff , mode ,10,10);
         Player.getInstance().addObserver(GameEngine.getInstance());
         Parent root = FXMLLoader.load(getClass().getResource("game_layout.fxml"));
         gameStage.setTitle("Maze Runner");

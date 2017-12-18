@@ -69,8 +69,8 @@ public class GameController implements TimerObserver{
     private Label scoreLabel;
     @FXML
     void initialize() throws IOException, InterruptedException {
-
-    	timer= new Timer("rush", 0);
+    	
+    	timer= new Timer(MenuController.mode);
         grid = new GridPane();
         gameEngine.setGridPane(grid);
         gameEngine.attach(timer);
