@@ -22,16 +22,22 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import observer.Observer;
+import observer.Subject;
 import utils.weapons.types.Sword;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by M.Sharaf on 13/12/2017.
  */
-public class GameEngine {
+public class GameEngine implements Observer , Subject{
     //score Magho -- score & time start value --
-    private int playerScore  = 20;//depends on level
+	private ArrayList<Observer> observers ;
+	private boolean win = false;
+	private boolean lose = false;
+    //private int playerScore  = 20;//depends on level
     private final long StartGameTime = System.currentTimeMillis();
     private Timer timer ;
     private Cell[][] maze;
@@ -64,6 +70,7 @@ public class GameEngine {
     }
 
     private GameEngine(int rows, int columns){
+    	observers = new ArrayList<>();
         this.rows = rows;
         this.cols = columns;
 
@@ -81,7 +88,7 @@ public class GameEngine {
         fireMode = false;
         //score Magho -- set score at the begging --
         //show player.getscore not playerScore on the screen
-        ((Player)player).setScore(playerScore);
+        //((Player)player).setScore(playerScore);
 
         running = true;
     }
@@ -95,8 +102,8 @@ public class GameEngine {
                 double startTime = System.currentTimeMillis();
                 boolean moved = false;
                 //score Magho -- end game when score == 0
-                if (playerScore == 0 || player.getHealth() <= 0){
-                    //stop();
+                if (win || lose){
+                    stop();
                 }
                 if(currentCommand != null){
                     if(currentCommand.canExecute() && !fireMode) {
@@ -104,6 +111,8 @@ public class GameEngine {
                         // Move
                         int newRow = (int) (player.getCurrentRow() + player.getOffset().getX());
                         int newCol = (int) (player.getCurrentColumn() + player.getOffset().getY());
+                        System.out.println(newRow);
+                        System.out.println(newCol);
                         if(maze[newRow][newCol] instanceof EmptyCell){
                             currentCommand.execute();
                             if(!(maze[1][0] instanceof Rock)){
@@ -167,12 +176,12 @@ public class GameEngine {
                 }
                 
                 timer.addTime(startTime, System.currentTimeMillis());
-                playerScore = (int) (playerScore - timePassed/1000);
-                ((Player)player).setScore(playerScore);
+                //playerScore = (int) (playerScore - timePassed/1000);
+                //((Player)player).setScore(playerScore);
 
-                System.out.println("score: " + ((Player) player).getScore());
+                /*System.out.println("score: " + ((Player) player).getScore());
                 System.out.println("lives: " + ((Player) player).getLives());
-                System.out.println("health: " + player.getHealth());
+                System.out.println("health: " + player.getHealth());*/
             }
         };
         animationTimer.start();
@@ -317,6 +326,45 @@ public class GameEngine {
 
 	public void attach(Timer timer) {
 		this.timer = timer;
+	}
+
+	@Override
+	public void update() {
+		System.out.println("current row "+ Player.getInstance().getCurrentRow() + " current column " + Player.getInstance().getCurrentColumn());
+		System.out.println((maze.length - 2 ) + " " + (maze[0].length -1));
+		if(Player.getInstance().getHealth() == 0 && Player.getInstance().getLives() == 0)
+			lose = true;
+		else if (Player.getInstance().getCurrentRow() == maze.length - 2 && Player.getInstance().getCurrentColumn() == maze[0].length -1) {
+			win = true;
+			}
+		notifyObservers();
+	}
+
+	@Override
+	public void addObserver(Observer ob) {
+		observers.add(ob);
+		
+	}
+
+	@Override
+	public void removeObserver(Observer ob) {
+		observers.remove(ob);
+		
+	}
+
+	@Override
+	public void notifyObservers() {
+		for(Observer ob : observers)
+			ob.update();
+	}
+
+	public String getGameState() {
+		if(win)
+			return "WIN";
+		else if(lose)
+			return "LOSE";
+		else
+			return "PLAYING";
 	}
 
 }

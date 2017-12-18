@@ -10,7 +10,6 @@ import characters.GameCharacter;
  * and so on go to normal state after some time (10s)
  */
 public class DoubleHealth extends CharacterState {
-	GameCharacter character;
 
 	public DoubleHealth(GameCharacter character) {
 		super(character);
@@ -24,10 +23,10 @@ public class DoubleHealth extends CharacterState {
 			health *= 2;
 		}
 
-		if (health + character.getHealth() <= 0) {
+		if (health + super.getCharacter().getHealth() <= 0) {
 			this.die();
 		} else {
-			character.setHealth(health + character.getHealth());
+			super.getCharacter().setHealth(health + super.getCharacter().getHealth());
 		}
 
 	}

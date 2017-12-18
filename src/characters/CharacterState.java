@@ -21,7 +21,7 @@ public abstract class CharacterState {
 	}
 
 	public void setHealthChange(int health) {
-
+		
 		if (health + character.getHealth() <= 0) {
 			log.info("player died");
 			this.die();
@@ -29,7 +29,7 @@ public abstract class CharacterState {
 			character.setHealth(health + character.getHealth());
 			log.info("change in health");
 		}
-
+		
 	}
 
 	public void fire(Object object) {

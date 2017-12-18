@@ -6,13 +6,18 @@ import constants.Map;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import observer.Observer;
+import observer.Subject;
 import utils.weapons.Weapon;
 import utils.weapons.types.Gun;
 import utils.weapons.types.Sword;
 import java.awt.*;
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 
-public abstract class GameCharacter {
+public abstract class GameCharacter implements Subject{
+	private ArrayList<Observer> observers ;
 	static Logger log = Logger.getLogger(GameCharacter.class.getName());
 
     private int currentRow;
@@ -40,6 +45,8 @@ public abstract class GameCharacter {
     }
 
     public GameCharacter(int currentRow, int currentColumn, int gridRows, int gridColumns) {
+    	health = 100;
+    	observers = new ArrayList<>();
         this.currentRow = currentRow;
         this.currentColumn = currentColumn;
         this.gridRows = gridRows;
@@ -111,6 +118,7 @@ public abstract class GameCharacter {
                 return false;
             }
             currentRow--;
+            notifyObservers();
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.DOWN)) {
@@ -118,6 +126,7 @@ public abstract class GameCharacter {
                 return false;
             }
             currentRow++;
+            notifyObservers();
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.LEFT)) {
@@ -125,6 +134,7 @@ public abstract class GameCharacter {
                 return false;
             }
             currentColumn--;
+            notifyObservers();
             return true;
         }
         if (direction.equalsIgnoreCase(Map.playerKeys.RIGHT)) {
@@ -132,6 +142,7 @@ public abstract class GameCharacter {
                 return false;
             }
             currentColumn++;
+            notifyObservers();
             return true;
         }
         return false;
@@ -215,6 +226,7 @@ public abstract class GameCharacter {
     public void setHealth(int health) {
 		log.info("set health");
         this.health = health;
+        notifyObservers();
     }
 
     /**
@@ -222,6 +234,7 @@ public abstract class GameCharacter {
      */
     public void setHealthChange(int health) {
         currentState.setHealthChange(health);
+        notifyObservers();
     }
 
     public int getHealthChange() {
@@ -255,5 +268,23 @@ public abstract class GameCharacter {
 
     public Point getOffset() {
         return offset;
+    }
+    
+    @Override
+    public void notifyObservers() {
+    	for(Observer ob : observers) {
+    		ob.update();
+    	}
+    }
+    
+    @Override
+    public void addObserver(Observer ob) {
+    	observers.add(ob);
+    	
+    }
+    
+    @Override
+    public void removeObserver(Observer ob) {
+    	observers.remove(ob);
     }
 }

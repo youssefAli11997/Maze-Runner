@@ -15,6 +15,9 @@
             <Button mnemonicParsing="false" onAction="#onVScroll" text="V scroll" />
             <Button mnemonicParsing="false" onAction="#onHScroll" text="H scroll" />
             <Label fx:id = "timerLabel"></Label>
+            <Label fx:id = "livesLabel"></Label>
+            <Label fx:id = "healthLabel"></Label>
+            <Label fx:id = "scoreLabel"></Label>
          </children></HBox>
       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" stylesheets="@game_style.css" vbarPolicy="NEVER">
         <content>

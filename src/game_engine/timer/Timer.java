@@ -55,7 +55,6 @@ public class Timer implements TimerSubject{
 	public void notifyObservers() {
 		for(TimerObserver ob :observers) {
 			ob.update(time);
-			System.out.println(time);
 		}
 	}
 }

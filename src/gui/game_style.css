@@ -12,7 +12,7 @@
     -fx-background-color: rgba(134,5,0,0.5);
 }
 
-#timerLabel{
+.label{
 	-fx-font-size: 22px;
 	-fx-border-radius: 5px;
 	-fx-border-style: solid;

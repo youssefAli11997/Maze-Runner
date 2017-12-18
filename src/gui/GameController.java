@@ -61,12 +61,20 @@ public class GameController implements TimerObserver{
     @FXML
     private Label timerLabel;
     @FXML
+    private Label livesLabel;
+    @FXML
+    private Label healthLabel;
+    @FXML
+    private Label scoreLabel;
+    @FXML
     void initialize() throws IOException, InterruptedException {
     	timer= new Timer("survival", 40);
         grid = new GridPane();
         gameEngine.setGridPane(grid);
         gameEngine.attach(timer);
         timer.addObserver(this);
+        GameEngine.getInstance().addObserver(this);
+        update();
         maze = gameEngine.getMaze();
         mazeRows = maze.length;
         mazeColumns = maze[0].length;
@@ -111,7 +119,10 @@ public class GameController implements TimerObserver{
     }
 
 	@Override
-	public void update(Subject sb) {
+	public void update() {
+		healthLabel.setText("Health : " + Player.getInstance().getHealth());
+		livesLabel.setText("Lives : " + Player.getInstance().getLives());
+		scoreLabel.setText("Score : " + Player.getInstance().getScore());
 	}
 
 	@Override

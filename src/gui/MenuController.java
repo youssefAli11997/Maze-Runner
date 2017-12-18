@@ -134,6 +134,7 @@ public class MenuController {
     void onStartNewGame() throws IOException {
         Stage stage = new Stage();
         GameEngine.getInstance(10,10);
+        Player.getInstance().addObserver(GameEngine.getInstance());
         Parent root = FXMLLoader.load(getClass().getResource("game_layout.fxml"));
         stage.setTitle("Maze Runner");
         String css = this.getClass().getResource("game_style.css").toExternalForm();
