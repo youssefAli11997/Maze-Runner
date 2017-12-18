@@ -43,6 +43,12 @@ public class MenuController {
     private VBox settingsVbox;
 
     @FXML
+    private RadioButton rbSurvival;
+
+    @FXML
+    private RadioButton rbRush;
+
+    @FXML
     private RadioButton rbEasy;
 
     @FXML
@@ -66,12 +72,13 @@ public class MenuController {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private double windowWidth = screenSize.getWidth(), windowHeight = screenSize.getHeight();
     private MediaPlayer mediaPlayer;
-    private ToggleGroup toggleGroup;
+    private ToggleGroup diffToggleGroup, modeToggleGroup;
     private LinkedList<String> images = new LinkedList<>();
     private int imageIndex;
     public static String playerImage = "person";
     public static Stage gameStage;
     private static Button ourContinueBtn;
+    public static String mode, diff;
 
     @FXML
     void initialize() {
@@ -83,16 +90,25 @@ public class MenuController {
 
         ourContinueBtn = continueBtn;
 
-        toggleGroup = new ToggleGroup();
-        rbEasy.setToggleGroup(toggleGroup);
-        rbMedium.setToggleGroup(toggleGroup);
-        rbHard.setToggleGroup(toggleGroup);
+        diffToggleGroup = new ToggleGroup();
+        rbEasy.setToggleGroup(diffToggleGroup);
+        rbMedium.setToggleGroup(diffToggleGroup);
+        rbHard.setToggleGroup(diffToggleGroup);
 
         rbEasy.setUserData("easy");
         rbMedium.setUserData("medium");
         rbHard.setUserData("hard");
 
         rbEasy.setSelected(true);
+
+        modeToggleGroup = new ToggleGroup();
+        rbSurvival.setToggleGroup(modeToggleGroup);
+        rbRush.setToggleGroup(modeToggleGroup);
+
+        rbSurvival.setUserData("survival");
+        rbRush.setUserData("rush");
+
+        rbRush.setSelected(true);
 
         String bip = "src/assets/sound/Forest of Forgetfulness.mp3";
         Media hit = new Media(new File(bip).toURI().toString());
@@ -159,7 +175,7 @@ public class MenuController {
 
     @FXML
     void onHighScore() {
-        
+
     }
 
     @FXML
@@ -215,6 +231,9 @@ public class MenuController {
         mainHbox.getChildren().add(menuVbox);
         //TODO set difficulty
         playerImage = images.get(imageIndex);
+        mode = modeToggleGroup.getSelectedToggle().getUserData().toString();
+        diff = diffToggleGroup.getSelectedToggle().getUserData().toString();
+        System.out.println("mode " + mode + " diff " + diff);
     }
 
     public static void disableContinue(){
