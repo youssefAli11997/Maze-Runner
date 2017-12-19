@@ -1,12 +1,13 @@
 package characters.monsters;
 
 import java.util.ArrayList;
-
+import org.apache.log4j.Logger;
 import characters.monsters.types.DynamicMonster;
 import characters.monsters.types.StaticMonster;
 
 
 public class MonstersFactory {
+	static Logger log = Logger.getLogger(MonstersFactory.class.getName());
 
 	private static int row;
 	private static int coloumn;
@@ -32,10 +33,12 @@ public class MonstersFactory {
 	}
 
 	public static Monster create(String monster) {
-		if (monster.equalsIgnoreCase("dynamic"))
-			return new DynamicMonster(row, coloumn,gridRows,gridColoumns);
-		else if (monster.equalsIgnoreCase("static"))
-			return new StaticMonster(row, coloumn,gridRows, gridColoumns);
+		if (monster.equalsIgnoreCase("dynamic")){
+			log.info("dynamic monster is created");
+			return new DynamicMonster(row, coloumn,gridRows,gridColoumns);}
+		else if (monster.equalsIgnoreCase("static")){
+			log.info("static monster is created");
+			return new StaticMonster(row, coloumn,gridRows, gridColoumns);}
 		return null;
 	}
 }

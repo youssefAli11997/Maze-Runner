@@ -1,10 +1,14 @@
 package cells.bombs.types;
 
+import org.apache.log4j.Logger;
+
 import cells.bombs.Bomb;
 import characters.GameCharacter;
 import javafx.scene.image.Image;
 
 public class BigBomb extends Bomb {
+	static Logger log = Logger.getLogger(BigBomb.class.getName());
+
     private static final Image IMAGE = new Image("assets/img/big-bomb.png");
 
     public BigBomb() {
@@ -14,6 +18,7 @@ public class BigBomb extends Bomb {
 
     @Override
     public void action(GameCharacter character) {
+		log.info("big bomb is applied -- dead man -- :)");
         character.setHealth(0);
     }
 }

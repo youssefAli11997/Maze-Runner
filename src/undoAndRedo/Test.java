@@ -1,10 +1,9 @@
 package undoAndRedo;
 
 public class Test {
-	
-	//just for test
-    public static void main(String[] args) {
 
+	// just for test
+	public void test (){
     StateOfTheGame state = new StateOfTheGame ();
     Gametaker caretaker = new Gametaker();
     Originator originator = new Originator();
@@ -15,6 +14,5 @@ public class Test {
     caretaker.addRedoMemento( originator.save() );
     originator.setState(state);
     originator.restore( caretaker.getRedoMemento());
-    
-    }
+	}
 }

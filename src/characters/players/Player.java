@@ -25,6 +25,7 @@ public class Player extends GameCharacter {
 
 	private Player(int currentRow, int currentColumn, int gridRows, int gridColumns) {
 		super(currentRow, currentColumn, gridRows, gridColumns);
+		lives = 3;
 	}
 
 	public void setPlayerImage (String image){
@@ -37,6 +38,7 @@ public class Player extends GameCharacter {
 
 	public void extraLife() {
 		this.lives++;
+		notifyObservers();
 	}
 
 	public void loseLife() {
@@ -45,8 +47,25 @@ public class Player extends GameCharacter {
 		} else {
 			this.lives--;
 		}
+		notifyObservers();
 	}
-
+	
+	public void setHealth(int health) {
+		System.out.println(health);
+		if(health <= 0) {
+			if(lives > 0) {
+				lives --;
+				super.setHealth(health + 100);
+			}
+			else {
+				super.setHealth(0);
+			}
+        }
+		else {
+			super.setHealth(health);
+		}
+        notifyObservers();
+    }
 
 	public long getScore() {
 		return Score;

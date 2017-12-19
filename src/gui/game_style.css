@@ -11,3 +11,11 @@
 .red {
     -fx-background-color: rgba(134,5,0,0.5);
 }
+
+.label{
+    -fx-font-size: 20;
+    -fx-font-style: oblique;
+    -fx-text-fill: #86babc;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}

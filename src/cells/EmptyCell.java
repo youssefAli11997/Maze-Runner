@@ -1,9 +1,13 @@
 package cells;
 
+import org.apache.log4j.Logger;
+
 import characters.GameCharacter;
 import javafx.scene.image.Image;
 
 public class EmptyCell extends Cell {
+	static Logger log = Logger.getLogger(EmptyCell.class.getName());
+
     private static final Image IMAGE = new Image("assets/img/empty-cell.png");
 
     public EmptyCell() {
@@ -12,6 +16,7 @@ public class EmptyCell extends Cell {
 
     @Override
     public void action(GameCharacter character) {
+		log.info("empty cell action applied");
     }
 
     @Override

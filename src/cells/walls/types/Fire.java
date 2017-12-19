@@ -1,14 +1,14 @@
 package cells.walls.types;
 
+import org.apache.log4j.Logger;
 import cells.walls.Wall;
 import characters.GameCharacter;
-import game_engine.RenderEngine;
-import javafx.animation.Animation;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.util.Duration;
+
 
 public class Fire extends Wall {
+	static Logger log = Logger.getLogger(Fire.class.getName());
+
     private static final Image IMAGE = new Image("assets/img/fire.png");
 
     private final int decreaseInHealth = 10;
@@ -22,6 +22,7 @@ public class Fire extends Wall {
 
     @Override
     public void action(GameCharacter character) {
+		log.info("fire wall action is applied -- decrease in health");
 
         if (this instanceof Fire) {
             character.setHealth(character.getHealth() - decreaseInHealth);

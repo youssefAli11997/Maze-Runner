@@ -1,10 +1,13 @@
 package utils.weapons;
 
+import org.apache.log4j.Logger;
 import cells.walls.Wall;
 import characters.monsters.Monster;
 import characters.players.Player;
 
 public abstract class Weapon {
+	static Logger log = Logger.getLogger(Weapon.class.getName());
+
 	private int bullets;
 	private final int increasedInScore = 3;
 	Player player;
@@ -17,6 +20,7 @@ public abstract class Weapon {
 	public void action(Object object) {
 
 		if (object instanceof Monster) {
+			log.info("player is shooting the emeny");
 			if (!this.isWeaponEmpty()) {
 				this.setBullets(this.getBullets() - 1);
 				((Monster) object).die();
@@ -25,6 +29,7 @@ public abstract class Weapon {
 
 		} else if (object instanceof Wall) {
 			if (!this.isWeaponEmpty()) {
+				log.info("player is shooting the wall");
 				this.setBullets(this.getBullets() - 1);
 				if (((Wall) object).isBreakable() && !((Wall) object).isBreaked()) {
 					((Wall) object).setBulletsToBreak(((Wall) object).getBulletsToBreak() - 1);
@@ -36,6 +41,7 @@ public abstract class Weapon {
 			}
 		} else {
 			player.setScore(player.getScore() + increasedInScore);
+			log.info("adding score to the player");
 		}
 	}
 

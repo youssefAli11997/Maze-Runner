@@ -1,5 +1,7 @@
 package gui;
 
+import org.apache.log4j.BasicConfigurator;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,11 +26,12 @@ public class Main extends Application {
         root.getStylesheets().add(css);
 
         primaryStage.setScene(new Scene(root));
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
+    	BasicConfigurator.configure();
         launch(args);
     }
 }

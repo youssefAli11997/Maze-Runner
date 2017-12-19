@@ -6,5 +6,4 @@ public class TraceThePlayer implements Strategy {
 	public void trace() {
 		// TODO Auto-generated method stub
 	}
-
 }

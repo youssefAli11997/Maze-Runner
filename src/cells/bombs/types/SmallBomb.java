@@ -1,10 +1,14 @@
 package cells.bombs.types;
 
+import org.apache.log4j.Logger;
+
 import cells.bombs.Bomb;
 import characters.GameCharacter;
 import javafx.scene.image.Image;
 
 public class SmallBomb extends Bomb {
+	static Logger log = Logger.getLogger(SmallBomb.class.getName());
+
     private static final Image IMAGE = new Image("assets/img/small-bomb.png");
 
     public SmallBomb() {
@@ -14,6 +18,7 @@ public class SmallBomb extends Bomb {
 
     @Override
     public void action(GameCharacter character) {
-        character.setCurrentColumn(character.getHealth() - 10);
+		log.info("small bomb is applied decreas in health");
+		character.setHealth(character.getHealth() - 10);
     }
 }

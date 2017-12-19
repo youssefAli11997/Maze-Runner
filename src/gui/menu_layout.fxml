@@ -24,11 +24,12 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Label>
+                  <Button fx:id="continueBtn" disable="true" mnemonicParsing="false" onAction="#onContinueGame" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="CONTINUE" />
                   <Button mnemonicParsing="false" onAction="#onStartNewGame" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="START NEW GAME" />
-                  <Button mnemonicParsing="false" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="HIGH SCORE" />
+                  <Button mnemonicParsing="false" onAction="#onHighScore" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="HIGH SCORE" />
                   <Button mnemonicParsing="false" onAction="#onSettingsClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="SETTINGS" />
-                  <Button mnemonicParsing="false" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="SAVE" />
-                  <Button mnemonicParsing="false" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="LOAD" />
+                  <Button mnemonicParsing="false" onAction="#onSaveClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="SAVE" />
+                  <Button mnemonicParsing="false" onAction="#onLoadClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="LOAD" />
                   <Button mnemonicParsing="false" onAction="#onExitClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="EXIT" />
                </children>
             </VBox>
@@ -42,6 +43,17 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Label>
+                  <Label text="Mode" textFill="#c30000">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="40.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <RadioButton fx:id="rbSurvival" mnemonicParsing="false" stylesheets="@menu_style.css" text="Survival" />
+                        <RadioButton fx:id="rbRush" mnemonicParsing="false" text="Rush" />
+                     </children>
+                  </HBox>
                   <Label text="Difficulty" textFill="#c30000">
                      <font>
                         <Font name="Calibri Bold Italic" size="40.0" />
@@ -69,7 +81,7 @@
                         <Button fx:id="imgNext" mnemonicParsing="false" onAction="#onNextClick" stylesheets="@menu_style.css" text="next" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#onExitClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" stylesheets="@menu_style.css" text="Load Image" />
+                  <Button mnemonicParsing="false" onAction="#onLoadImageClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" stylesheets="@menu_style.css" text="Load Image" />
                   <Button mnemonicParsing="false" onAction="#onApplyClick" onMouseEntered="#onButtonsHover" onMouseExited="#onButtonsLeave" prefHeight="60.0" prefWidth="400.0" styleClass="menu-button" stylesheets="@menu_style.css" text="APPLY" />
                </children>
             </VBox>

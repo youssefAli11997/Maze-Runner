@@ -4,7 +4,8 @@ import cells.walls.Wall;
 import javafx.scene.image.Image;
 
 public class Wooden extends Wall {
-    private static final Image IMAGE = new Image("assets/img/wooden-wall.png");
+
+	private static final Image IMAGE = new Image("assets/img/wooden-wall.png");
 
     public Wooden() {
         super(true, 1, 0);
