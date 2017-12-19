@@ -19,6 +19,6 @@ public class BigBomb extends Bomb {
     @Override
     public void action(GameCharacter character) {
 		log.info("big bomb is applied -- dead man -- :)");
-        character.setHealth(0);
+        character.setHealth(character.getHealth() - 100);
     }
 }

@@ -12,6 +12,7 @@ import cells.gifts.types.EatEnemyGift;
 import cells.gifts.types.HealthGift;
 import cells.gifts.types.NoFireGift;
 import cells.gifts.types.PassThroughGift;
+import cells.gifts.types.ScoreGift;
 
 public class GiftsFactory {
 	static Logger log = Logger.getLogger(GiftsFactory.class.getName());
@@ -26,6 +27,7 @@ public class GiftsFactory {
 		gifts.add("eatenemy");
 		gifts.add("passthrough");
 		gifts.add("nofire");
+		gifts.add("score");
 	}
 
 	public static boolean canCreate(String cell) {
@@ -54,7 +56,11 @@ public class GiftsFactory {
 		} else if (gift.equalsIgnoreCase("noFire")) {
 			log.info("noFire gift is created");
 			return new NoFireGift();
+		} else if (gift.equalsIgnoreCase("score")) {
+			log.info("noFire gift is created");
+			return new ScoreGift();
 		}
+		
 		return null;
 	}
 
