@@ -10,13 +10,9 @@ import javafx.util.Duration;
 
 public abstract class Gift extends Cell {
     private static final int SCORE = 25;
-	private static final Image IMAGE = new Image("assets/img/gift.png");
-
     public Gift() {
         super();
         setScoreIncrease(SCORE);
-        super.cellImage = IMAGE;
-        super.animation = true;
     }
 
     @Override

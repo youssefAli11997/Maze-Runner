@@ -4,11 +4,16 @@ import org.apache.log4j.Logger;
 
 import cells.gifts.Gift;
 import characters.GameCharacter;
+import javafx.scene.image.Image;
 import utils.weapons.Weapon;
 
 public class BulletGift extends Gift {
 	static Logger log = Logger.getLogger(BulletGift.class.getName());
-
+	private static final Image IMAGE = new Image("assets/img/bullet.png");
+	public BulletGift() {
+		super.cellImage = IMAGE;
+        super.animation = true;
+	}
 	@Override
 	public void action(GameCharacter character) {
 		log.info("bullet gift applied");
