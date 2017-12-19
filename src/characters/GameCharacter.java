@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-public abstract class GameCharacter implements Subject{
+public abstract class GameCharacter implements Subject , Observer{
 	private ArrayList<Observer> observers ;
 	static Logger log = Logger.getLogger(GameCharacter.class.getName());
 
@@ -66,6 +66,7 @@ public abstract class GameCharacter implements Subject{
         else{
             weapon = sword;
         }
+        notifyObservers();
     }
 
     public int getCurrentColumn() {
@@ -207,6 +208,7 @@ public abstract class GameCharacter implements Subject{
     public void setCurrentState(CharacterState newState) {
     	log.info("set state" + newState.getClass().getName() + "to the player");
         currentState = newState;
+        notifyObservers();
     }
 
     public CharacterState getCurrentState() {
@@ -254,6 +256,7 @@ public abstract class GameCharacter implements Subject{
     public void setWeapon(Weapon weapon) {
 		log.info("add weapon");
         this.weapon = weapon;
+        notifyObservers();
     }
 
     public boolean fire(Object object) {
@@ -286,5 +289,10 @@ public abstract class GameCharacter implements Subject{
     @Override
     public void removeObserver(Observer ob) {
     	observers.remove(ob);
+    }
+    
+    @Override
+    public void update() {
+    	notifyObservers();
     }
 }

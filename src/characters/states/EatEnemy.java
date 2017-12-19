@@ -16,4 +16,9 @@ public class EatEnemy extends CharacterState {
 	public void die() {
 		// Enemy Die Player lives
 	}
+	
+	@Override
+	public String toString() {
+		return "EAT Enemy";
+	}
 }

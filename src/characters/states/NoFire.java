@@ -17,5 +17,10 @@ public class NoFire extends CharacterState {
 	public void fire(Object object) {
 		// do nothong
 	}
-
+	
+	@Override
+	public String toString() {
+		return "No Fire";
+	}
+	
 }

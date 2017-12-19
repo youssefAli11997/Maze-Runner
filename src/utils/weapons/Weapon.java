@@ -1,13 +1,18 @@
 package utils.weapons;
 
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 
 import cells.Cell;
 import cells.walls.Wall;
 import characters.monsters.Monster;
 import characters.players.Player;
+import observer.Observer;
+import observer.Subject;
 
-public abstract class Weapon {
+public abstract class Weapon implements Subject{
+	private ArrayList<Observer> observers ;
 	static Logger log = Logger.getLogger(Weapon.class.getName());
 
 	private int bullets;
@@ -16,7 +21,9 @@ public abstract class Weapon {
 	
 
 	public Weapon(Player player) {
+		observers = new ArrayList<>();
 		this.player = player;
+		addObserver(player);
 	}
 
 	public void action(Object object) {
@@ -65,5 +72,20 @@ public abstract class Weapon {
 	public boolean isWeaponEmpty() {
 		return bullets == 0;
 	}
-
+	
+	@Override
+	public void addObserver(Observer ob) {
+		observers.add(ob);
+	}
+	
+	@Override
+	public void removeObserver(Observer ob) {
+		observers.remove(ob);		
+	}
+	
+	@Override
+	public void notifyObservers() {
+		for(Observer ob : observers)
+			ob.update();
+	}
 }

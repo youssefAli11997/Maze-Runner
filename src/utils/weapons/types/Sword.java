@@ -13,4 +13,9 @@ public class Sword extends Weapon {
 	public void setInitialBullets() {
 		super.setBullets(MAX);
 	}
+	
+	@Override
+	public String toString() {
+		return "Sword";
+	}
 }

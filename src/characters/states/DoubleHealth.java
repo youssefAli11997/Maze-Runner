@@ -30,5 +30,9 @@ public class DoubleHealth extends CharacterState {
 		}
 
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Double HP";
+	}
 }

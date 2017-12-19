@@ -11,5 +11,10 @@ public class Normal extends CharacterState {
 	public Normal(GameCharacter character) {
 		super(character);
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Normal";
+	}
+	
 }

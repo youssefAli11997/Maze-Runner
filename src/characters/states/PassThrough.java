@@ -17,4 +17,9 @@ public class PassThrough extends CharacterState {
 	public void die() {
 
 	}
+	
+	@Override
+	public String toString() {
+		return "Pass Through";
+	}
 }

@@ -68,6 +68,12 @@ public class GameController implements TimerObserver{
     @FXML
     private Label scoreLabel;
     @FXML
+    private Label currentState;
+    @FXML
+    private Label currentWeapon;
+    @FXML
+    private Label currentBullets;
+    @FXML
     void initialize() throws IOException, InterruptedException {
     	
     	timer= new Timer(MenuController.mode);
@@ -126,6 +132,9 @@ public class GameController implements TimerObserver{
 		healthLabel.setText("Health : " + Player.getInstance().getHealth());
 		livesLabel.setText("Lives : " + Player.getInstance().getLives());
 		scoreLabel.setText("Score : " + Player.getInstance().getScore());
+		currentState.setText("State : "+ Player.getInstance().getCurrentState().toString());
+		currentWeapon.setText("Weapon : " + Player.getInstance().getWeapon().toString());
+		currentBullets.setText("Bullets : " + Player.getInstance().getWeapon().getBullets());
 	}
 
 	@Override

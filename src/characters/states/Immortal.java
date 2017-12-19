@@ -17,4 +17,9 @@ public class Immortal extends CharacterState {
 	public void die() {
 
 	}
+	
+	@Override
+	public String toString() {
+		return "Immortal";
+	}
 }

@@ -12,4 +12,9 @@ public class Gun extends Weapon {
 	public void setInitialBullets() {
 		super.setBullets(6);
 	}
+	
+	@Override
+	public String toString() {
+		return "Gun";
+	}
 }

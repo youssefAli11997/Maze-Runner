@@ -18,4 +18,9 @@ public class Armored extends CharacterState {
 		GameCharacter character = super.getCharacter();
 		character.setCurrentState(new Normal(character));
 	}
+	
+	@Override
+	public String toString() {
+		return "Armored";
+	}
 }
