@@ -351,8 +351,6 @@ public class GameEngine implements Observer, Subject , TimerObserver{
     
     @Override
     public void update() {
-        System.out.println("current row " + Player.getInstance().getCurrentRow() + " current column " + Player.getInstance().getCurrentColumn());
-        System.out.println((maze.length - 2) + " " + (maze[0].length - 1));
         if (Player.getInstance().getHealth() == 0 && Player.getInstance().getLives() == 0) {
             lose = true;
             showWinLoseDialogue();
