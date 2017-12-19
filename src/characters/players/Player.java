@@ -73,6 +73,7 @@ public class Player extends GameCharacter {
 
 	public void setScore(long score) {
 		Score = score;
+		notifyObservers();
 	}
 
 	public String getPlayerName() {
