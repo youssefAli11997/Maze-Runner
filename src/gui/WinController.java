@@ -2,7 +2,10 @@ package gui;
 
 import characters.players.Player;
 import game_engine.GameEngine;
+import game_engine.scoreBoard.RushScore;
 import game_engine.scoreBoard.ScoreBoard;
+import game_engine.scoreBoard.ScoreStrategy;
+import game_engine.scoreBoard.SurvivalScore;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +21,7 @@ import java.io.IOException;
  * Created by M.Sharaf on 18/12/2017.
  */
 public class WinController {
-
+	private double currentScore = 0 ;
     @FXML
     private Label score;
 
@@ -27,13 +30,15 @@ public class WinController {
 
     @FXML
     void initialize() {
-        score.setText("SCORE : " + Player.getInstance().getScore());
+    	ScoreStrategy scoreCal = (MenuController.mode.equalsIgnoreCase("rush")) ? new RushScore() : new SurvivalScore();
+    	currentScore = scoreCal.getScore(GameEngine.getInstance().getTimer().getTimeMilliSeconds(), Player.getInstance());
+        score.setText("SCORE : " + new Double(currentScore).toString());
     }
 
     @FXML
     void onSubmitClick() throws IOException {
         if (!playerName.getText().equals("")) {
-            ScoreBoard.getInstance().addScore(MenuController.mode , playerName.getText(), (double) Player.getInstance().getScore());
+            ScoreBoard.getInstance().addScore(MenuController.mode , playerName.getText(), currentScore);
 
             MenuController.gameStage.close();
             GameEngine.getInstance().winStage.close();

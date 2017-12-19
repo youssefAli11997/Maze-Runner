@@ -19,7 +19,7 @@ public class Timer implements TimerSubject{
 		}
 		else if(mode.equalsIgnoreCase("survival")) {
 			timer = new SurvivalTimer();
-			this.time = 150 * 1000 ;
+			this.time = 10 * 1000 ;
 		}
 	}
 	

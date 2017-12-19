@@ -29,6 +29,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import observer.Observer;
 import observer.Subject;
+import observer.TimerObserver;
 import utils.weapons.types.Sword;
 
 import java.awt.*;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 /**
  * Created by M.Sharaf on 13/12/2017.
  */
-public class GameEngine implements Observer, Subject {
+public class GameEngine implements Observer, Subject , TimerObserver{
     //score Magho -- score & time start value --
     private ArrayList<Observer> observers;
     private String mode ; 
@@ -47,7 +48,7 @@ public class GameEngine implements Observer, Subject {
     //private int playerScore  = 20;//depends on level
     private final long StartGameTime = System.currentTimeMillis();
     private Timer timer;
-    private Cell[][] maze;
+	private Cell[][] maze;
     private static GameCharacter player;
     private boolean running;
     private static Command currentCommand;
@@ -114,7 +115,6 @@ public class GameEngine implements Observer, Subject {
                 //score Magho -- end game when score == 0
                 if (win || lose) {
                     stop();
-                    showWinLoseDialogue();
                 }
                 if (currentCommand != null) {
                     if (currentCommand.canExecute() && !fireMode) {
@@ -346,19 +346,20 @@ public class GameEngine implements Observer, Subject {
 
     public void attach(Timer timer) {
         this.timer = timer;
+        timer.addObserver(this);
     }
-
+    
     @Override
     public void update() {
         System.out.println("current row " + Player.getInstance().getCurrentRow() + " current column " + Player.getInstance().getCurrentColumn());
         System.out.println((maze.length - 2) + " " + (maze[0].length - 1));
-        if (Player.getInstance().getHealth() == 0 && Player.getInstance().getLives() == 0)
+        if (Player.getInstance().getHealth() == 0 && Player.getInstance().getLives() == 0) {
             lose = true;
-        else if(timer.getTimeMilliSeconds() == 0 && mode.equalsIgnoreCase("survival")){
-        	lose = true;
+            showWinLoseDialogue();
         }
         else if (Player.getInstance().getCurrentRow() == maze.length - 2 && Player.getInstance().getCurrentColumn() == maze[0].length - 1) {
             win = true;
+            showWinLoseDialogue();
         }
         notifyObservers();
     }
@@ -381,6 +382,11 @@ public class GameEngine implements Observer, Subject {
             ob.update();
     }
     
+    public Timer getTimer() {
+		return timer;
+	}
+
+    
     private void showWinLoseDialogue() {
     	winStage = new Stage();
         Parent root = null;
@@ -396,5 +402,13 @@ public class GameEngine implements Observer, Subject {
         winStage.setResizable(false);
         winStage.show();
     }
+
+	@Override
+	public void update(double time) {
+		if(time == 0 && mode.equalsIgnoreCase("survival")) {
+			lose = true ;
+			showWinLoseDialogue();
+		}
+	}
     
 }
