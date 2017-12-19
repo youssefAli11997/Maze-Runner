@@ -13,8 +13,8 @@ import javafx.util.Duration;
 
 public abstract class Cell {
 	static Logger log = Logger.getLogger(Cell.class.getName());
-
-    protected Image cellImage;
+	private int scoreIncrease = 0 ;
+	protected Image cellImage;
     protected boolean animation;
     private ImageView imageView;
     private boolean firstCreation = true;
@@ -56,5 +56,13 @@ public abstract class Cell {
     }
 
     public abstract void action(GameCharacter character);
+    
+    public int getScoreIncrease() {
+		return scoreIncrease;
+	}
 
+	public void setScoreIncrease(int scoreIncrease) {
+		this.scoreIncrease = scoreIncrease;
+	}
+    
 }

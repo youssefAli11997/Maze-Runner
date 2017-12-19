@@ -10,7 +10,7 @@ import characters.players.Player;
 public class ScoreGift extends Gift{
 	static Logger log = Logger.getLogger(ScoreGift.class.getName());
 
-	private final int IncreasedInScore = 5; 
+	private final int IncreasedInScore = 20; 
 	@Override
 	public void action(GameCharacter character) {
 		log.info("score gift applied");

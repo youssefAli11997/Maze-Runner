@@ -1,6 +1,8 @@
 package utils.weapons;
 
 import org.apache.log4j.Logger;
+
+import cells.Cell;
 import cells.walls.Wall;
 import characters.monsters.Monster;
 import characters.players.Player;
@@ -35,12 +37,12 @@ public abstract class Weapon {
 					((Wall) object).setBulletsToBreak(((Wall) object).getBulletsToBreak() - 1);
 					if (((Wall) object).getBulletsToBreak() == 0) {
 						((Wall) object).setBreaked(true);
-						player.setScore(player.getScore() + increasedInScore);
+						player.setScore(player.getScore() + ((Cell)object).getScoreIncrease());
 					}
 				}
 			}
 		} else {
-			player.setScore(player.getScore() + increasedInScore);
+			player.setScore(player.getScore() + ((Cell)object).getScoreIncrease());
 			log.info("adding score to the player");
 		}
 	}

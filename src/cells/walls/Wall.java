@@ -4,12 +4,14 @@ import cells.Cell;
 import characters.GameCharacter;
 
 public class Wall extends Cell {
+	private static final int SCORE = 30;
 	private boolean breakable;
 	private int bulletsToBreak;
 	private int healthDecrease;
 	private boolean breaked = false;
 
 	public Wall(boolean breakable, int bulletsToBreak, int healthDecrease) {
+		setScoreIncrease(SCORE);
 		this.breakable = breakable;
 		this.bulletsToBreak = bulletsToBreak;
 		this.healthDecrease = healthDecrease;
