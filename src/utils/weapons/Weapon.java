@@ -67,6 +67,7 @@ public abstract class Weapon implements Subject{
 	 */
 	public void setBullets(int bullets) {
 		this.bullets = bullets;
+		notifyObservers();
 	}
 
 	public boolean isWeaponEmpty() {
