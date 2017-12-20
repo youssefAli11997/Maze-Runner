@@ -123,6 +123,7 @@ public class GameController implements TimerObserver{
 
     @FXML
     void onMenuClick (){
+        GameEngine.togglePaused();
         MenuController.gameStage.hide();
         Main.menu.show();
     }

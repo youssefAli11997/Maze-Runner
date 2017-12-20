@@ -367,6 +367,7 @@ public class MenuController {
     void onContinueGame() {
         Player.getInstance().setPlayerImage(playerImage);
         Main.menu.hide();
+        GameEngine.togglePaused();
         gameStage.show();
     }
 

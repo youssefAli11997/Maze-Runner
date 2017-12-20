@@ -50,6 +50,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
     private Timer timer;
 	private Cell[][] maze;
     private static GameCharacter player;
+    private static boolean paused;
     private boolean running;
     private static Command currentCommand;
     private static boolean fireMode;
@@ -81,7 +82,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
         this.mode = mode;
         this.rows = rows;
         this.cols = columns;
-
+        paused = false;
         start(diff ,rows, columns);
         loop();
     }
@@ -111,7 +112,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
                 double startTime = System.currentTimeMillis();
                 boolean moved = false;
                 //score Magho -- end game when score == 0
-                if (win || lose) {
+                if (win || lose || paused) {
                     stop();
                 }
                 if (currentCommand != null) {
@@ -407,5 +408,9 @@ public class GameEngine implements Observer, Subject , TimerObserver{
 			showWinLoseDialogue();
 		}
 	}
+
+	public static void togglePaused(){
+        paused = !paused;
+    }
     
 }
