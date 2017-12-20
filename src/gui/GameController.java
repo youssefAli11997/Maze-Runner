@@ -37,9 +37,9 @@ public class GameController implements TimerObserver{
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private static double windowWidth = screenSize.getWidth(), windowHeight = screenSize.getHeight();
     private static Timer timer ;
-    private Cell[][] maze;
+    private static Cell[][] maze;
     private static int mazeRows, mazeColumns;
-    private static GridPane grid;
+    public static GridPane grid;
     public static GraphicsContext graphicsContext;
     private static Image collision = new Image("assets/img/collision.png");
     private double scrollHValue, scrollVvalue;
@@ -112,7 +112,7 @@ public class GameController implements TimerObserver{
         scrollPane.requestFocus();
     }
 
-    private void initMaze() {
+    public static void initMaze() {
         for (int i = 0; i < mazeRows; i++) {
             grid.addColumn(i);
             for (int j = 0; j < mazeColumns; j++) {

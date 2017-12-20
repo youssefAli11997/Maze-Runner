@@ -96,7 +96,7 @@ public class MenuController {
     private static Button ourContinueBtn;
     public static String mode, diff;
     public static Stage primaryStage;
-    private String LoadableImage = null ;
+    private String LoadableImage = null;
 
     @FXML
     void initialize() {
@@ -117,7 +117,7 @@ public class MenuController {
         rbMedium.setUserData("medium");
         rbHard.setUserData("hard");
         diff = "easy";
-        
+
         rbEasy.setSelected(true);
 
         modeToggleGroup = new ToggleGroup();
@@ -138,7 +138,7 @@ public class MenuController {
         initImages();
     }
 
-    private void initImages (){
+    private void initImages() {
         images.add("person");
         images.add("horse");
         images.add("dragon");
@@ -172,7 +172,7 @@ public class MenuController {
     @FXML
     void onStartNewGame() throws IOException {
         gameStage = new Stage();
-        GameEngine.getInstance(diff , mode ,10,10);
+        GameEngine.getInstance(diff, mode, 10, 10);
         Player.getInstance().addObserver(GameEngine.getInstance());
         Parent root = FXMLLoader.load(getClass().getResource("game_layout.fxml"));
         gameStage.setTitle("Maze Runner");
@@ -196,10 +196,10 @@ public class MenuController {
     void onHighScore() {
         mainHbox.getChildren().remove(menuVbox);
 
-        LinkedHashMap <String, Double> rushScore =
+        LinkedHashMap<String, Double> rushScore =
                 (LinkedHashMap<String, Double>) ScoreBoard.getInstance().getRushScoreBoard();
 
-        LinkedHashMap <String, Double> survivalScore =
+        LinkedHashMap<String, Double> survivalScore =
                 (LinkedHashMap<String, Double>) ScoreBoard.getInstance().getSurvivalScoreBoard();
 
         GridPane rushGridPane = new GridPane();
@@ -276,7 +276,7 @@ public class MenuController {
     private
 
     @FXML
-    void onSettingsClick(){
+    void onSettingsClick() {
         mainHbox.getChildren().remove(menuVbox);
         mainHbox.getChildren().add(settingsVbox);
     }
@@ -299,7 +299,7 @@ public class MenuController {
 
     @FXML
     void onPrevClick() {
-        if (imageIndex >= 1){
+        if (imageIndex >= 1) {
             imageIndex--;
             playerImageView.setImage(PlayerImageFactory.setImage(images.get(imageIndex)));
             playerImageView.setViewport(new Rectangle2D(0, 140, 70, 70));
@@ -310,7 +310,7 @@ public class MenuController {
     void onNextClick() {
         //TODO if index > 3 so it's imported image
 
-        if (imageIndex < images.size() - 1){
+        if (imageIndex < images.size() - 1) {
             imageIndex++;
             playerImageView.setImage(PlayerImageFactory.setImage(images.get(imageIndex)));
             playerImageView.setViewport(new Rectangle2D(0, 140, 70, 70));
@@ -318,29 +318,29 @@ public class MenuController {
     }
 
     @FXML
-    void onAssetBrowse (){
+    void onAssetBrowse() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new ExtensionFilter("Images only ..", "*.jpg", "*.png"));
         fileChooser.setTitle("Open Resource File");
         File file = fileChooser.showOpenDialog(primaryStage);
         String path = file.getAbsolutePath(); // path you can take it in a String member to use it
-        LoadableImage = path ;
+        LoadableImage = path;
     }
 
     @FXML
-    void onAssetApply (){
+    void onAssetApply() {
         String type = assetType.getText();
-        if (!type.equals("")){ // this checks empty you may handle invalid type !!!
-        	Cell cell = FlyweightFactory.create(type);
-        	if(cell != null) {
-        		if(LoadableImage != null) {
-        			cell.load(new Image(new File(LoadableImage).toURI().toString(), 70, 70, false, false));
-        		}
-        	}
-        if(continueBtn.isDisable()) {
-        	//refresh gridPane
-        	
-        }
+        if (!type.equals("")) { // this checks empty you may handle invalid type !!!
+            Cell cell = FlyweightFactory.create(type);
+            if (cell != null) {
+                if (LoadableImage != null) {
+                    cell.load(new Image(new File(LoadableImage).toURI().toString(), 70, 70, false, false));
+                }
+            }
+            if (continueBtn.isDisable()) {
+                GameController.grid = new GridPane();
+                GameController.initMaze();
+            }
         }
     }
 
@@ -360,12 +360,12 @@ public class MenuController {
         System.out.println("mode " + mode + " diff " + diff);
     }
 
-    public static void disableContinue(){
+    public static void disableContinue() {
         ourContinueBtn.setDisable(true);
     }
 
     @FXML
-    void onContinueGame (){
+    void onContinueGame() {
         Player.getInstance().setPlayerImage(playerImage);
         Main.menu.hide();
         gameStage.show();
