@@ -1,27 +1,33 @@
 package gui;
 
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import cells.Cell;
+import cells.FlyweightFactory;
 import characters.PlayerImageFactory;
 import characters.players.Player;
 import game_engine.GameEngine;
 import game_engine.scoreBoard.ScoreBoard;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.*;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -31,6 +37,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -89,6 +96,7 @@ public class MenuController {
     private static Button ourContinueBtn;
     public static String mode, diff;
     public static Stage primaryStage;
+    private String LoadableImage = null ;
 
     @FXML
     void initialize() {
@@ -312,18 +320,23 @@ public class MenuController {
     @FXML
     void onAssetBrowse (){
         FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("Images only ..", "*.jpg", "*.png"));
         fileChooser.setTitle("Open Resource File");
         File file = fileChooser.showOpenDialog(primaryStage);
         String path = file.getAbsolutePath(); // path you can take it in a String member to use it
+        LoadableImage = path ;
     }
 
     @FXML
     void onAssetApply (){
         String type = assetType.getText();
         if (!type.equals("")){ // this checks empty you may handle invalid type !!!
-
-
-
+        	Cell cell = FlyweightFactory.create(type);
+        	if(cell != null) {
+        		if(LoadableImage != null) {
+        			cell.load(new Image(new File(LoadableImage).toURI().toString(), 70, 70, false, false));
+        		}
+        	}
         }
     }
 
