@@ -261,7 +261,7 @@ public class MenuController {
         int index = 0;
         for (Map.Entry<String, Double> entry : map.entrySet()) {
             Label name = new Label(entry.getKey());
-            Label score = new Label(entry.getValue().toString());
+            Label score = new Label(String.format("%.2f", entry.getValue()));
 
             name.getStyleClass().add("score");
             score.getStyleClass().add("score");
