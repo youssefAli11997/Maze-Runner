@@ -31,7 +31,7 @@ public abstract class Weapon implements Subject{
 
 		if (object instanceof Monster) {
 			log.info("player is shooting the emeny");
-			if (!this.isWeaponEmpty()) {
+			if (this instanceof Sword || !this.isWeaponEmpty()) {
 				if(!(this instanceof Sword)) {
 				this.setBullets(this.getBullets() - 1);
 				}
@@ -40,17 +40,14 @@ public abstract class Weapon implements Subject{
 			}
 
 		} else if (object instanceof Wall) {
-			if (!this.isWeaponEmpty()) {
+			if (this instanceof Sword || !this.isWeaponEmpty()) {
 				log.info("player is shooting the wall");
+				
 				if(!(this instanceof Sword)) {
 				this.setBullets(this.getBullets() - 1);
 				}
-				if (((Wall) object).isBreakable() && !((Wall) object).isBreaked()) {
-					((Wall) object).setBulletsToBreak(((Wall) object).getBulletsToBreak() - 1);
-					if (((Wall) object).getBulletsToBreak() == 0) {
-						((Wall) object).setBreaked(true);
-						player.setScoreChange(((Cell)object).getScoreIncrease());
-					}
+				if (((Wall) object).isBreakable()) {
+					player.setScoreChange(((Cell)object).getScoreIncrease());
 				}
 			}
 		} else {
