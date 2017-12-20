@@ -10,6 +10,7 @@ import characters.monsters.Monster;
 import characters.players.Player;
 import observer.Observer;
 import observer.Subject;
+import utils.weapons.types.Sword;
 
 public abstract class Weapon implements Subject{
 	private ArrayList<Observer> observers ;
@@ -31,7 +32,9 @@ public abstract class Weapon implements Subject{
 		if (object instanceof Monster) {
 			log.info("player is shooting the emeny");
 			if (!this.isWeaponEmpty()) {
+				if(!(this instanceof Sword)) {
 				this.setBullets(this.getBullets() - 1);
+				}
 				((Monster) object).die();
 				player.setScoreChange(increasedInScore);
 			}
@@ -39,7 +42,9 @@ public abstract class Weapon implements Subject{
 		} else if (object instanceof Wall) {
 			if (!this.isWeaponEmpty()) {
 				log.info("player is shooting the wall");
+				if(!(this instanceof Sword)) {
 				this.setBullets(this.getBullets() - 1);
+				}
 				if (((Wall) object).isBreakable() && !((Wall) object).isBreaked()) {
 					((Wall) object).setBulletsToBreak(((Wall) object).getBulletsToBreak() - 1);
 					if (((Wall) object).getBulletsToBreak() == 0) {
@@ -49,7 +54,9 @@ public abstract class Weapon implements Subject{
 				}
 			}
 		} else {
+			if(!(this instanceof Sword)) {
 			this.setBullets(this.getBullets() - 1);
+			}
 			player.setScoreChange(((Cell)object).getScoreIncrease());
 			log.info("adding score to the player");
 		}
@@ -67,7 +74,9 @@ public abstract class Weapon implements Subject{
 	 *            the bullets to set
 	 */
 	public void setBullets(int bullets) {
-		this.bullets = bullets;
+		if(!(this instanceof Sword)) {
+			this.bullets = bullets;
+		}
 		notifyObservers();
 	}
 

@@ -166,7 +166,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
                         if (firstTarget != null) {
                             int row = (int) firstTarget.getX();
                             int col = (int) firstTarget.getY();
-
+                            if(player.getWeapon() instanceof Sword || player.getWeapon().getBullets() > 0) {
                             GameController.drawFire(player.getCurrentRow(), player.getCurrentColumn(),
                                     row, col);
 
@@ -174,6 +174,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
                             maze[row][col] = new EmptyCell();
                             maze[row][col].draw(gridPane, col, row);
                             GameController.drawwCollision(row, col);
+                            }
                         }
                         toggleFireMode();
                     }
