@@ -126,10 +126,10 @@ public class GameEngine implements Observer, Subject , TimerObserver{
                         System.out.println(newCol);
                         if (maze[newRow][newCol] instanceof EmptyCell) {
                             currentCommand.execute();
-                            if (!(maze[1][0] instanceof Rock)) {
+                            /* (!(maze[1][0] instanceof Rock)) {
                                 maze[1][0] = new Rock();
                                 maze[1][0].draw(gridPane, 0, 1);
-                            }
+                            }*/
                             moved = true;
                         } else if (maze[newRow][newCol] instanceof Tree) {
                             currentCommand.execute();
