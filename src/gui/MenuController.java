@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -29,6 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -71,6 +73,9 @@ public class MenuController {
     private Button continueBtn;
 
     @FXML
+    private TextField assetType;
+
+    @FXML
     private ImageView playerImageView;
 
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -83,6 +88,7 @@ public class MenuController {
     public static Stage gameStage;
     private static Button ourContinueBtn;
     public static String mode, diff;
+    public static Stage primaryStage;
 
     @FXML
     void initialize() {
@@ -300,6 +306,24 @@ public class MenuController {
             imageIndex++;
             playerImageView.setImage(PlayerImageFactory.setImage(images.get(imageIndex)));
             playerImageView.setViewport(new Rectangle2D(0, 140, 70, 70));
+        }
+    }
+
+    @FXML
+    void onAssetBrowse (){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File file = fileChooser.showOpenDialog(primaryStage);
+        String path = file.getAbsolutePath(); // path you can take it in a String member to use it
+    }
+
+    @FXML
+    void onAssetApply (){
+        String type = assetType.getText();
+        if (!type.equals("")){ // this checks empty you may handle invalid type !!!
+
+
+
         }
     }
 
