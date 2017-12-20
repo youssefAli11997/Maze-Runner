@@ -351,11 +351,11 @@ public class GameEngine implements Observer, Subject , TimerObserver{
     
     @Override
     public void update() {
-        if (Player.getInstance().getHealth() == 0 && Player.getInstance().getLives() == 0) {
+        if (Player.getInstance().getHealth() == 0 && Player.getInstance().getLives() == 0 && !lose && !win) {
             lose = true;
             showWinLoseDialogue();
         }
-        else if (Player.getInstance().getCurrentRow() == maze.length - 2 && Player.getInstance().getCurrentColumn() == maze[0].length - 1) {
+        else if (Player.getInstance().getCurrentRow() == maze.length - 2 && Player.getInstance().getCurrentColumn() == maze[0].length - 1 && !lose && !win) {
             win = true;
             showWinLoseDialogue();
         }
@@ -403,7 +403,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
 
 	@Override
 	public void update(double time) {
-		if(time == 0 && mode.equalsIgnoreCase("survival")) {
+		if(time == 0 && mode.equalsIgnoreCase("survival") && !lose && !win) {
 			lose = true ;
 			showWinLoseDialogue();
 		}
