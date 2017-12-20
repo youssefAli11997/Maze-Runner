@@ -24,9 +24,11 @@ public class ArmorGift extends Gift {
 	}
 
 	@Override
-	public void load() {
-		// TODO Auto-generated method stub
-		
+	public void load(Image image) {
+		if(image != null) {
+			super.cellImage = image;
+			super.animation = false;
+		}
 	}
 
 }

@@ -23,9 +23,11 @@ public class ScoreGift extends Gift{
 		((Player)character).setScoreChange(IncreasedInScore);
 	}
 	@Override
-	public void load() {
-		// TODO Auto-generated method stub
-		
+	public void load(Image image) {
+		if(image != null) {
+			super.cellImage = image;
+			super.animation = false;
+		}
 	}
 
 }

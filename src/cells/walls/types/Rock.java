@@ -11,10 +11,12 @@ public class Rock extends Wall {
         super(false, Integer.MAX_VALUE, 0);
 
         super.cellImage = IMAGE;
+        load(new Image("assets/img/bg.jpg"));
     }
     
     @Override
-	public void load() {
-		
+	public void load(Image image) {
+    	if(image != null)
+		super.cellImage = image;
 	}
 }

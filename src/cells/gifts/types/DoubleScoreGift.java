@@ -22,7 +22,10 @@ public class DoubleScoreGift extends Gift{
 		character.setCurrentState(newState);
 	}
 	@Override
-	public void load() {
-		
+	public void load(Image image) {
+		if(image != null) {
+			super.cellImage = image;
+			super.animation = false;
+		}
 	}
 }

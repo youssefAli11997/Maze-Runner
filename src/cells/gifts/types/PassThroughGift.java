@@ -22,9 +22,11 @@ public class PassThroughGift extends Gift {
 		character.setCurrentState(newState);
 	}
 	@Override
-	public void load() {
-		// TODO Auto-generated method stub
-		
+	public void load(Image image) {
+		if(image != null) {
+			super.cellImage = image;
+			super.animation = false;
+		}
 	}
 
 }

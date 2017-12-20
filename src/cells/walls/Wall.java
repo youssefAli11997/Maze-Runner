@@ -2,6 +2,7 @@ package cells.walls;
 
 import cells.Cell;
 import characters.GameCharacter;
+import javafx.scene.image.Image;
 
 public class Wall extends Cell {
 	private static final int SCORE = 30;
@@ -69,7 +70,9 @@ public class Wall extends Cell {
 	}
 
 	@Override
-	public void load() {
-		
+	public void load(Image image) {
+		if(image != null) {
+			super.cellImage = image;
+		}
 	}
 }

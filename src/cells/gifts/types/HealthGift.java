@@ -20,8 +20,10 @@ public class HealthGift extends Gift {
 		character.setHealthChange(10);
 	}
 	@Override
-	public void load() {
-		// TODO Auto-generated method stub
-		
+	public void load(Image image) {
+		if(image != null) {
+			super.cellImage = image;
+			super.animation = false;
+		}
 	}
 }

@@ -30,7 +30,8 @@ public class Fire extends Wall {
     }
     
     @Override
-	public void load() {
-		
+	public void load(Image image) {
+    	if(image != null)
+    		super.cellImage = image;
 	}
 }
