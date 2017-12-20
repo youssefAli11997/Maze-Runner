@@ -228,7 +228,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
                     return new Point(currRow - 1, currCol);
                 }
             } else {
-                for (int i = currRow + 1; i >= 0; i--) {
+                for (int i = currRow - 1; i >= 0; i--) {
                     if(maze[i][currCol] instanceof Rock){
                         return null;
                     }
@@ -260,7 +260,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
                     return new Point(currRow, currCol - 1);
                 }
             } else {
-                for (int i = currCol + 1; i >= 0; i--) {
+                for (int i = currCol - 1; i >= 0; i--) {
                     if(maze[currRow][i] instanceof Rock){
                         return null;
                     }
