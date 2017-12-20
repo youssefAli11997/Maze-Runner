@@ -117,12 +117,9 @@ public class GameEngine implements Observer, Subject , TimerObserver{
                 }
                 if (currentCommand != null) {
                     if (currentCommand.canExecute() && !fireMode) {
-                        System.out.println("here");
                         // Move
                         int newRow = (int) (player.getCurrentRow() + player.getOffset().getX());
                         int newCol = (int) (player.getCurrentColumn() + player.getOffset().getY());
-                        System.out.println(newRow);
-                        System.out.println(newCol);
                         if (maze[newRow][newCol] instanceof EmptyCell) {
                             currentCommand.execute();
                             /* (!(maze[1][0] instanceof Rock)) {
