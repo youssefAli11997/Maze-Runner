@@ -145,14 +145,14 @@ public class GameController implements TimerObserver{
 
 	public static void drawFire (int playerRow, int playerCol, int cellRow, int cellCol){
         GameController.graphicsContext.fillPolygon(
-                new double[]{playerCol * 70 + 35, cellCol * 70 + 35, cellCol * 70 + 40, playerCol * 70 + 40},
-                new double[]{playerRow * 70 + 35, cellRow * 70 + 35, cellRow * 70 + 40, playerRow * 70 + 40},
+                new double[]{playerCol * 71 + 35, cellCol * 71 + 35, cellCol * 71 + 40, playerCol * 71 + 40},
+                new double[]{playerRow * 71 + 35, cellRow * 71 + 35, cellRow * 71 + 40, playerRow * 71 + 40},
                 4
         );
 
         GameController.graphicsContext.strokePolygon(
-                new double[]{playerCol * 70 + 35, cellCol * 70 + 35, cellCol * 70 + 40, playerCol * 70 + 40},
-                new double[]{playerRow * 70 + 35, cellRow * 70 + 35, cellRow * 70 + 40, playerRow * 70 + 40},
+                new double[]{playerCol * 71 + 35, cellCol * 71 + 35, cellCol * 71 + 40, playerCol * 71 + 40},
+                new double[]{playerRow * 71 + 35, cellRow * 71 + 35, cellRow * 71 + 40, playerRow * 71 + 40},
                 4
         );
     }
@@ -162,7 +162,7 @@ public class GameController implements TimerObserver{
     }
 
     public static void drawwCollision (int row, int col) {
-        graphicsContext.drawImage(collision, col * 70, row * 70);
+        graphicsContext.drawImage(collision, col * 71, row * 71);
     }
 
 }

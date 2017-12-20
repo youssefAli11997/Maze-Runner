@@ -185,11 +185,11 @@ public abstract class GameCharacter implements Subject , Observer{
                 playerImageView.setViewport(new Rectangle2D(imageIndex[0], finalDir * 70, 70, 70));
 
                 if (finalDir == Map.PlayerDirection.UP || finalDir == Map.PlayerDirection.DOWN) {
-                    playerImageView.setLayoutX(column * 70);
-                    playerImageView.setLayoutY(row * 70 - (70 * finalOffsetY) + (17.5 * finalOffsetY * i));
+                    playerImageView.setLayoutX(column * 71);
+                    playerImageView.setLayoutY(row * 71 - (71 * finalOffsetY) + (17.75 * finalOffsetY * i));
                 } else if (finalDir == Map.PlayerDirection.RIGHT || finalDir == Map.PlayerDirection.LEFT) {
-                    playerImageView.setLayoutX(column * 70 - (70 * finalOffsetX) + (17.5 * finalOffsetX * i));
-                    playerImageView.setLayoutY(row * 70);
+                    playerImageView.setLayoutX(column * 71 - (71 * finalOffsetX) + (17.75 * finalOffsetX * i));
+                    playerImageView.setLayoutY(row * 71);
                 }
 
                 imageIndex[0] = i;
