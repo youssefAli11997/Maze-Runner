@@ -82,7 +82,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
         this.mode = mode;
         this.rows = rows;
         this.cols = columns;
-        paused = true;
+        paused = false;
         start(diff ,rows, columns);
         loop();
     }

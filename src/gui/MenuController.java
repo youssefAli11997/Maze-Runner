@@ -131,9 +131,9 @@ public class MenuController {
         mode = "rush";
         String bip = "src/assets/sound/Forest of Forgetfulness.mp3";
         Media hit = new Media(new File(bip).toURI().toString());
-        mediaPlayer = new MediaPlayer(hit);
+        /*mediaPlayer = new MediaPlayer(hit);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+        mediaPlayer.play();*/
 
         initImages();
     }
