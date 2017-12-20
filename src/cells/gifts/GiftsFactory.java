@@ -22,11 +22,7 @@ public class GiftsFactory {
 		gifts = new ArrayList<>();
 		gifts.add("bullet");
 		gifts.add("health");
-		gifts.add("armor");
 		gifts.add("doublehealth");
-		gifts.add("eatenemy");
-		gifts.add("passthrough");
-		gifts.add("nofire");
 		gifts.add("score");
 	}
 

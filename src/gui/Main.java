@@ -1,7 +1,6 @@
 package gui;
 
 import org.apache.log4j.BasicConfigurator;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
