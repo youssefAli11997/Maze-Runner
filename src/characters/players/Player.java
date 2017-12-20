@@ -17,9 +17,7 @@ public class Player extends GameCharacter {
 	}
 
 	public static Player getInstance(int rows, int columns, int gridRows, int gridColumns) {
-		if(ourInstance == null){
-			ourInstance = new Player(rows,columns,gridRows,gridColumns);
-		}
+		ourInstance = new Player(rows,columns,gridRows,gridColumns);
 		return ourInstance;
 	}
 

@@ -72,9 +72,7 @@ public class GameEngine implements Observer, Subject , TimerObserver{
     }
 
     public static GameEngine getInstance(String diff , String mode ,int rows, int columns) {
-        if (ourInstance == null) {
-            ourInstance = new GameEngine(diff ,mode ,rows , columns);
-        }
+        ourInstance = new GameEngine(diff ,mode ,rows , columns);
         return ourInstance;
     }
 
