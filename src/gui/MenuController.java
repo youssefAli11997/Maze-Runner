@@ -1,25 +1,29 @@
 package gui;
 
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 import characters.PlayerImageFactory;
 import characters.players.Player;
 import game_engine.GameEngine;
+import game_engine.scoreBoard.ScoreBoard;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
+import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -176,8 +180,86 @@ public class MenuController {
 
     @FXML
     void onHighScore() {
+        mainHbox.getChildren().remove(menuVbox);
 
+        LinkedHashMap <String, Double> rushScore =
+                (LinkedHashMap<String, Double>) ScoreBoard.getInstance().getRushScoreBoard();
+
+        LinkedHashMap <String, Double> survivalScore =
+                (LinkedHashMap<String, Double>) ScoreBoard.getInstance().getSurvivalScoreBoard();
+
+        GridPane rushGridPane = new GridPane();
+        GridPane survivalGridPane = new GridPane();
+
+
+        Label rushLbl = new Label("RUSH MODE");
+        Label survivalLbl = new Label("SURVIVAL MODE");
+
+        rushLbl.getStyleClass().add("score-lbl");
+        survivalLbl.getStyleClass().add("score-lbl");
+
+        VBox.setMargin(rushLbl, new Insets(0, 0, 20, 0));
+        VBox.setMargin(survivalLbl, new Insets(0, 0, 20, 0));
+
+        rushGridPane.addColumn(0);
+        rushGridPane.addColumn(1);
+
+        survivalGridPane.addColumn(0);
+        survivalGridPane.addColumn(1);
+
+        fillGridPane(rushScore, rushGridPane);
+        fillGridPane(survivalScore, survivalGridPane);
+
+        VBox rushVBox = new VBox(rushLbl, rushGridPane);
+        VBox survivalVBox = new VBox(survivalLbl, survivalGridPane);
+
+        rushVBox.getStyleClass().add("score-vbox");
+        survivalVBox.getStyleClass().add("score-vbox");
+
+        rushVBox.setAlignment(Pos.TOP_CENTER);
+        survivalVBox.setAlignment(Pos.TOP_CENTER);
+
+        HBox hBox = new HBox(rushVBox, survivalVBox);
+        hBox.setAlignment(Pos.TOP_CENTER);
+        hBox.setSpacing(100);
+
+        javafx.scene.control.Label title = new Label("HIGH SCORES");
+        title.getStyleClass().add("score-title");
+        VBox.setMargin(title, new Insets(0, 0, 20, 0));
+
+        Button back = new Button("BACK");
+        back.setMinWidth(200);
+        VBox.setMargin(back, new Insets(20, 0, 0, 0));
+
+        VBox mainScoreVBox = new VBox(title, hBox, back);
+        mainScoreVBox.setAlignment(Pos.CENTER);
+
+        back.getStyleClass().add("menu-button");
+        back.setOnAction(event -> {
+            mainHbox.getChildren().remove(mainScoreVBox);
+            mainHbox.getChildren().add(menuVbox);
+        });
+
+        mainHbox.getChildren().add(mainScoreVBox);
     }
+
+    private void fillGridPane(LinkedHashMap<String, Double> map, GridPane gridPane) {
+        int index = 0;
+        for (Map.Entry<String, Double> entry : map.entrySet()) {
+            Label name = new Label(entry.getKey());
+            Label score = new Label(entry.getValue().toString());
+
+            name.getStyleClass().add("score");
+            score.getStyleClass().add("score");
+
+            gridPane.addRow(index);
+            gridPane.add(name, 0, index);
+            gridPane.add(score, 1, index);
+            index++;
+        }
+    }
+
+    private
 
     @FXML
     void onSettingsClick(){

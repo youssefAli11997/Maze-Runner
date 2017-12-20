@@ -13,7 +13,7 @@ public class Armored extends CharacterState {
 		super(character);
 	}
 
-	@Override
+		@Override
 	public void die() {
 		GameCharacter character = super.getCharacter();
 		character.setCurrentState(new Normal(character));

@@ -12,12 +12,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="600.0">
          <children>
-            <Label styleClass="congrats-lbl" stylesheets="@win_layout.css" text="CONGRATULATIONS">
-               <font>
-                  <Font name="Ebrima" size="12.0" />
-               </font>
-            </Label>
-            <Label styleClass="congrats-lbl" stylesheets="@win_layout.css" text="YOU HAVE ESCAPED!">
+            <Label styleClass="congrats-lbl" stylesheets="@win_layout.css" text="GAME ENDED">
                <font>
                   <Font name="Ebrima" size="12.0" />
                </font>

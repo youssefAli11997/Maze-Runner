@@ -48,3 +48,40 @@
 .menu-button:hover {
     -fx-background-color: rgba(255, 222, 0, 0.65);
 }
+
+.score-title {
+    -fx-font-size: 40;
+    -fx-font-style: oblique;
+    -fx-text-fill: #5a0c03;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.score-lbl {
+    -fx-font-size: 20;
+    -fx-font-style: oblique;
+    -fx-text-fill: #860500;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.score {
+    -fx-font-size: 20;
+    -fx-font-style: oblique;
+    -fx-text-fill: #001433;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.score-vbox {
+    -fx-background-radius: 40;
+    -fx-background-color: rgba(70, 156, 220, 0.15);
+
+    -fx-border-radius: 10%;
+    -fx-border-width: 2;
+    -fx-border-color: rgba(220, 86, 88, 0.34);
+
+    -fx-padding: 20;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
