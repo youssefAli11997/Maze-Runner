@@ -339,7 +339,6 @@ public class MenuController {
         	}
         if(continueBtn.isDisable()) {
         	//refresh gridPane
-        	
         }
         }
     }
