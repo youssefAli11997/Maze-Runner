@@ -337,6 +337,10 @@ public class MenuController {
         			cell.load(new Image(new File(LoadableImage).toURI().toString(), 70, 70, false, false));
         		}
         	}
+        if(continueBtn.isDisable()) {
+        	//refresh gridPane
+        	
+        }
         }
     }
 
