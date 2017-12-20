@@ -28,4 +28,9 @@ public class Fire extends Wall {
             character.setHealth(character.getHealth() - decreaseInHealth);
         }
     }
+    
+    @Override
+	public void load() {
+		
+	}
 }

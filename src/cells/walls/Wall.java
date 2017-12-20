@@ -67,4 +67,9 @@ public class Wall extends Cell {
 	public String toString() {
 		return "wall";
 	}
+
+	@Override
+	public void load() {
+		
+	}
 }

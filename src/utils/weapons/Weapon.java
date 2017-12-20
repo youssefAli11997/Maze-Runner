@@ -33,7 +33,7 @@ public abstract class Weapon implements Subject{
 			if (!this.isWeaponEmpty()) {
 				this.setBullets(this.getBullets() - 1);
 				((Monster) object).die();
-				player.setScore(player.getScore() + increasedInScore);
+				player.setScoreChange(increasedInScore);
 			}
 
 		} else if (object instanceof Wall) {
@@ -44,12 +44,13 @@ public abstract class Weapon implements Subject{
 					((Wall) object).setBulletsToBreak(((Wall) object).getBulletsToBreak() - 1);
 					if (((Wall) object).getBulletsToBreak() == 0) {
 						((Wall) object).setBreaked(true);
-						player.setScore(player.getScore() + ((Cell)object).getScoreIncrease());
+						player.setScoreChange(((Cell)object).getScoreIncrease());
 					}
 				}
 			}
 		} else {
-			player.setScore(player.getScore() + ((Cell)object).getScoreIncrease());
+			this.setBullets(this.getBullets() - 1);
+			player.setScoreChange(((Cell)object).getScoreIncrease());
 			log.info("adding score to the player");
 		}
 	}

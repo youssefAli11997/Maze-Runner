@@ -21,5 +21,10 @@ public class EatEnemyGift extends Gift {
 		EatEnemy newState = new EatEnemy(character);
 		character.setCurrentState(newState);
 	}
+	@Override
+	public void load() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

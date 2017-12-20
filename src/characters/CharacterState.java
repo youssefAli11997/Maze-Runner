@@ -2,6 +2,8 @@ package characters;
 
 import org.apache.log4j.Logger;
 
+import characters.players.Player;
+
 /**
  * Created by M.Sharaf on 08/12/2017. both player and enemy can have them all
  * states should be obtained from gifts some states have same default
@@ -38,5 +40,11 @@ public abstract class CharacterState {
 
 	public void die() {
 
+	}
+
+	public void setScoreChange(long score) {
+		Player player = (Player)getCharacter();
+		player.setScore(player.getScore()+score);
+		log.info("change in score");
 	}
 }

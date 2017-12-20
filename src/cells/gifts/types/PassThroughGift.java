@@ -21,5 +21,10 @@ public class PassThroughGift extends Gift {
 		PassThrough newState = new PassThrough(character);
 		character.setCurrentState(newState);
 	}
+	@Override
+	public void load() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

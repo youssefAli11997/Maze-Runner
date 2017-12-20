@@ -8,6 +8,7 @@ import cells.Cell;
 import cells.gifts.types.ArmorGift;
 import cells.gifts.types.BulletGift;
 import cells.gifts.types.DoubleHealthGift;
+import cells.gifts.types.DoubleScoreGift;
 import cells.gifts.types.EatEnemyGift;
 import cells.gifts.types.HealthGift;
 import cells.gifts.types.NoFireGift;
@@ -23,6 +24,7 @@ public class GiftsFactory {
 		gifts.add("bullet");
 		gifts.add("health");
 		gifts.add("doublehealth");
+		gifts.add("doublescore");
 		gifts.add("score");
 	}
 
@@ -55,8 +57,10 @@ public class GiftsFactory {
 		} else if (gift.equalsIgnoreCase("score")) {
 			log.info("noFire gift is created");
 			return new ScoreGift();
+		}	else if (gift.equalsIgnoreCase("doubleScore")) {
+			log.info("doubleScore gift is created");
+			return new DoubleScoreGift();
 		}
-		
 		return null;
 	}
 

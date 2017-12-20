@@ -65,4 +65,5 @@ public abstract class Cell {
 		this.scoreIncrease = scoreIncrease;
 	}
     
+	public abstract void load();
 }

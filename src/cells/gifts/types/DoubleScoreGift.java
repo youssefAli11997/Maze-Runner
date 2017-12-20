@@ -4,29 +4,25 @@ import org.apache.log4j.Logger;
 
 import cells.gifts.Gift;
 import characters.GameCharacter;
-import characters.states.Armored;
+import characters.states.DoubleScore;
 import javafx.scene.image.Image;
 
-public class ArmorGift extends Gift {
-	static Logger log = Logger.getLogger(ArmorGift.class.getName());
+public class DoubleScoreGift extends Gift{
+	static Logger log = Logger.getLogger(DoubleScoreGift.class.getName());
 	private static final Image IMAGE = new Image("assets/img/gift.png");
-	public ArmorGift() {
+	public DoubleScoreGift() {
 		super.cellImage = IMAGE;
         super.animation = true;
 	}
-
 	@Override
 	public void action(GameCharacter character) {
-		log.info("Armor gift applied");
+		log.info("double score gift applied");
 
-		Armored newState = new Armored(character);
+		DoubleScore newState = new DoubleScore(character);
 		character.setCurrentState(newState);
 	}
-
 	@Override
 	public void load() {
-		// TODO Auto-generated method stub
 		
 	}
-
 }

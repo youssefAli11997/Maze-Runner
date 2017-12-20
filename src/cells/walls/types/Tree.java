@@ -11,4 +11,9 @@ public class Tree extends Wall {
         super(true, 0, 0);
         super.cellImage = IMAGE;
     }
+    
+    @Override
+	public void load() {
+		
+	}
 }

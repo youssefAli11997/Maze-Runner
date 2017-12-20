@@ -21,5 +21,10 @@ public class NoFireGift extends Gift {
 		NoFire newState = new NoFire(character);
 		character.setCurrentState(newState);
 	}
+	@Override
+	public void load() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

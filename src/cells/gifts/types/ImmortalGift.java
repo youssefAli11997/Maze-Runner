@@ -21,5 +21,10 @@ public class ImmortalGift extends Gift {
 		Immortal newState = new Immortal(character);
 		character.setCurrentState(newState);
 	}
+	@Override
+	public void load() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

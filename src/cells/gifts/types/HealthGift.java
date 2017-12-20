@@ -19,4 +19,9 @@ public class HealthGift extends Gift {
 
 		character.setHealthChange(10);
 	}
+	@Override
+	public void load() {
+		// TODO Auto-generated method stub
+		
+	}
 }

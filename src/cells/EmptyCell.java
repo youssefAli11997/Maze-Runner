@@ -23,4 +23,9 @@ public class EmptyCell extends Cell {
     public String toString() {
         return "empty";
     }
+
+	@Override
+	public void load() {
+		
+	}
 }

@@ -21,5 +21,10 @@ public class DoubleHealthGift extends Gift {
 		DoubleHealth newState = new DoubleHealth(character);
 		character.setCurrentState(newState);
 	}
+	@Override
+	public void load() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -21,4 +21,9 @@ public class BulletGift extends Gift {
 		Weapon weapon = character.getWeapon();
 		weapon.setBullets(weapon.getBullets() + 6);
 	}
+	@Override
+	public void load() {
+		// TODO Auto-generated method stub
+		
+	}
 }

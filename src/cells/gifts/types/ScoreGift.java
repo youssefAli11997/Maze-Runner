@@ -20,7 +20,12 @@ public class ScoreGift extends Gift{
 	public void action(GameCharacter character) {
 		log.info("score gift applied");
 
-		((Player)character).setScore(((Player)character).getScore() + IncreasedInScore);
+		((Player)character).setScoreChange(IncreasedInScore);
+	}
+	@Override
+	public void load() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -12,4 +12,9 @@ public class Rock extends Wall {
 
         super.cellImage = IMAGE;
     }
+    
+    @Override
+	public void load() {
+		
+	}
 }

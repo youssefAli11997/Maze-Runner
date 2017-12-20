@@ -12,4 +12,9 @@ public class Wooden extends Wall {
 
         super.cellImage = IMAGE;
     }
+    
+    @Override
+	public void load() {
+		
+	}
 }

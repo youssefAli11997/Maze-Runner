@@ -7,7 +7,7 @@ public class Player extends GameCharacter {
 
 	private int lives;
 	private String playerName;
-	private long Score;
+	private long Score = 0;
 	private static Player ourInstance;
 
 	public static Player getInstance(){
@@ -74,6 +74,10 @@ public class Player extends GameCharacter {
 	public void setScore(long score) {
 		Score = score;
 		notifyObservers();
+	}
+	
+	public void setScoreChange(long score) {
+		super.getCurrentState().setScoreChange(score);
 	}
 
 	public String getPlayerName() {

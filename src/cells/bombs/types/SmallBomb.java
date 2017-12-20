@@ -21,4 +21,9 @@ public class SmallBomb extends Bomb {
 		log.info("small bomb is applied decreas in health");
 		character.setHealth(character.getHealth() - 10);
     }
+
+	@Override
+	public void load() {
+		
+	}
 }
